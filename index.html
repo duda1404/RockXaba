@@ -1,0 +1,70 @@
+<html>
+ <!--Head e header da página, contendo os "links" pré-estabelecidos de estilos, scripts [...] e o menu principal -->
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
+  <title> RockXaba </title>
+</head>
+
+ <!-- Menu -->
+<body>
+  <header class="menu-principal">
+    <main class="col-100">
+      <div class="header-1">
+
+        <div class="menu-1">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">Sobre</a></li>
+                  <li><a href="artistas.html">Artistas</a></li>
+                  <li><a href="follow.html">Siga-nos</a></li>
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="contato.html">Contato</a></li>
+          </ul>
+          <a href="index.html">
+            <div class="logo"> <img src="./img/logo.png" height="100px">
+          </a>
+
+
+        </div>
+      </div>
+    </main>
+  </header>
+
+   <!-- Seção do Slideshow, sendo cada slide uma classe, e cada classe contendo uma imagem-->
+  <section class="principal">
+
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="./img/1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./img/2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./img/3.jpg" style="width:100%">
+    </div>
+
+     <!--Botões de Anterior e Próximo -->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+  </div>
+ 
+   <!-- Indicadores da parte de baixo do Slideshow -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>
