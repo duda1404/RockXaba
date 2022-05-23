@@ -416,63 +416,6 @@ img {vertical-align: middle;}
   background-color: black;
 }
 
-/* ***************************************************** */
-
-/* Estilização da sub-página do Rex Orange County */
-.rex_orange {
-
-  width: 100%;
-  padding: 100px 0px;
-  background-color: black;
-}
-
-.rex_orange img{
-  height: auto;
-  width: 430px;
-}
-
-.rex-text{
-  width: 550px;
-}
-
-.main-rex{
-  width: 1130px;
-  max-width: 95%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.rex-text h2{
-  font-size: 75px;
-  text-transform: capitalize;
-  margin-bottom: 20px;
-  font-family: 'Staatliches', cursive;
-  text-align: justify;
-  color: white;
-}
-
-.rex-text h2 span{
-  color:#eb8a2f;
-}
-
-.rex-text p span{
-  color: white;
-}
-
-.rex-text p{
-  line-height: 28px;
-  letter-spacing: 1px;
-  font-size: 18px;
-  margin-bottom: 45px;
-  font-family:'Times New Roman', Times, serif;
-  text-align: justify;
-  color: #eb8a2f;
-}
-
-/* ***************************************************** */
-
 .redd img{
   height: auto;
   
