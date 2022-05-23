@@ -1,14 +1,6 @@
-<html>
- <!--Head e header da página, contendo os "links" pré-estabelecidos de estilos, scripts [...] e o menu principal -->
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;1,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <title> RockXaba </title>
-</head>
+<?php
+include 'header.php'
+?>
 
  <!-- Menu -->
 <body>
