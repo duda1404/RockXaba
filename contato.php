@@ -71,10 +71,8 @@ if(isset($_POST['btnenviar'])){
 
   $emailUser = $dados['email_user'];
   $id_user_FK = $dados['id_user'];
-  $data = new DateTime();
-  $data_msg = $data->format("d-m-Y h:i:s a");  
-
-  $suporteSql = "INSERT INTO suporte(dsc_msg, data_msg, FK_USUARIO_id_user) VALUES ('" . $mensagem . "','". $data_msg. "','" . $id_user_FK . "')";
+  $data = date('Y-m-d H:i:s');
+  $suporteSql = "INSERT INTO suporte(dsc_msg, data_msg, FK_USUARIO_id_user) VALUES ('" . $mensagem . "','". $data. "','" . $id_user_FK . "')";
   $incluiSuporte = mysqli_query($connect, $suporteSql);
 
   //fechando a conexão depois de armazenar os dados
