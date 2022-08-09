@@ -17,7 +17,7 @@ header('Location: login.php?acao=negado');
 <div class="wrapper">
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">
-      <img src="uploads/<?php echo $dados['photo']; ?>" alt="profile card">
+      <img src="uploads/<?php echo $dados['photo_user']; ?>" alt="profile card">
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">

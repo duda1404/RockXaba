@@ -56,7 +56,7 @@ if (isset($_POST['btn-entrar'])):
 		/* Faz uma consulta sql para pegar a situação do usuário (1 - Ativo, 2 - Inativo, 3 - Aguardando Confirmação) e
 		a transforma em um item no array $confirmado */
 
-		$confirma_user = mysqli_query($connect, "SELECT sit_user_id FROM usuario WHERE nome_user = '$login'");
+		$confirma_user = mysqli_query($connect, "SELECT FK_SIT_USUARIO_id_sit FROM usuario WHERE nome_user = '$login'");
 		$confirmado = $confirma_user->fetch_assoc();
 
 		/* Seleciona, no banco de dados, o nome de usuário igual ao nome de usuário digitado (se ele existe, retorna 1) */
@@ -91,7 +91,7 @@ if (isset($_POST['btn-entrar'])):
 
 			/* Se o usuário não está ativo, envia um alerta pedindo a ele para confirmar sua conta */
 
-			if($confirmado['sit_user_id'] != 1){
+			if($confirmado['FK_SIT_USUARIO_id_sit'] != 1){
 
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
             	window.alert('Você precisa confirmar sua conta antes de logar no site!');
@@ -101,7 +101,7 @@ if (isset($_POST['btn-entrar'])):
 
 			/* Se o usuário está ativo, a sessão 'logado' é iniciada */
 
-			elseif($confirmado['sit_user_id'] == 1){
+			elseif($confirmado['FK_SIT_USUARIO_id_sit'] == 1){
 
 				$dados = mysqli_fetch_array($resultado);
 				$_SESSION['logado']= true;

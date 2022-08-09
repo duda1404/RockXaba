@@ -76,10 +76,6 @@ $erroNome = "";
 if (isset($_POST['btnentrar'])){
 
 
-
-/* Inclui a conexão com o Banco de Dados*/
-
-  include('config.php');
   $photo_name = mysqli_real_escape_string($connect, $_FILES["photo"]["name"]);
   $photo_tmp_name = $_FILES["photo"]["tmp_name"];
   $photo_size = $_FILES["photo"]["size"];
@@ -108,8 +104,6 @@ if (isset($_POST['btnentrar'])){
       
       $verifica_nome = mysqli_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
 
-
-
       /* Se o nome de usuário já existe no banco de dados, informa ao usuário */
 
       if(mysqli_num_rows($verifica_nome)>0){
@@ -133,8 +127,19 @@ if (isset($_POST['btnentrar'])){
 
         /* Insere o cadastro do usuário no Banco de Dados */
 
-        $sql = "INSERT INTO artista(nome_artista, link_play, dsc_artista, photo) VALUES ('" . $nome_artista . "','". $link_play . "','" . $dsc_artista . "','" . $photo_new_name . "')";
-        $resultado = mysqli_query($connect,$sql);
+
+        $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user) VALUES ('" . $nome_artista . "','". $link_play . "','" . $dsc_artista . "','".$id."')";
+        $resultado = mysqli_query($connect,$sqlArtista);
+
+        $result = mysqli_query($connect,"SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");
+
+        $array = $result->fetch_assoc();
+
+        $id_artista_FK = $array['id_artista'];
+
+        $sqlFotosArtista = "INSERT INTO foto_artista(photo_artista, FK_ARTISTA_id_artista) VALUES ('".$photo_new_name."', '".$id_artista_FK."')";
+        $sqlInsereDados= mysqli_query($connect, $sqlFotosArtista);
+
         move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
 
         //fechando a conexão depois de armazenar os dados

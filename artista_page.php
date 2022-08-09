@@ -12,12 +12,15 @@ require 'funcoes.php';
 
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
-    $image_query = mysqli_query($connect, "select id_artista, nome_artista, dsc_artista, link_play, photo from artista where $id = id_artista");
+    $image_query = mysqli_query($connect, "select artista.id_artista, artista.nome_artista, 
+    artista.dsc_artista, artista.link_play, foto_artista.photo_artista from artista inner join
+    foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = id_artista");
+
     while ($rows = mysqli_fetch_array($image_query)) {
         $nome_artista = $rows['nome_artista'];
         $dsc_artista = $rows['dsc_artista'];
         $link = $rows['link_play'];
-        $photo = $rows['photo'];
+        $photo = $rows['photo_artista'];
 
     ?>
         <div class="main-rexx">
@@ -63,12 +66,12 @@ no banco. */
 
                                 <?php
                                 /* Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
-                                $resultadon = mysqli_query($connect, "SELECT usuario.nome_user, usuario.photo, comentario.dsc_coment, comentario.date_coment, .comentario.id_coment FROM usuario INNER JOIN comentario ON usuario.id_user = comentario.FK_USUARIO_id_user WHERE usuario.id_user = comentario.FK_USUARIO_id_user");
+                                $resultadon = mysqli_query($connect, "SELECT usuario.nome_user, usuario.photo_user, comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user WHERE usuario.id_user = comentario_artista.FK_USUARIO_id_user");
 
                                 while ($rows = mysqli_fetch_array($resultadon)) {
                                     $id_coment = $rows['id_coment'];
                                     $nome_userr = $rows['nome_user'];
-                                    $photo_user = $rows['photo'];
+                                    $photo_user = $rows['photo_user'];
                                     $coment = $rows['dsc_coment'];
                                     $date_coment = $rows['date_coment'];
                                 ?>

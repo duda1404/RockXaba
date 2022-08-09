@@ -211,7 +211,12 @@ if (isset($_POST['btnentrar'])){
 
         /* Insere o cadastro do usuário no Banco de Dados */
 
-        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave) VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "')";
+        $tipo_user = 1;
+        $sit_user = 3;
+
+
+        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SIT_USUARIO_id_sit) 
+        VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "')";
         $resultado = mysqli_query($connect,$sql);
 
         //fechando a conexão depois de armazenar os dados

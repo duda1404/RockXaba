@@ -9,10 +9,6 @@
     
     }
 
-include 'config.php';
-
-/*Banco de dados*/ 
-
 /*Se o botão de Submit for acionado, define as seguintes variáveis e as entrega para o banco através do método
 POST*/
 if (isset($_POST["submit"])) {
@@ -41,7 +37,7 @@ a foto*/
 
             } else{
                 if ($result) {
-                    $sql = "UPDATE usuario SET  photo='$photo_new_name' WHERE id_user='{$_SESSION["id_user"]}'";
+                    $sql = "UPDATE usuario SET  photo_user ='$photo_new_name' WHERE id_user='{$_SESSION["id_user"]}'";
                     $result = mysqli_query($connect, $sql);
                 echo "<script>alert('O perfil foi atualizado com sucesso!');</script>";
                 
@@ -78,7 +74,7 @@ a foto*/
 
 <div class="imgg">
                     
-                    <img class="photo_img" src="uploads/<?php echo $row["photo"]; ?>">
+                    <img class="photo_img" src="uploads/<?php echo $row["photo_user"]; ?>">
                     <label for="photo" class="img"> Alterar foto de perfil </label>
                         <input type="file" accept="image/*" id="photo" name="photo" >
                     </div>
