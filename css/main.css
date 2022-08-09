@@ -1,0 +1,1570 @@
+/*<?php
+// Define que o arquivo terá a codificação de saída no formato CSS
+header("Content-type: text/css");
+
+?>
+/* O body das páginas que contém o background image*/
+
+.about, .follow, .contato, .login, .cadastro, .wrapper{
+  height: 100%;
+  width:100%;
+  margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+  /*font-family:'Josefin Sans';*/
+  color: #e92eed;
+  background-image:url(../img/bgcontactus.png);
+}
+
+/* ***************************************************** */
+.principal, .bandas{
+  width:100%;
+  height: 100%;
+  margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+  /*font-family:'Josefin Sans';*/
+  color: #e92eed;
+  background-color: black;}
+
+/* ***************************************************** */
+
+/* ******** Menu *********/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+
+  color: #fb9afc;
+    
+}
+
+.logo {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  /*font-family: 'Staatliches';*/
+  font-family: "Quicksand", sans-serif;
+  background: black;
+  height: 13vh;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  letter-spacing: 3px;
+  margin-left: 32px;
+}
+
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu div {
+  width: 32px;
+  height: 2px;
+  background: #fff;
+  margin: 8px;
+  transition: 0.3s;
+}
+
+@media (max-width: 999px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-list {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 50vw;
+    height: 92vh;
+    background: #23232e;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+  }
+  .nav-list li {
+    margin-left: 0;
+    opacity: 0;
+  }
+  .mobile-menu {
+    display: block;
+  }
+}
+
+.nav-list.active {
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -7px);
+}
+
+/* ***************************************************** */
+
+/* Aqui começa os slides, configurados para preencher toda a tela*/
+
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.carousel {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1.5fr;
+  grid-template-columns: 50px 1fr 1fr 1fr 1fr 50px;
+  row-gap: 2vh;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+}
+.progress-bar__fill {
+  width: 0;
+  height: inherit;
+  background: #2b00ff;
+  transition: all 0.16s;
+}
+.progress-bar--primary {
+  z-index: 2;
+}
+
+.main-post-wrapper {
+  grid-row: 1/4;
+  grid-column: 1/7;
+  position:sticky;
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+ 
+}
+
+.main-post {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.main-post__image {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+}
+.main-post__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main-post__image::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 13, 14, 0.5);
+}
+.main-post__content {
+  position: absolute;
+  top: 40%;
+  left: 4%;
+  transform: translateY(-40%);
+  color: #fff;
+  width: 90%;
+}
+.main-post__tag-wrapper {
+  margin: 0;
+  display: inline-flex;
+  overflow: hidden;
+}
+.main-post__tag {
+  font-size: 0.95em;
+  background: #ff0099;
+  padding: 6px 18px;
+}
+.main-post__title {
+  font-weight: 700;
+  font-size: 1.95em;
+  line-height: 1.25;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.main-post__link {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+}
+.main-post__link-text {
+  font-size: 0.9em;
+}
+.main-post__link-icon--arrow {
+  margin-left: 12px;
+}
+.main-post__link-icon--play-btn {
+  margin-right: 12px;
+}
+
+.main-post__link:hover .main-post__link-text,
+.main-post__link:hover .main-post__link-icon--arrow path {
+  color: #aa00ff;
+  stroke: #aa00ff;
+}
+
+.main-post--active {
+  top: 0;
+  z-index: 1;
+  transition: top 0.9s 0.4s ease-out;
+}
+
+.main-post--not-active {
+  top: 100%;
+  z-index: 0;
+  transition: top 0.75s 2s;
+}
+
+.main-post.main-post--active .main-post__tag-wrapper {
+  width: 25%;
+  transition: all 0.98s 1.9s;
+}
+
+.main-post.main-post--not-active .main-post__tag-wrapper {
+  width: 0;
+  transition: width 0.3s 0.2s;
+}
+
+.main-post.main-post--active .main-post__title {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s 1.42s, transform 0.5s 1.4s;
+}
+
+.main-post.main-post--not-active .main-post__title {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.2s 0.35s, opacity 0.5s 0.2s;
+}
+
+.main-post.main-post--active .main-post__link {
+  opacity: 1;
+  transition: opacity 0.9s 2.2s;
+}
+
+.main-post.main-post--not-active .main-post__link {
+  opacity: 0;
+  transition: opacity 0.5s 0.2s;
+}
+
+.posts-wrapper {
+  grid-row: 3/4;
+  grid-column: 3/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  -moz-column-gap: 14px;
+       column-gap: 14px;
+  z-index: 1;
+}
+
+.post {
+  background: rgba(14, 13, 14, 0.6);
+  opacity: 0.3;
+  color: #fff;
+  position: relative;
+  padding: 16px 20px;
+}
+.post__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+}
+.post__tag {
+  color: #80837e;
+}
+.post__title {
+  font-weight: 400;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+.post--active {
+  opacity: 1;
+  background: rgba(14, 13, 14, 0.75);
+}
+.post:not(.post--active) {
+  pointer-events: none;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .main-post__title {
+    font-size: 2.9em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .hide-on-mobile {
+    display: grid;
+  }
+
+  .posts-wrapper {
+    grid-column: 2/6;
+  }
+
+  .hide-on-desktop {
+    display: none;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .main-post__content {
+    width: 45%;
+  }
+
+  .posts-wrapper {
+    grid-column: 3/6;
+  }
+}
+
+/* ***************************************************** */
+
+/* Estlização da página Sobre */  
+
+.about {
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.about img{
+    height: auto;
+    width: 430px;
+}
+
+.about-text{
+    width: 550px;
+}
+
+.main-about{
+    width: 1130px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about-text h2{
+    font-size: 75px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-family: 'Staatliches', cursive;
+    text-align: justify;
+}
+
+.about-text h2 span{
+    color: white;
+}
+
+.about-text p span{
+    color: #57B7F2;
+}
+
+.about-text p{
+    line-height: 28px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin-bottom: 45px;
+    font-family:'Times New Roman', Times, serif;
+    text-align: justify;
+}
+
+/* ***************************************************** */
+
+/* Estlização da página Siga-Nos*/
+
+.follow-text  ul li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 20px;
+    max-width: 100%;
+    padding-top: 100px;
+    padding-right: 40px;    
+}
+
+.follow {
+
+  width: 100%;
+  padding: 40px 0px;
+
+}
+
+.follow img{
+  height: auto;
+}
+
+.follow img:hover{
+  -moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.main-follow{
+  margin: 0 auto;
+  justify-content: space-around;
+  display: flex;
+}
+
+.follow-text h2{
+  font-size: 50px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-family: 'Staatliches', cursive;
+  text-align: center;
+}
+
+.follow-text h2 span{
+  color: white;
+}
+
+.waves-effect.waves-light
+{background-color: #d200f2;}
+
+/* ***************************************************** */
+
+/* Estilização dos erros na validação dos formulários */
+
+/* Deixa a cor da mensagem de erro na validação vermelha */
+span.erro {
+  color: red;
+}
+
+/* Deixa a cor da sombra do elemento (input class = 'invalido') vermelha */
+input.invalido{
+  box-shadow: 5px 8px red;
+}
+
+/* ***************************************************** */
+
+/* Página de Login */
+
+/* Muda a fonte do "Login" no formulário */
+
+.caixa h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Propriedades da "caixa principal" do formulário */
+
+.caixa {
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: black;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+/* Altera as propriedades dos inputs do formulário */
+
+.caixa input[type = "text"], .caixa input[type= "password"]{
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #e92eed;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: o.25s; 
+}
+
+/* Altera as propriedades dos inputs do formulário quando são acessados */
+
+.caixa input[type = "text"]:hover, .caixa input[type= "password"]:hover{
+  width: 280px;
+  border-color: #58b9ff;
+}
+
+/* Altera as propriedades do botão*/
+
+.caixa input[type ="button"]{
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid  #58b9ff;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+/* Altera as propriedades do botão quando se passa o mouse*/
+
+.caixa button[type ="button"]:hover{
+  background: #58b9ff;
+}
+
+/* Tira a estilização do botão "Criar Conta"*/
+
+.caixa a{
+
+  text-decoration: none;
+}
+
+/* Altera as propriedades do botão quando se passa o mouse*/
+
+.caixa input[type ="button"]:hover{
+
+  background: #58b9ff;
+
+
+}
+
+/* ***************************************************** */
+
+/* Estilização da página Contato */
+
+/* Muda a fonte do "Contato" no formulário */
+
+.formulario h1{
+
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  
+
+}
+
+/* Propriedades da "caixa principal" do formulário */
+
+.formulario {
+
+  width: 300px;
+  padding: 10px;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: black;
+  text-align: center;
+  font-family: sans-serif;
+  
+
+}
+
+/* Altera as propriedades dos inputs do formulário */
+
+.formulario input[type = "text"], .formulario input[type= "password"], .formulario input[type="email"]{
+
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #e92eed;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  
+}
+
+.formulario textarea[name="mensagem"]{
+
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #e92eed;
+  padding: 14px 10px;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+
+
+
+}
+
+/* Altera as propridades dos inputs do formulário quando são acessados */
+
+.formulario input[type = "text"]:hover, .formulario input[type= "password"]:hover, .formulario input[type="email"]:hover, .formulario textarea[name="mensagem"]:hover{
+
+  width: 280px;
+  border-color: #58b9ff;
+
+}
+
+
+
+/* Altera as propriedades do botão*/
+
+.formulario input[type ="button"], .button_photo{
+
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid  #58b9ff;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  
+
+
+}
+
+/* Altera as propriedades do botão quando se passa o mouse*/
+
+.formulario input[type ="button"]:hover{
+
+  background: #58b9ff;
+
+
+}
+
+/* ***************************************************** */
+
+/* Estilização da página Cadastro */
+
+/* Muda a fonte do "Contato" no formulário */
+
+.form h1{
+
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  
+
+}
+
+/* Propriedades da "caixa principal" do formulário */
+
+.form {
+
+  width: 400px;
+  padding: 10px;
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: black;
+  text-align: center;
+  font-family: sans-serif;
+  
+
+}
+
+/* Altera as propriedades dos inputs do formulário */
+
+.form input[type = "text"], .form input[type= "password"], .form input[type="email"]{
+
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #e92eed;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: o.25s;
+  
+}
+
+
+/* Altera as propridades dos inputs do formulário quando são acessados */
+
+.form input[type = "text"]:hover, .form input[type= "password"]:hover, .form input[type="email"]:hover{
+
+  width: 280px;
+  border-color: #58b9ff;
+
+}
+
+/* Altera as propriedades do botão*/
+
+.form input[type ="button"]{
+
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid  #58b9ff;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  
+
+
+}
+
+/* Altera as propriedades do botão quando se passa o mouse*/
+
+.form input[type ="button"]:hover{
+
+  background: #58b9ff;
+
+
+}
+
+.form p, label {
+
+  color: white;
+  font-family: sans-serif;
+
+
+}
+
+/* ***************************************************** */
+
+/* Estilzação da página Artistas */
+
+.bandas-text  ul li{
+  display: inline-block;
+  list-style: none;
+  margin-left: 20px;
+  max-width: 100%;
+  padding-top: 50px;
+  padding-right: 40px;
+     text-align:center;
+}
+
+.main-bandas{
+  background-color: black;
+  margin: 0 auto;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    
+
+}
+
+.bandas-text h2{
+  font-size: 50px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-family: 'Staatliches', cursive;
+ 
+}
+
+.bandas img{
+  align-items: center;
+    justify-content: center;
+    text-align:center;
+
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+ 
+  
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+  transition: transform 0.5s, filter 0.5s ease-in-out;
+  filter: grayscale(0);
+  
+}
+
+.bandas img:hover{
+  filter: grayscale(100%);
+  -moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.bandas-text h2 span{
+  color: white;
+
+}
+
+/* ***************************************************** */
+
+/* Estilização da sub-página do Pink Floyd */
+
+.pink {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: black;
+}
+
+.pink img{
+  height: 50%;
+  width: 40%;  
+
+}
+
+.pink-text{
+  width: 550px;
+}
+
+.main-pink{
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pink-text h2{
+  font-size: 75px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-family: 'Staatliches', cursive;
+  text-align: center;
+  color: #e92eed;
+  letter-spacing: 1px;
+}
+
+.pink-text h2 span{
+  letter-spacing: 1px;
+  color: white;
+}
+
+.pink-text p span{
+  color: #57B7F2;
+}
+
+.pink-text p{
+  line-height: 28px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-bottom: 45px;
+  font-family:'Times New Roman', Times, serif;
+  text-align: justify;
+  color: #e92eed;
+}
+
+/* ***************************************************** */
+
+/* Estilização da sub-página do Red Hot Chili Peppers */
+
+.redd {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: black;
+}
+
+.redd img{
+  height: 60%;
+  width: 40%; 
+
+}
+
+.redd-text{
+  width: 550px;
+}
+
+.main-redd{
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.redd-text h2{
+  font-size: 60px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-family: 'Staatliches', cursive;
+  text-align: center;
+  color: red;
+  letter-spacing: 1px;
+}
+
+.redd-text h2 span{
+  letter-spacing: 1px;
+  color: white;
+}
+
+.redd-text p span{
+  color: #ffffff;
+}
+
+.redd-text p{
+  line-height: 28px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-bottom: 45px;
+  font-family:'Times New Roman', Times, serif;
+  text-align: justify;
+  color: red;
+}
+
+/* ***************************************************** */
+/* Estilização da sub-página do Rex Orange County*/
+
+.rexx {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: black;
+}
+
+.image_rex{
+  height: auto;
+  width: 430px;
+  
+
+}
+
+.rexx-text{
+  width: 550px;
+}
+
+.main-rexx{
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.rexx-text h2{
+  font-size: 75px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-family: 'Staatliches', cursive;
+  text-align: center;
+ 
+  letter-spacing: 1px;
+}
+
+.rexx-text h2 span{
+  letter-spacing: 1px;
+  color: white;
+}
+
+.rexx-text p span{
+  color: #ffffff;
+}
+
+.rexx-text p{
+  line-height: 28px;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 45px;
+  
+  font-family: "Quicksand", sans-serif;
+  text-align: justify;
+
+}
+
+/* Semi-estilização do embed do Spotify */
+
+.spotify{
+  max-width: 300px;
+}
+.spotify_1{
+  left: 0; 
+  width: 184%; 
+  height: 0; 
+  position: relative; 
+  padding-bottom: 100%; 
+  padding-top: 80px;
+}
+
+/* ***************************************************** */
+/* Estilização da barra de pesquisa em Artistas */
+
+
+.form-inline button[type = "submit"]{
+
+  display: inline-block;
+  height: 50%;
+
+
+}
+
+.form-inline input[type= "search"]{
+
+  border-radius: 24px;
+  height: 50%;
+  width: 500px;
+  border-color: none;
+  background-color: rgb(90, 81, 81);
+  color: white;
+  font-family: 'Staatliches', cursive;
+
+
+}
+
+.form-inline input[type= "search"]:hover{
+
+  border-color: #e92eed;
+
+}
+
+/* ***************************************************** */
+/* Estilização do Menu Dropdown */
+
+
+.dropbtn {
+  
+  font-family: 'Staatliches';
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e92eed;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(255, 0, 187, 0.894);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #e716a1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropbtn:hover {
+  background-color: #e716a1;
+  transition: 0.3s;
+}
+
+
+/* PERFIL */
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
+html {
+  position: relative;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.wrapper {
+  width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding: 50px 20px;
+  padding-top: 100px;
+  display: flex;
+  
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+  }
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 460px;
+  margin: auto;
+  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+  background: rgb(0, 0, 0);
+  border-radius: 12px;
+  max-width: 700px;
+  position: relative;
+}
+.profile-card.active .profile-card__cnt {
+  filter: blur(6px);
+}
+.profile-card.active .profile-card-message,
+.profile-card.active .profile-card__overlay {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+.profile-card.active .profile-card-form {
+  transform: none;
+  transition-delay: 0.1s;
+}
+.profile-card__img {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+  box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
+}
+@media screen and (max-width: 576px) {
+  .profile-card__img {
+    width: 120px;
+    height: 120px;
+  }
+}
+.profile-card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-card__cnt {
+  margin-top: -35px;
+  text-align: center;
+  padding: 0 20px;
+  padding-bottom: 40px;
+  transition: all 0.3s;
+}
+.profile-card__name {
+  font-weight: 700;
+  font-size: 24px;
+  color: #6944ff;
+  margin-bottom: 15px;
+}
+.profile-card__txt {
+  font-size: 18px;
+  font-weight: 500;
+  color: #324e63;
+  margin-bottom: 15px;
+}
+.profile-card__txt strong {
+  font-weight: 700;
+}
+.profile-card-loc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.profile-card-loc__icon {
+  display: inline-flex;
+  font-size: 27px;
+  margin-right: 10px;
+}
+.profile-card-inf {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+.profile-card-inf__item {
+  padding: 10px 35px;
+  min-width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-inf__item {
+    padding: 10px 20px;
+    min-width: 120px;
+  }
+}
+.profile-card-inf__title {
+  font-weight: 700;
+  font-size: 27px;
+  color: #324e63;
+}
+.profile-card-inf__txt {
+  font-weight: 500;
+  margin-top: 7px;
+}
+.profile-card-social {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile-card-social__item {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  margin: 15px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #405de6;
+  box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+  position: relative;
+  font-size: 21px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-social__item {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .profile-card-social__item:hover {
+    transform: scale(1.2);
+  }
+}
+.profile-card-social__item.facebook {
+  background: linear-gradient(45deg, #3b5998, #0078d7);
+  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+}
+.profile-card-social__item.twitter {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
+}
+.profile-card-social__item.instagram {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+.profile-card-social__item.behance {
+  background: linear-gradient(45deg, #1769ff, #213fca);
+  box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
+}
+.profile-card-social__item.github {
+  background: linear-gradient(45deg, #333333, #626b73);
+  box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+}
+.profile-card-social__item.codepen {
+  background: linear-gradient(45deg, #324e63, #414447);
+  box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
+}
+.profile-card-social__item.link {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+}
+.profile-card-social .icon-font {
+  display: inline-flex;
+}
+.profile-card-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-ctr {
+    flex-wrap: wrap;
+  }
+}
+.profile-card__button {
+  background: none;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 15px 35px;
+  padding: 15px 40px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card__button {
+    min-width: 170px;
+    margin: 15px 25px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card__button {
+    min-width: inherit;
+    margin: 0;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .profile-card__button:last-child {
+    margin-bottom: 0;
+  }
+}
+.profile-card__button:focus {
+  outline: none !important;
+}
+@media screen and (min-width: 768px) {
+  .profile-card__button:hover {
+    transform: translateY(-5px);
+  }
+}
+.profile-card__button:first-child {
+  margin-left: 0;
+}
+.profile-card__button:last-child {
+  margin-right: 0;
+}
+.profile-card__button.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+.profile-card__button.button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+}
+.profile-card__button.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+}
+.profile-card__button.button--orange:hover {
+  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+}
+.profile-card__button.button--gray {
+  box-shadow: none;
+  background: #dcdcdc;
+  color: #142029;
+}
+.profile-card-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.profile-card-form {
+  box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px;
+  transform: scale(0.8);
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-form {
+    max-width: 90%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form {
+    padding: 20px;
+  }
+}
+.profile-card-form__bottom {
+  justify-content: space-between;
+  display: flex;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form__bottom {
+    flex-wrap: wrap;
+  }
+}
+.profile-card textarea {
+  width: 100%;
+  resize: none;
+  height: 210px;
+  margin-bottom: 20px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: #324e63;
+  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+.profile-card textarea:focus {
+  outline: none;
+  border-color: #8a979e;
+}
+.profile-card__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(22, 33, 72, 0.35);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+
+
+
+
+
+input[type="file"] {
+  display: none;
+}
+
+/***************  BANDAS E ARTISTAS   **************/
+.img-box{
+  margin-top: 20px;}
+.img-block{
+  float: left; 
+  margin-right: 5px; 
+  text-align: center;}
+p{
+  margin-top: 0;}
+.img-block img{
+  
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: transform 0.5s, filter 0.5s ease-in-out;
+  filter: grayscale(0);
+  height: 360px; 
+  width: 310px;
+  max-width: 100%; 
+  margin: 25px;  
+  border:2px solid #5500ff;
+} 
+img:hover{
+  filter: grayscale(100%);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+h3{
+  padding: 15px; 
+  
+  text-align: center;
+  background-color: #ff00ff; 
+  color: #f7f7f7; 
+  font-family: "Quicksand", sans-serif;
+  border-radius: 4px; 
+  box-shadow: 0px 8px 16px 0px rgba(255, 0, 187, 0.894);}
+
+.bandaaa{
+  background-color: black;
+}
+
+/*    CAPTION DA PÁGINA ARTISTAS   */ 
+
