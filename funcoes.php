@@ -9,8 +9,8 @@ function enviarComentario($connect) {
         $FK_USUARIO_id_user = mysqli_real_escape_string($connect, $_POST["FK_USUARIO_id_user"]);
         $date_coment = mysqli_real_escape_string($connect, $_POST["date_coment"]);
     
-        $sql = "INSERT INTO comentario_artista (dsc_coment, date_coment, FK_USUARIO_id_user, FK_ARTISTA_id_artista) Values ('" . $mensagem . "','". $date_coment . "' ,'". $FK_USUARIO_id_user . "','". $id . "')";
-        $result = mysqli_query($connect, $sql);
+        $sql = mysqli_query($connect, "INSERT INTO comentario_artista (dsc_coment, date_coment, FK_USUARIO_id_user, FK_ARTISTA_id_artista) Values ('" . $mensagem . "','". $date_coment . "' ,'". $FK_USUARIO_id_user . "','". $id . "')");
+        
         header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         exit();
     

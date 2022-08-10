@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Ago-2022 às 00:10
+-- Tempo de geração: 10-Ago-2022 às 02:14
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -149,7 +149,8 @@ CREATE TABLE `comentario_artista` (
 --
 
 INSERT INTO `comentario_artista` (`dsc_coment`, `date_coment`, `id_coment`, `FK_ARTISTA_id_artista`, `FK_USUARIO_id_user`, `FK_TIPO_COMENTARIO_id_tipo_coment`) VALUES
-('oiiiiiii', '2022-08-09 16:45:19', 0, NULL, 0, NULL);
+('aaaaaaaaaaa', '2022-08-09 20:28:18', 1, 0, 0, NULL),
+('slaoq', '2022-08-09 21:08:46', 2, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -651,6 +652,12 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `comentario_artista`
+--
+ALTER TABLE `comentario_artista`
+  MODIFY `id_coment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `foto_artista`
 --
 ALTER TABLE `foto_artista`
@@ -742,13 +749,6 @@ ALTER TABLE `comentario_evento`
   ADD CONSTRAINT `FK_COMENTARIO_EVENTO_2` FOREIGN KEY (`FK_EVENTO_id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_COMENTARIO_EVENTO_3` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_COMENTARIO_EVENTO_4` FOREIGN KEY (`FK_TIPO_COMENTARIO_id_tipo_coment`) REFERENCES `tipo_comentario` (`id_tipo_coment`) ON DELETE CASCADE;
-
---
--- Limitadores para a tabela `coment_resposta_artista`
---
-ALTER TABLE `coment_resposta_artista`
-  ADD CONSTRAINT `FK_COMENT_RESPOSTA_ARTISTA_1` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_COMENT_RESPOSTA_ARTISTA_2` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment_resposta`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `coment_resposta_casa`

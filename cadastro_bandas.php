@@ -95,20 +95,19 @@ if (isset($_POST['btnentrar'])){
   /* Faz uma consulta sql para verificar se o email e/ou o nome digitado pelo usuário já foi cadastrado ou não */
 
   $verifica_sql = mysqli_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
+  $verifica_artista = mysqli_query($connect,"SELECT * FROM artista WHERE FK_USUARIO_id_user = '$id'" );
 
   /* Verifica se o resultado da consulta foi mais de 0, significando que o email e/ou o usuário já foi cadastrado, e informando o usuário sem cadastra-lo no banco de dados */
 
     if(mysqli_num_rows($verifica_sql) > 0){
 
-      /* Verificam separadamente se o email ou o nome de usuário já existem no banco de dados */
-      
-      $verifica_nome = mysqli_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
-
-      /* Se o nome de usuário já existe no banco de dados, informa ao usuário */
-
-      if(mysqli_num_rows($verifica_nome)>0){
-
         echo 'Nome de usuário não disponível!';
+
+    
+
+      if (mysqli_num_rows($verifica_artista) > 0){
+
+        echo 'Você já está cadastrado como artista!';
 
       }
 
