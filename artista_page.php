@@ -49,7 +49,7 @@ no banco. */
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="text-center mb-5">
-                            Nested comment section
+                            Comentários
                         </h3>
                         <!-- Sessão de comentários, contendo a função PHP de enviar comentário -->
                         <div class="row">
@@ -75,7 +75,8 @@ no banco. */
                                     $id_coment = $rows['id_coment'];
                                     $nome_userr = $rows['nome_user'];
                                     $photo_user = $rows['photo_user'];
-                                    $coment = $rows['dsc_coment'];
+                                    $coment = $rows['dsc_coment']; 
+                                    
                                     $date_coment = $rows['date_coment'];
                                 ?>
 

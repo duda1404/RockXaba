@@ -5,75 +5,65 @@ include 'header.php';
 /* Se existir a sessão logado (se o usuário já logou), volta para a página index, com o método ?acao=negado, para
   mostrar uma mensagem ao usuário informando que ele precisa sair do perfil para acessar o cadastro novamente */
 
-if(!isset($_SESSION['logado'])){
-  
+if (!isset($_SESSION['logado'])) {
+
 
   header('Location: index.php?acao=negado');
-
-
 }
 
-/* Validação do formulário */  
+/* Validação do formulário */
 
 /* Inicialização de variáveis utilizadas na validação */
 
 $erroNome = "";
 
 
-  if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    
-
-    
-
-    /* VALIDA CAMPO USUÁRIO */
-
-    /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */  
-    if(empty($_POST['nome_artista'])){
-
-        $erroNome = "Por favor, preencha o nome de usuário";
-
-    }
-    
-    else{
-
-        /* Recebe uma variável nome que é preenchida com o que foi escrito no campo de usuário e chama a função limpaPost*/
-
-        $nome_artista = limpaPost($_POST['nome_artista']);
-
-        /* Verifica se o que foi digitado é um texto válido ou não */
-        /* Preg_match - Verifica o que foi inserido na String (nome) e, caso alguma condição seja acionada (! - caso seja falsa), retorna true ou false)*/
-        /* Aceita letras minúsculas, maísculas de A até Z, números de 0-9, underline e exige começar com letra*/
-
-        
-
-    }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-  
+
+
+  /* VALIDA CAMPO USUÁRIO */
+
+  /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */
+  if (empty($_POST['nome_artista'])) {
+
+    $erroNome = "Por favor, preencha o nome de usuário";
+  } else {
+
+    /* Recebe uma variável nome que é preenchida com o que foi escrito no campo de usuário e chama a função limpaPost*/
+
+    $nome_artista = limpaPost($_POST['nome_artista']);
+
+    /* Verifica se o que foi digitado é um texto válido ou não */
+    /* Preg_match - Verifica o que foi inserido na String (nome) e, caso alguma condição seja acionada (! - caso seja falsa), retorna true ou false)*/
+    /* Aceita letras minúsculas, maísculas de A até Z, números de 0-9, underline e exige começar com letra*/
+  }
 }
 
 
 
 /* FUNÇÃO QUE IMPEDE A INSERÇÃO DE CÓDIGOS MALICIOSOS NO FORMULÁRIO */
 
-  /* Função que limpa o post (informação digitada pelo usuário) impedindo a inserção de códigos maliciosos no formulário*/
+/* Função que limpa o post (informação digitada pelo usuário) impedindo a inserção de códigos maliciosos no formulário*/
 
-  function limpaPost($valor){
-    
-    /* valor - variável qualquer digitada nos campos pelo usuário */
-    /* Tira os espaços em branco no início e no final de valor*/
-    $valor = trim($valor);
-     /* Tira as barras de valor*/
-    $valor = stripslashes($valor);
-     /* Tira caracteres especiais de html de valor*/
-     $valor = filter_var($valor, FILTER_SANITIZE_SPECIAL_CHARS);
-    return $valor;
+function limpaPost($valor)
+{
+
+  /* valor - variável qualquer digitada nos campos pelo usuário */
+  /* Tira os espaços em branco no início e no final de valor*/
+  $valor = trim($valor);
+  /* Tira as barras de valor*/
+  $valor = stripslashes($valor);
+  /* Tira caracteres especiais de html de valor*/
+  $valor = filter_var($valor, FILTER_SANITIZE_SPECIAL_CHARS);
+  return $valor;
 }
 
 
 /* Verifica se o formulário foi enviado, se sim, salva as informações no Banco de Dados */
 
-if (isset($_POST['btnentrar'])){
+if (isset($_POST['btnentrar'])) {
 
 
   $photo_name = mysqli_real_escape_string($connect, $_FILES["photo"]["name"]);
@@ -85,7 +75,7 @@ if (isset($_POST['btnentrar'])){
   $nome_artista = $_POST['nome_artista'];
   $link_play = $_POST['link_play'];
   $dsc_artista = mysqli_real_escape_string($connect, $_POST["dsc_artista"]);
-  
+
 
 
 
@@ -95,66 +85,96 @@ if (isset($_POST['btnentrar'])){
   /* Faz uma consulta sql para verificar se o email e/ou o nome digitado pelo usuário já foi cadastrado ou não */
 
   $verifica_sql = mysqli_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
-  $verifica_artista = mysqli_query($connect,"SELECT * FROM artista WHERE FK_USUARIO_id_user = '$id'" );
 
   /* Verifica se o resultado da consulta foi mais de 0, significando que o email e/ou o usuário já foi cadastrado, e informando o usuário sem cadastra-lo no banco de dados */
 
-    if(mysqli_num_rows($verifica_sql) > 0){
+  if (mysqli_num_rows($verifica_sql) > 0) {
 
-        echo 'Nome de usuário não disponível!';
+    echo 'Nome de usuário não disponível!';
+  } else {
 
-    
-
-      if (mysqli_num_rows($verifica_artista) > 0){
-
-        echo 'Você já está cadastrado como artista!';
-
-      }
-
-}
-
-    else{
-
-      /* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
+    /* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
       da conta por email (envia um email pela biblioteca PHPMailer) */
 
-      if (($erroNome == "")){
-        
+    if (($erroNome == "")) {
 
-        /* Gera uma chave criptografada com o email e a data para a confirmação do cadastro via email, pelo usuário */
-
-
-        /* Insere o cadastro do usuário no Banco de Dados */
+      
+      /* Gera uma chave criptografada com o email e a data para a confirmação do cadastro via email, pelo usuário */
 
 
-        $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user) VALUES ('" . $nome_artista . "','". $link_play . "','" . $dsc_artista . "','".$id."')";
-        $resultado = mysqli_query($connect,$sqlArtista);
-
-        $result = mysqli_query($connect,"SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");
-
-        $array = $result->fetch_assoc();
-
-        $id_artista_FK = $array['id_artista'];
-
-        $sqlFotosArtista = "INSERT INTO foto_artista(photo_artista, FK_ARTISTA_id_artista) VALUES ('".$photo_new_name."', '".$id_artista_FK."')";
-        $sqlInsereDados= mysqli_query($connect, $sqlFotosArtista);
-
-        move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
-
-        //fechando a conexão depois de armazenar os dados
-
-		    
+      /* Insere o cadastro do usuário no Banco de Dados */
 
 
+      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "')";
+      $resultado = mysqli_query($connect, $sqlArtista);
+
+      $result = mysqli_query($connect, "SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");
+
+      $array = $result->fetch_assoc();
+
+      $id_artista_FK = $array['id_artista'];
+
+      $sqlFotosArtista = "INSERT INTO foto_artista(photo_artista, FK_ARTISTA_id_artista) VALUES ('" . $photo_new_name . "', '" . $id_artista_FK . "')";
+      $sqlInsereDados = mysqli_query($connect, $sqlFotosArtista);
+
+      move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
+
+
+      $seletor = $_POST[('meu-select')];
+
+      switch ($seletor) {
+
+        case 1:
+         
+          $sqlComando1 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 1, '" . $id_artista_FK . "')");
+         
+          break;
+        case 2:
+      
+          $sqlComando2 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 2, '" . $id_artista_FK . "')");
+          break;
+        case 3:
+          
+          $sqlComando3 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 3, '" . $id_artista_FK . "')");
+          break;
+        case 4:
+          
+          $sqlComando4 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 4, '" . $id_artista_FK . "')");
+          break;
+        case 5:
+
+          $sqlComando5 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 5, '" . $id_artista_FK . "')");
+          break;
+        case 6:
+
+          $sqlComando6 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 6, '" . $id_artista_FK . "')");
+
+          break;
+
+          case 6:
+
+            $sqlComando6 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 7, '" . $id_artista_FK . "')");
+  
+            break;
       }
 
+      header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+      exit();
+
+      
+      //fechando a conexão depois de armazenar os dados
+
+
+
+
+    }
   }
 }
 
 ?>
 
 <section class="cadastro">
-<form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+  <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
 
     <h1> Cadastro </h1>
 
@@ -165,34 +185,48 @@ if (isset($_POST['btnentrar'])){
 
 
     <label class="form-group">
-    <input type="text" name="nome_artista" <?php if(!empty($erroNome)){echo "class='invalido'";}?> <?php if(isset($_POST['nome_artista'])) ?> placeholder="Artista" required>
-    <span class="erro"><?php echo $erroNome; ?></span>
+      <input type="text" name="nome_artista" <?php if (!empty($erroNome)) {
+                                                echo "class='invalido'";
+                                              } ?> <?php if (isset($_POST['nome_artista'])) ?> placeholder="Artista" required>
+      <span class="erro"><?php echo $erroNome; ?></span>
 
-						<span class="border"></span>
-					</label>
+      <span class="border"></span>
+    </label>
 
     <label class="form-group">
-						<input type="text" id="link_play" name="link_play" class="form-control" <?php if(isset($_POST['link_play'])) ?> placeholder="Link do Spotify" required>
+      <input type="text" id="link_play" name="link_play" class="form-control" <?php if (isset($_POST['link_play'])) ?> placeholder="Link do Spotify" required>
 
-						<span class="border"></span>
-					</label>
-					
-					
-					
-					<label class="form-group">
-						<input type="text" id="dsc_artista" name="dsc_artista" class="form-control"  <?php if(isset($_POST['dsc_artista'])) ?> placeholder="Descrição" required>
+      <span class="border"></span>
+    </label>
 
-						<span class="border"></span>
-					</label>
+    <label class="form-group">
 
-          
-          <label class="form-group">
-                    
-                    <img class="photo_img" src="uploads/<?php echo $row["photo"]; ?>">
-                    <label for="photo" class="img"> Clique aqui para enviar a foto de perfil </label>
-                        <input type="file" accept="image/*" id="photo" name="photo" >
-                        </label>
-                    
+      <select class="form-control" name="meu-select" <?php if (isset($_POST['generos'])) ?>>
+
+        <?php $sqlGeneros  = mysqli_query($connect, "SELECT id_gen, dsc_genero FROM genero"); ?>
+        <?php
+        while ($resultadoGeneros = mysqli_fetch_array($sqlGeneros)) { ?>
+          <option value="<?php echo $resultadoGeneros['id_gen']; ?>"><?php echo $resultadoGeneros['dsc_genero']; ?></option>
+        <?php } ?>
+      </select>
+
+      <span class="border"></span>
+    </label>
+
+    <label class="form-group">
+      <input type="text" id="dsc_artista" name="dsc_artista" class="form-control" <?php if (isset($_POST['dsc_artista'])) ?> placeholder="Descrição" required>
+
+      <span class="border"></span>
+    </label>
+
+
+    <label class="form-group">
+
+      <img class="photo_img" src="uploads/<?php echo $row["photo"]; ?>">
+      <label for="photo" class="img"> Clique aqui para enviar a foto de perfil </label>
+      <input type="file" accept="image/*" id="photo" name="photo">
+    </label>
+
 
     <button type="submit" name="btnentrar"> Concluir</button>
 
@@ -200,9 +234,9 @@ if (isset($_POST['btnentrar'])){
       <input type="button" name="voltar_login" value="Voltar">
     </a>
 
-    </form>
+  </form>
   <section>
-</body>
+    </body>
 
 
-</html>
+    </html>
