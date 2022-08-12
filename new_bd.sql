@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Ago-2022 às 13:14
+-- Tempo de geração: 12-Ago-2022 às 13:50
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `rock_xaba`
+-- Banco de dados: `new_bd`
 --
 
 -- --------------------------------------------------------
@@ -32,15 +32,10 @@ CREATE TABLE `artista` (
   `nome_artista` varchar(100) DEFAULT NULL,
   `link_play` varchar(100) DEFAULT NULL,
   `dsc_artista` varchar(100) DEFAULT NULL,
-  `FK_USUARIO_id_user` int(11) DEFAULT NULL
+  `dat_add_artista` datetime DEFAULT NULL,
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `FK_SIT_ARTISTA_id_sit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `artista`
---
-
-INSERT INTO `artista` (`id_artista`, `nome_artista`, `link_play`, `dsc_artista`, `FK_USUARIO_id_user`) VALUES
-(9, 'Rex Orange County', 'https://open.spotify.com/embed/playlist/31rJ43fIpaSa3Kt9UrnERg?utm_source=generator', 'Alexander O\'Connor, mais conhecido por seu nome artístico Rex Orange County, é um cantor e composito', 2);
 
 -- --------------------------------------------------------
 
@@ -52,18 +47,6 @@ CREATE TABLE `artista_genero` (
   `FK_GENERO_id_gen` int(11) DEFAULT NULL,
   `FK_ARTISTA_id_artista` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `artista_genero`
---
-
-INSERT INTO `artista_genero` (`FK_GENERO_id_gen`, `FK_ARTISTA_id_artista`) VALUES
-(6, NULL),
-(2, NULL),
-(2, NULL),
-(1, NULL),
-(1, NULL),
-(3, NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +98,9 @@ CREATE TABLE `casa_de_show` (
   `nome_casa` varchar(100) DEFAULT NULL,
   `dsc_casa` varchar(100) DEFAULT NULL,
   `contato_casa` varchar(100) DEFAULT NULL,
-  `FK_USUARIO_id_user` int(11) DEFAULT NULL
+  `dat_add_casa` datetime DEFAULT NULL,
+  `FK_SIT_CASA_id_sit` int(11) DEFAULT NULL,
+  `FK_DONO_CASA_DE_SHOW_id_dono` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -138,6 +123,7 @@ CREATE TABLE `casa_rede` (
 CREATE TABLE `catalogo` (
   `id_catalog` int(11) NOT NULL,
   `link_catalog` varchar(100) DEFAULT NULL,
+  `dat_add_catalog` datetime DEFAULT NULL,
   `FK_ARTISTA_id_artista` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -155,13 +141,6 @@ CREATE TABLE `comentario_artista` (
   `FK_USUARIO_id_user` int(11) DEFAULT NULL,
   `FK_TIPO_COMENTARIO_id_tipo_coment` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `comentario_artista`
---
-
-INSERT INTO `comentario_artista` (`dsc_coment`, `date_coment`, `id_coment`, `FK_ARTISTA_id_artista`, `FK_USUARIO_id_user`, `FK_TIPO_COMENTARIO_id_tipo_coment`) VALUES
-('A', '2022-08-11 08:09:40', 2, 9, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -201,7 +180,7 @@ CREATE TABLE `comentario_evento` (
 
 CREATE TABLE `coment_resposta_artista` (
   `FK_COMENTARIO_ARTISTA_id_coment` int(11) DEFAULT NULL,
-  `FK_COMENTARIO_ARTISTA_id_coment_` int(11) DEFAULT NULL
+  `FK_COMENTARIO_ARTISTA_id_coment_resposta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -212,7 +191,7 @@ CREATE TABLE `coment_resposta_artista` (
 
 CREATE TABLE `coment_resposta_casa` (
   `FK_COMENTARIO_CASA_id_coment` int(11) DEFAULT NULL,
-  `FK_COMENTARIO_CASA_id_coment_` int(11) DEFAULT NULL
+  `FK_COMENTARIO_CASA_id_coment_resposta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -223,20 +202,88 @@ CREATE TABLE `coment_resposta_casa` (
 
 CREATE TABLE `coment_resposta_evento` (
   `FK_COMENTARIO_EVENTO_id_coment` int(11) DEFAULT NULL,
-  `FK_COMENTARIO_EVENTO_id_coment_` int(11) DEFAULT NULL
+  `FK_COMENTARIO_EVENTO_id_coment_resposta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curtir_curtido`
+-- Estrutura da tabela `curtir_artista`
 --
 
-CREATE TABLE `curtir_curtido` (
+CREATE TABLE `curtir_artista` (
   `FK_USUARIO_id_user` int(11) DEFAULT NULL,
   `FK_ARTISTA_id_artista` int(11) DEFAULT NULL,
   `data_curtida` datetime DEFAULT NULL,
   `id_curtida` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `curtir_coment_artista`
+--
+
+CREATE TABLE `curtir_coment_artista` (
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `FK_COMENTARIO_ARTISTA_id_coment` int(11) DEFAULT NULL,
+  `id_curtida` int(11) NOT NULL,
+  `data_curtida` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `curtir_coment_casa`
+--
+
+CREATE TABLE `curtir_coment_casa` (
+  `FK_COMENTARIO_CASA_id_coment` int(11) DEFAULT NULL,
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `id_curtida` int(11) NOT NULL,
+  `data_curtida` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `curtir_coment_evento`
+--
+
+CREATE TABLE `curtir_coment_evento` (
+  `FK_COMENTARIO_EVENTO_id_coment` int(11) DEFAULT NULL,
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `id_curtida` int(11) NOT NULL,
+  `data_curtida` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `destaque`
+--
+
+CREATE TABLE `destaque` (
+  `id_destaque` int(11) NOT NULL,
+  `dsc_destaque` varchar(100) DEFAULT NULL,
+  `photo_destaque` varchar(100) DEFAULT NULL,
+  `dat_add_destaque` datetime DEFAULT NULL,
+  `FK_ARTISTA_id_artista` int(11) DEFAULT NULL,
+  `FK_SIT_DESTAQUE_id_sit` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dono_casa_de_show`
+--
+
+CREATE TABLE `dono_casa_de_show` (
+  `id_dono` int(11) NOT NULL,
+  `dsc_dono` varchar(100) DEFAULT NULL,
+  `contato_dono` varchar(100) DEFAULT NULL,
+  `dat_add_dono` varchar(100) DEFAULT NULL,
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -253,8 +300,10 @@ CREATE TABLE `evento` (
   `preco_evento` varchar(100) DEFAULT NULL,
   `dat_limite_ingresso` datetime DEFAULT NULL,
   `dat_inicio_ingresso` datetime DEFAULT NULL,
+  `dat_add_evento` datetime DEFAULT NULL,
   `FK_USUARIO_id_user` int(11) DEFAULT NULL,
-  `FK_CASA_DE_SHOW_id_casa` int(11) DEFAULT NULL
+  `FK_CASA_DE_SHOW_id_casa` int(11) DEFAULT NULL,
+  `FK_SIT_EVENTO_id_sit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -269,13 +318,6 @@ CREATE TABLE `foto_artista` (
   `FK_ARTISTA_id_artista` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `foto_artista`
---
-
-INSERT INTO `foto_artista` (`id_photo`, `photo_artista`, `FK_ARTISTA_id_artista`) VALUES
-(9, '15211531092030696282rex_orange.jpg', 9);
-
 -- --------------------------------------------------------
 
 --
@@ -283,8 +325,8 @@ INSERT INTO `foto_artista` (`id_photo`, `photo_artista`, `FK_ARTISTA_id_artista`
 --
 
 CREATE TABLE `foto_casa_de_show` (
-  `id_photo` int(11) NOT NULL,
   `photo_casa_de_show` varchar(100) DEFAULT NULL,
+  `id_photo` int(11) NOT NULL,
   `FK_CASA_DE_SHOW_id_casa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -319,22 +361,9 @@ CREATE TABLE `foto_evento` (
 --
 
 CREATE TABLE `genero` (
-  `id_gen` int(11) NOT NULL,
-  `dsc_genero` varchar(100) DEFAULT NULL
+  `dsc_genero` varchar(100) DEFAULT NULL,
+  `id_gen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `genero`
---
-
-INSERT INTO `genero` (`id_gen`, `dsc_genero`) VALUES
-(1, 'Rock'),
-(2, 'Bossa Nova'),
-(3, 'Pop'),
-(4, 'Sertanejo'),
-(5, 'Punk'),
-(6, 'Funk'),
-(7, 'Indie');
 
 -- --------------------------------------------------------
 
@@ -364,6 +393,50 @@ CREATE TABLE `seguidores_seguindo` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `sit_artista`
+--
+
+CREATE TABLE `sit_artista` (
+  `id_sit` int(11) NOT NULL,
+  `dsc_sit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sit_casa`
+--
+
+CREATE TABLE `sit_casa` (
+  `id_sit` int(11) NOT NULL,
+  `dsc_sit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sit_destaque`
+--
+
+CREATE TABLE `sit_destaque` (
+  `id_sit` int(11) NOT NULL,
+  `dsc_sit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sit_evento`
+--
+
+CREATE TABLE `sit_evento` (
+  `id_sit` int(11) NOT NULL,
+  `dsc_sit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `sit_usuario`
 --
 
@@ -371,15 +444,6 @@ CREATE TABLE `sit_usuario` (
   `id_sit` int(11) NOT NULL,
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `sit_usuario`
---
-
-INSERT INTO `sit_usuario` (`id_sit`, `dsc_sit`) VALUES
-(1, 'Ativo'),
-(2, 'Inativo'),
-(3, 'Aguardando Confirmação');
 
 -- --------------------------------------------------------
 
@@ -405,15 +469,6 @@ CREATE TABLE `tipo_comentario` (
   `dsc_tipo_coment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `tipo_comentario`
---
-
-INSERT INTO `tipo_comentario` (`id_tipo_coment`, `dsc_tipo_coment`) VALUES
-(1, 'Padrão'),
-(2, 'Resposta'),
-(3, 'Fixo');
-
 -- --------------------------------------------------------
 
 --
@@ -421,18 +476,9 @@ INSERT INTO `tipo_comentario` (`id_tipo_coment`, `dsc_tipo_coment`) VALUES
 --
 
 CREATE TABLE `tipo_usuario` (
-  `codigo` int(11) NOT NULL,
-  `dsc_tipo` varchar(100) DEFAULT NULL
+  `dsc_tipo` varchar(100) DEFAULT NULL,
+  `codigo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `tipo_usuario`
---
-
-INSERT INTO `tipo_usuario` (`codigo`, `dsc_tipo`) VALUES
-(1, 'Comum'),
-(2, 'Administrador'),
-(3, 'Casa de Show');
 
 -- --------------------------------------------------------
 
@@ -442,23 +488,17 @@ INSERT INTO `tipo_usuario` (`codigo`, `dsc_tipo`) VALUES
 
 CREATE TABLE `usuario` (
   `id_user` int(11) NOT NULL,
-  `senha_user` varchar(100) DEFAULT NULL,
   `email_user` varchar(100) DEFAULT NULL,
   `nome_user` varchar(100) DEFAULT NULL,
   `chave_confirm` varchar(100) DEFAULT NULL,
   `chave_recupera_senha` varchar(100) DEFAULT NULL,
   `photo_user` varchar(100) DEFAULT NULL,
   `dsc_user` varchar(100) DEFAULT NULL,
+  `senha_user` varchar(100) DEFAULT NULL,
+  `data_add_user` datetime DEFAULT NULL,
   `FK_TIPO_USUARIO_codigo` int(11) DEFAULT NULL,
   `FK_SIT_USUARIO_id_sit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id_user`, `senha_user`, `email_user`, `nome_user`, `chave_confirm`, `chave_recupera_senha`, `photo_user`, `dsc_user`, `FK_TIPO_USUARIO_codigo`, `FK_SIT_USUARIO_id_sit`) VALUES
-(2, '$2y$10$uwKygY13uXtqY8ovdo4u0.YaM0HRYgg1XNVocIsAho1e3oMCpMgJ.', 'dudinha140405@gmail.com', 'duda14', NULL, NULL, '683343214520355991Perry the Platypus_ Agent P.jpg', 'aaaaaaaaaaaaaaaaaaa', 1, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -469,7 +509,8 @@ INSERT INTO `usuario` (`id_user`, `senha_user`, `email_user`, `nome_user`, `chav
 --
 ALTER TABLE `artista`
   ADD PRIMARY KEY (`id_artista`),
-  ADD KEY `FK_ARTISTA_2` (`FK_USUARIO_id_user`);
+  ADD KEY `FK_ARTISTA_2` (`FK_USUARIO_id_user`),
+  ADD KEY `FK_ARTISTA_3` (`FK_SIT_ARTISTA_id_sit`);
 
 --
 -- Índices para tabela `artista_genero`
@@ -506,7 +547,8 @@ ALTER TABLE `avaliacao_evento`
 --
 ALTER TABLE `casa_de_show`
   ADD PRIMARY KEY (`id_casa`),
-  ADD KEY `FK_CASA_DE_SHOW_2` (`FK_USUARIO_id_user`);
+  ADD KEY `FK_CASA_DE_SHOW_2` (`FK_SIT_CASA_id_sit`),
+  ADD KEY `FK_CASA_DE_SHOW_3` (`FK_DONO_CASA_DE_SHOW_id_dono`);
 
 --
 -- Índices para tabela `casa_rede`
@@ -554,29 +596,68 @@ ALTER TABLE `comentario_evento`
 --
 ALTER TABLE `coment_resposta_artista`
   ADD KEY `FK_COMENT_RESPOSTA_ARTISTA_1` (`FK_COMENTARIO_ARTISTA_id_coment`),
-  ADD KEY `FK_COMENT_RESPOSTA_ARTISTA_2` (`FK_COMENTARIO_ARTISTA_id_coment_`);
+  ADD KEY `FK_COMENT_RESPOSTA_ARTISTA_2` (`FK_COMENTARIO_ARTISTA_id_coment_resposta`);
 
 --
 -- Índices para tabela `coment_resposta_casa`
 --
 ALTER TABLE `coment_resposta_casa`
   ADD KEY `FK_COMENT_RESPOSTA_CASA_1` (`FK_COMENTARIO_CASA_id_coment`),
-  ADD KEY `FK_COMENT_RESPOSTA_CASA_2` (`FK_COMENTARIO_CASA_id_coment_`);
+  ADD KEY `FK_COMENT_RESPOSTA_CASA_2` (`FK_COMENTARIO_CASA_id_coment_resposta`);
 
 --
 -- Índices para tabela `coment_resposta_evento`
 --
 ALTER TABLE `coment_resposta_evento`
   ADD KEY `FK_COMENT_RESPOSTA_EVENTO_1` (`FK_COMENTARIO_EVENTO_id_coment`),
-  ADD KEY `FK_COMENT_RESPOSTA_EVENTO_2` (`FK_COMENTARIO_EVENTO_id_coment_`);
+  ADD KEY `FK_COMENT_RESPOSTA_EVENTO_2` (`FK_COMENTARIO_EVENTO_id_coment_resposta`);
 
 --
--- Índices para tabela `curtir_curtido`
+-- Índices para tabela `curtir_artista`
 --
-ALTER TABLE `curtir_curtido`
+ALTER TABLE `curtir_artista`
   ADD PRIMARY KEY (`id_curtida`),
-  ADD KEY `FK_CURTIR_CURTIDO_2` (`FK_USUARIO_id_user`),
-  ADD KEY `FK_CURTIR_CURTIDO_3` (`FK_ARTISTA_id_artista`);
+  ADD KEY `FK_CURTIR_ARTISTA_2` (`FK_USUARIO_id_user`),
+  ADD KEY `FK_CURTIR_ARTISTA_3` (`FK_ARTISTA_id_artista`);
+
+--
+-- Índices para tabela `curtir_coment_artista`
+--
+ALTER TABLE `curtir_coment_artista`
+  ADD PRIMARY KEY (`id_curtida`),
+  ADD KEY `FK_CURTIR_COMENT_ARTISTA_2` (`FK_USUARIO_id_user`),
+  ADD KEY `FK_CURTIR_COMENT_ARTISTA_3` (`FK_COMENTARIO_ARTISTA_id_coment`);
+
+--
+-- Índices para tabela `curtir_coment_casa`
+--
+ALTER TABLE `curtir_coment_casa`
+  ADD PRIMARY KEY (`id_curtida`),
+  ADD KEY `FK_CURTIR_COMENT_CASA_2` (`FK_COMENTARIO_CASA_id_coment`),
+  ADD KEY `FK_CURTIR_COMENT_CASA_3` (`FK_USUARIO_id_user`);
+
+--
+-- Índices para tabela `curtir_coment_evento`
+--
+ALTER TABLE `curtir_coment_evento`
+  ADD PRIMARY KEY (`id_curtida`),
+  ADD KEY `FK_CURTIR_COMENT_EVENTO_2` (`FK_COMENTARIO_EVENTO_id_coment`),
+  ADD KEY `FK_CURTIR_COMENT_EVENTO_3` (`FK_USUARIO_id_user`);
+
+--
+-- Índices para tabela `destaque`
+--
+ALTER TABLE `destaque`
+  ADD PRIMARY KEY (`id_destaque`),
+  ADD KEY `FK_DESTAQUE_2` (`FK_ARTISTA_id_artista`),
+  ADD KEY `FK_DESTAQUE_3` (`FK_SIT_DESTAQUE_id_sit`);
+
+--
+-- Índices para tabela `dono_casa_de_show`
+--
+ALTER TABLE `dono_casa_de_show`
+  ADD PRIMARY KEY (`id_dono`),
+  ADD KEY `FK_DONO_CASA_DE_SHOW_2` (`FK_USUARIO_id_user`);
 
 --
 -- Índices para tabela `evento`
@@ -584,7 +665,8 @@ ALTER TABLE `curtir_curtido`
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`id_evento`),
   ADD KEY `FK_EVENTO_2` (`FK_USUARIO_id_user`),
-  ADD KEY `FK_EVENTO_3` (`FK_CASA_DE_SHOW_id_casa`);
+  ADD KEY `FK_EVENTO_3` (`FK_CASA_DE_SHOW_id_casa`),
+  ADD KEY `FK_EVENTO_4` (`FK_SIT_EVENTO_id_sit`);
 
 --
 -- Índices para tabela `foto_artista`
@@ -635,6 +717,30 @@ ALTER TABLE `seguidores_seguindo`
   ADD KEY `FK_SEGUIDORES_SEGUINDO_3` (`FK_USUARIO_id_user`);
 
 --
+-- Índices para tabela `sit_artista`
+--
+ALTER TABLE `sit_artista`
+  ADD PRIMARY KEY (`id_sit`);
+
+--
+-- Índices para tabela `sit_casa`
+--
+ALTER TABLE `sit_casa`
+  ADD PRIMARY KEY (`id_sit`);
+
+--
+-- Índices para tabela `sit_destaque`
+--
+ALTER TABLE `sit_destaque`
+  ADD PRIMARY KEY (`id_sit`);
+
+--
+-- Índices para tabela `sit_evento`
+--
+ALTER TABLE `sit_evento`
+  ADD PRIMARY KEY (`id_sit`);
+
+--
 -- Índices para tabela `sit_usuario`
 --
 ALTER TABLE `sit_usuario`
@@ -675,7 +781,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `artista`
 --
 ALTER TABLE `artista`
-  MODIFY `id_artista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_artista` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao_casa`
@@ -705,7 +811,7 @@ ALTER TABLE `catalogo`
 -- AUTO_INCREMENT de tabela `comentario_artista`
 --
 ALTER TABLE `comentario_artista`
-  MODIFY `id_coment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_coment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `comentario_casa`
@@ -720,10 +826,40 @@ ALTER TABLE `comentario_evento`
   MODIFY `id_coment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `curtir_curtido`
+-- AUTO_INCREMENT de tabela `curtir_artista`
 --
-ALTER TABLE `curtir_curtido`
+ALTER TABLE `curtir_artista`
   MODIFY `id_curtida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `curtir_coment_artista`
+--
+ALTER TABLE `curtir_coment_artista`
+  MODIFY `id_curtida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `curtir_coment_casa`
+--
+ALTER TABLE `curtir_coment_casa`
+  MODIFY `id_curtida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `curtir_coment_evento`
+--
+ALTER TABLE `curtir_coment_evento`
+  MODIFY `id_curtida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `destaque`
+--
+ALTER TABLE `destaque`
+  MODIFY `id_destaque` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `dono_casa_de_show`
+--
+ALTER TABLE `dono_casa_de_show`
+  MODIFY `id_dono` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `evento`
@@ -735,7 +871,7 @@ ALTER TABLE `evento`
 -- AUTO_INCREMENT de tabela `foto_artista`
 --
 ALTER TABLE `foto_artista`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `foto_casa_de_show`
@@ -759,7 +895,7 @@ ALTER TABLE `foto_evento`
 -- AUTO_INCREMENT de tabela `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `id_gen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_gen` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `rede_social`
@@ -774,10 +910,34 @@ ALTER TABLE `seguidores_seguindo`
   MODIFY `id_seg` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `sit_artista`
+--
+ALTER TABLE `sit_artista`
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `sit_casa`
+--
+ALTER TABLE `sit_casa`
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `sit_destaque`
+--
+ALTER TABLE `sit_destaque`
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `sit_evento`
+--
+ALTER TABLE `sit_evento`
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `sit_usuario`
 --
 ALTER TABLE `sit_usuario`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `suporte`
@@ -789,19 +949,19 @@ ALTER TABLE `suporte`
 -- AUTO_INCREMENT de tabela `tipo_comentario`
 --
 ALTER TABLE `tipo_comentario`
-  MODIFY `id_tipo_coment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tipo_coment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
@@ -811,7 +971,8 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `artista`
 --
 ALTER TABLE `artista`
-  ADD CONSTRAINT `FK_ARTISTA_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_ARTISTA_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_ARTISTA_3` FOREIGN KEY (`FK_SIT_ARTISTA_id_sit`) REFERENCES `sit_artista` (`id_sit`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `artista_genero`
@@ -845,7 +1006,8 @@ ALTER TABLE `avaliacao_evento`
 -- Limitadores para a tabela `casa_de_show`
 --
 ALTER TABLE `casa_de_show`
-  ADD CONSTRAINT `FK_CASA_DE_SHOW_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`);
+  ADD CONSTRAINT `FK_CASA_DE_SHOW_2` FOREIGN KEY (`FK_SIT_CASA_id_sit`) REFERENCES `sit_casa` (`id_sit`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_CASA_DE_SHOW_3` FOREIGN KEY (`FK_DONO_CASA_DE_SHOW_id_dono`) REFERENCES `dono_casa_de_show` (`id_dono`);
 
 --
 -- Limitadores para a tabela `casa_rede`
@@ -889,35 +1051,70 @@ ALTER TABLE `comentario_evento`
 --
 ALTER TABLE `coment_resposta_artista`
   ADD CONSTRAINT `FK_COMENT_RESPOSTA_ARTISTA_1` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_COMENT_RESPOSTA_ARTISTA_2` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment_`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_COMENT_RESPOSTA_ARTISTA_2` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment_resposta`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `coment_resposta_casa`
 --
 ALTER TABLE `coment_resposta_casa`
   ADD CONSTRAINT `FK_COMENT_RESPOSTA_CASA_1` FOREIGN KEY (`FK_COMENTARIO_CASA_id_coment`) REFERENCES `comentario_casa` (`id_coment`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_COMENT_RESPOSTA_CASA_2` FOREIGN KEY (`FK_COMENTARIO_CASA_id_coment_`) REFERENCES `comentario_casa` (`id_coment`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_COMENT_RESPOSTA_CASA_2` FOREIGN KEY (`FK_COMENTARIO_CASA_id_coment_resposta`) REFERENCES `comentario_casa` (`id_coment`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `coment_resposta_evento`
 --
 ALTER TABLE `coment_resposta_evento`
   ADD CONSTRAINT `FK_COMENT_RESPOSTA_EVENTO_1` FOREIGN KEY (`FK_COMENTARIO_EVENTO_id_coment`) REFERENCES `comentario_evento` (`id_coment`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_COMENT_RESPOSTA_EVENTO_2` FOREIGN KEY (`FK_COMENTARIO_EVENTO_id_coment_`) REFERENCES `comentario_evento` (`id_coment`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_COMENT_RESPOSTA_EVENTO_2` FOREIGN KEY (`FK_COMENTARIO_EVENTO_id_coment_resposta`) REFERENCES `comentario_evento` (`id_coment`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `curtir_curtido`
+-- Limitadores para a tabela `curtir_artista`
 --
-ALTER TABLE `curtir_curtido`
-  ADD CONSTRAINT `FK_CURTIR_CURTIDO_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE SET NULL,
-  ADD CONSTRAINT `FK_CURTIR_CURTIDO_3` FOREIGN KEY (`FK_ARTISTA_id_artista`) REFERENCES `artista` (`id_artista`) ON DELETE SET NULL;
+ALTER TABLE `curtir_artista`
+  ADD CONSTRAINT `FK_CURTIR_ARTISTA_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_CURTIR_ARTISTA_3` FOREIGN KEY (`FK_ARTISTA_id_artista`) REFERENCES `artista` (`id_artista`) ON DELETE SET NULL;
+
+--
+-- Limitadores para a tabela `curtir_coment_artista`
+--
+ALTER TABLE `curtir_coment_artista`
+  ADD CONSTRAINT `FK_CURTIR_COMENT_ARTISTA_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_CURTIR_COMENT_ARTISTA_3` FOREIGN KEY (`FK_COMENTARIO_ARTISTA_id_coment`) REFERENCES `comentario_artista` (`id_coment`) ON DELETE SET NULL;
+
+--
+-- Limitadores para a tabela `curtir_coment_casa`
+--
+ALTER TABLE `curtir_coment_casa`
+  ADD CONSTRAINT `FK_CURTIR_COMENT_CASA_2` FOREIGN KEY (`FK_COMENTARIO_CASA_id_coment`) REFERENCES `comentario_casa` (`id_coment`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_CURTIR_COMENT_CASA_3` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE SET NULL;
+
+--
+-- Limitadores para a tabela `curtir_coment_evento`
+--
+ALTER TABLE `curtir_coment_evento`
+  ADD CONSTRAINT `FK_CURTIR_COMENT_EVENTO_2` FOREIGN KEY (`FK_COMENTARIO_EVENTO_id_coment`) REFERENCES `comentario_evento` (`id_coment`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_CURTIR_COMENT_EVENTO_3` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE SET NULL;
+
+--
+-- Limitadores para a tabela `destaque`
+--
+ALTER TABLE `destaque`
+  ADD CONSTRAINT `FK_DESTAQUE_2` FOREIGN KEY (`FK_ARTISTA_id_artista`) REFERENCES `artista` (`id_artista`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_DESTAQUE_3` FOREIGN KEY (`FK_SIT_DESTAQUE_id_sit`) REFERENCES `sit_destaque` (`id_sit`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `dono_casa_de_show`
+--
+ALTER TABLE `dono_casa_de_show`
+  ADD CONSTRAINT `FK_DONO_CASA_DE_SHOW_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `evento`
 --
 ALTER TABLE `evento`
   ADD CONSTRAINT `FK_EVENTO_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_EVENTO_3` FOREIGN KEY (`FK_CASA_DE_SHOW_id_casa`) REFERENCES `casa_de_show` (`id_casa`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_EVENTO_3` FOREIGN KEY (`FK_CASA_DE_SHOW_id_casa`) REFERENCES `casa_de_show` (`id_casa`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_EVENTO_4` FOREIGN KEY (`FK_SIT_EVENTO_id_sit`) REFERENCES `sit_evento` (`id_sit`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `foto_artista`
