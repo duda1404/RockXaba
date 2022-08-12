@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Ago-2022 às 13:50
+-- Tempo de geração: 12-Ago-2022 às 16:26
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -212,10 +212,10 @@ CREATE TABLE `coment_resposta_evento` (
 --
 
 CREATE TABLE `curtir_artista` (
-  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
-  `FK_ARTISTA_id_artista` int(11) DEFAULT NULL,
+  `id_curtida` int(11) NOT NULL,
   `data_curtida` datetime DEFAULT NULL,
-  `id_curtida` int(11) NOT NULL
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `FK_ARTISTA_id_artista` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -283,7 +283,8 @@ CREATE TABLE `dono_casa_de_show` (
   `dsc_dono` varchar(100) DEFAULT NULL,
   `contato_dono` varchar(100) DEFAULT NULL,
   `dat_add_dono` varchar(100) DEFAULT NULL,
-  `FK_USUARIO_id_user` int(11) DEFAULT NULL
+  `FK_USUARIO_id_user` int(11) DEFAULT NULL,
+  `FK_SIT_DONO_CASA_DE_SHOW_id_sit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -361,9 +362,18 @@ CREATE TABLE `foto_evento` (
 --
 
 CREATE TABLE `genero` (
-  `dsc_genero` varchar(100) DEFAULT NULL,
-  `id_gen` int(11) NOT NULL
+  `id_gen` int(11) NOT NULL,
+  `dsc_genero` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `genero`
+--
+
+INSERT INTO `genero` (`id_gen`, `dsc_genero`) VALUES
+(1, 'Rock'),
+(2, 'Bossa Nova'),
+(3, 'Indie');
 
 -- --------------------------------------------------------
 
@@ -401,6 +411,15 @@ CREATE TABLE `sit_artista` (
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `sit_artista`
+--
+
+INSERT INTO `sit_artista` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo'),
+(3, 'Aguardando Confirmação');
+
 -- --------------------------------------------------------
 
 --
@@ -411,6 +430,15 @@ CREATE TABLE `sit_casa` (
   `id_sit` int(11) NOT NULL,
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `sit_casa`
+--
+
+INSERT INTO `sit_casa` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo'),
+(3, 'Aguardando Confirmação');
 
 -- --------------------------------------------------------
 
@@ -423,6 +451,34 @@ CREATE TABLE `sit_destaque` (
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `sit_destaque`
+--
+
+INSERT INTO `sit_destaque` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sit_dono_casa_de_show`
+--
+
+CREATE TABLE `sit_dono_casa_de_show` (
+  `id_sit` int(11) NOT NULL,
+  `dsc_sit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `sit_dono_casa_de_show`
+--
+
+INSERT INTO `sit_dono_casa_de_show` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo'),
+(3, 'Aguardando Confirmação');
+
 -- --------------------------------------------------------
 
 --
@@ -434,6 +490,15 @@ CREATE TABLE `sit_evento` (
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `sit_evento`
+--
+
+INSERT INTO `sit_evento` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo'),
+(3, 'Aguardando Confirmação');
+
 -- --------------------------------------------------------
 
 --
@@ -444,6 +509,15 @@ CREATE TABLE `sit_usuario` (
   `id_sit` int(11) NOT NULL,
   `dsc_sit` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `sit_usuario`
+--
+
+INSERT INTO `sit_usuario` (`id_sit`, `dsc_sit`) VALUES
+(1, 'Ativo'),
+(2, 'Inativo'),
+(3, 'Aguardando Confirmação');
 
 -- --------------------------------------------------------
 
@@ -469,6 +543,16 @@ CREATE TABLE `tipo_comentario` (
   `dsc_tipo_coment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `tipo_comentario`
+--
+
+INSERT INTO `tipo_comentario` (`id_tipo_coment`, `dsc_tipo_coment`) VALUES
+(1, 'Comum'),
+(2, 'Resposta'),
+(3, 'Fixado'),
+(4, 'Criador');
+
 -- --------------------------------------------------------
 
 --
@@ -476,9 +560,18 @@ CREATE TABLE `tipo_comentario` (
 --
 
 CREATE TABLE `tipo_usuario` (
-  `dsc_tipo` varchar(100) DEFAULT NULL,
-  `codigo` int(11) NOT NULL
+  `codigo` int(11) NOT NULL,
+  `dsc_tipo` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`codigo`, `dsc_tipo`) VALUES
+(1, 'Comum'),
+(2, 'Admin'),
+(3, 'Moderador');
 
 -- --------------------------------------------------------
 
@@ -657,7 +750,8 @@ ALTER TABLE `destaque`
 --
 ALTER TABLE `dono_casa_de_show`
   ADD PRIMARY KEY (`id_dono`),
-  ADD KEY `FK_DONO_CASA_DE_SHOW_2` (`FK_USUARIO_id_user`);
+  ADD KEY `FK_DONO_CASA_DE_SHOW_2` (`FK_USUARIO_id_user`),
+  ADD KEY `FK_DONO_CASA_DE_SHOW_3` (`FK_SIT_DONO_CASA_DE_SHOW_id_sit`);
 
 --
 -- Índices para tabela `evento`
@@ -732,6 +826,12 @@ ALTER TABLE `sit_casa`
 -- Índices para tabela `sit_destaque`
 --
 ALTER TABLE `sit_destaque`
+  ADD PRIMARY KEY (`id_sit`);
+
+--
+-- Índices para tabela `sit_dono_casa_de_show`
+--
+ALTER TABLE `sit_dono_casa_de_show`
   ADD PRIMARY KEY (`id_sit`);
 
 --
@@ -895,7 +995,7 @@ ALTER TABLE `foto_evento`
 -- AUTO_INCREMENT de tabela `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `id_gen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `rede_social`
@@ -913,31 +1013,37 @@ ALTER TABLE `seguidores_seguindo`
 -- AUTO_INCREMENT de tabela `sit_artista`
 --
 ALTER TABLE `sit_artista`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `sit_casa`
 --
 ALTER TABLE `sit_casa`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `sit_destaque`
 --
 ALTER TABLE `sit_destaque`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `sit_dono_casa_de_show`
+--
+ALTER TABLE `sit_dono_casa_de_show`
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `sit_evento`
 --
 ALTER TABLE `sit_evento`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `sit_usuario`
 --
 ALTER TABLE `sit_usuario`
-  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `suporte`
@@ -949,13 +1055,13 @@ ALTER TABLE `suporte`
 -- AUTO_INCREMENT de tabela `tipo_comentario`
 --
 ALTER TABLE `tipo_comentario`
-  MODIFY `id_tipo_coment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_coment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
@@ -1106,7 +1212,8 @@ ALTER TABLE `destaque`
 -- Limitadores para a tabela `dono_casa_de_show`
 --
 ALTER TABLE `dono_casa_de_show`
-  ADD CONSTRAINT `FK_DONO_CASA_DE_SHOW_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_DONO_CASA_DE_SHOW_2` FOREIGN KEY (`FK_USUARIO_id_user`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_DONO_CASA_DE_SHOW_3` FOREIGN KEY (`FK_SIT_DONO_CASA_DE_SHOW_id_sit`) REFERENCES `sit_dono_casa_de_show` (`id_sit`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `evento`
