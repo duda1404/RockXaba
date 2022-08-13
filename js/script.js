@@ -62,11 +62,4 @@ var messageBox = document.querySelector('.js-message');
   });
 
   
-  $(document).ready(function(){
-    $(".btn2").click(function(){
-      $("textarea").hide();
-    });
-    $(".reply").click(function(){
-      $("textarea").show();
-    });
-  });
+

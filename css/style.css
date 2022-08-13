@@ -88,8 +88,8 @@ p {
   line-height: 1.8; }
 
 
-.photo_img, .img{
-  height: auto;
+.photo_img{
+  height: 150px;
   width: 150px;
   display: block;
   margin-left: auto;
@@ -97,6 +97,11 @@ p {
 }
 
  .img {  
+  height: auto;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: 2px solid #fff;
   cursor: pointer;
   background: none;

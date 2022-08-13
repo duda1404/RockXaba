@@ -34,9 +34,16 @@
 
 <div class="imgg">
                     
-                    <img class="photo_img" src="uploads/<?php echo $row["photo_user"]; ?>">
+                    <img class="photo_img" id="photo_img" src="uploads/<?php echo $row["photo_user"]; ?>">
                     <label for="photo" class="img"> Alterar foto de perfil </label>
                         <input type="file" accept="image/*" id="photo" name="photo" >
+                       
+                        <script> photo.onchange = evt => {
+    const [file] = photo.files
+    if (file) {
+      photo_img.src = URL.createObjectURL(file)
+    }
+  }</script>
                     </div>
 					
 					
@@ -87,6 +94,7 @@
             </fieldset>
         </form>
     </div>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
