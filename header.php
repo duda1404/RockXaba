@@ -65,6 +65,7 @@ if(isset($_SESSION['logado'])){
   <!-- Título com o nome de usuário -->
 
   <title> <?php if(isset($_SESSION['logado'])){echo $dados['nome_user'];}?> </title>
+  <link rel="icon" type="image/x-icon" href="img/rockxaba_icon.png">
 
     <header>
       <nav>
