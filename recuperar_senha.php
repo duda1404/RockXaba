@@ -77,6 +77,17 @@ if (isset($_POST['btnenviar'])){
         $sql = "INSERT INTO usuario(chave_recupera_senha) VALUES ('" . $chave . "')";
         $resultado = mysqli_query($connect,$sql);
 
+        $emailEnvia = 'rockxaba@gmail.com';
+        $apelidoEnvia = 'RockXaba';
+        $emailRecebe = $_POST['email'];
+        $apelidoRecebe = '';
+
+        $body = "Este email diz respeito à <strong> requisição de uma nova senha, </strong> 
+        no site RockXaba. Clique no link abaixo para realizá-la: <br>
+        <a href='http://localhost/root/nova_senha.php?chave=$chave''> Clique aqui </a>";
+
+        $assunto = 'Recuperando Senha';
+
         include 'emails.php';
 
         mysqli_close($connect);

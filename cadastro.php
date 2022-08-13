@@ -213,15 +213,31 @@ if (isset($_POST['btnentrar'])){
 
         $tipo_user = 1;
         $sit_user = 3;
+        $data_add = date('Y-m-d H:i:s');
 
 
-        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SIT_USUARIO_id_sit) 
-        VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "')";
+        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SIT_USUARIO_id_sit, data_add_user) 
+        VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "','" . $data_add . "')";
         $resultado = mysqli_query($connect,$sql);
 
         //fechando a conexão depois de armazenar os dados
 
 		    mysqli_close($connect);
+
+        $emailEnvia = 'rockxaba@gmail.com';
+        $apelidoEnvia = 'RockXaba';
+        $emailRecebe = $_POST['email'];
+        $apelidoRecebe = $_POST['nome'];
+
+        $body = "<strong>Este email foi utilizado para a realização do cadastro no site RockXaba, </strong> 
+        utilizando as seguintes informações: <br>
+        Nome: ".$_POST['nome']."<br>
+        Email: ".$_POST['email']."<br>
+        Para confirmar seu cadastro, clique no link abaixo: <br>
+        <a href='http://localhost/root/confirmar_email.php?chave=$chave'> Clique aqui </a>";
+
+        $assunto = 'Confirmando cadastro';
+
 
         /* Inclui a página emails que enviará, por meio da biblioteca PHPMailer, um email para confirmação do cadastro */
 

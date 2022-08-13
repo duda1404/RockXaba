@@ -3,6 +3,9 @@
   //Guarda todas as sequências de saída em memória (cache)
   ob_start();
 
+  //determina o fuso horário correto para o uso nas funções de datas do PHP
+  date_default_timezone_set('America/Sao_Paulo');
+
   //iniciar a sessão
   session_start();
 

@@ -42,6 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(($erroMensagem == "")) {
 
+      $emailEnvia = $dados['email_user'];
+      $apelidoEnvia = $dados['nome_user'];
+      $emailRecebe = 'rockxaba@gmail.com';
+      $apelidoRecebe = 'RockXaba';
+
+      $body = "Mensagem enviada por usuário para fins de Suporte: <br>
+        ID: ".$dados['id_user']."<br>
+        Nome: ".$dados['nome_user']."<br>
+        Email: ".$dados['email_user']."<br>
+        Mensagem: ".$mensagem;
+
+        $assunto = 'Suporte';
+
       include 'emails.php';
   
     } 

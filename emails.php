@@ -28,86 +28,13 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Criptografia
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
+        //Remetentes e destinatários
 
+        $mail->setFrom($emailEnvia, $apelidoEnvia);          //Qual email está enviando, tem que ser o mesmo email de username
+        $mail->addAddress($emailRecebe, $apelidoRecebe);        //Quem vai receber esse email
+        /*$mail->addAddress('ellen@example.com'); */               //Outro email que pode receber, nome é opcional
+        $mail->addReplyTo($emailEnvia, $apelidoEnvia);//Email de resposta
    
-
-    if (isset($_SESSION['logado'])){
-
-
-        /* EMAIL DE SUPORTE - só está disponível para usuários logados */
-        //Remetentes e destinatários
-
-        $mail->setFrom($dados['email_user'], $dados['nome_user']);          //Qual email está enviando, tem que ser o mesmo email de username
-        $mail->addAddress('rockxaba@gmail.com', 'RockXaba');        //Quem vai receber esse email
-        /*$mail->addAddress('ellen@example.com'); */               //Outro email que pode receber, nome é opcional
-        $mail->addReplyTo($dados['email_user'], $dados['nome_user']);//Email de resposta
-
-        //Corpo do email
-
-        $body = "Mensagem enviada por usuário para fins de Suporte: <br>
-        ID: ".$dados['id_user']."<br>
-        Nome: ".$dados['nome_user']."<br>
-        Email: ".$dados['email_user']."<br>
-        Mensagem: ".$mensagem;
-
-        $assunto = 'Suporte';
-    }    
-
-     
-
-    else{
-
-        if(isset($_SESSION['recuperando'])){
-
-        /* EMAIL DE RECUPERAÇÃO DE SENHA - só está disponível para usuários que não logaram ainda */
-
-        //Remetentes e destinatários
-
-        $mail->setFrom('rockxaba@gmail.com', 'RockXaba');          //Qual email está enviando, tem que ser o mesmo email de username
-        $mail->addAddress($_POST['email']);        //Quem vai receber esse email
-        /*$mail->addAddress('ellen@example.com'); */               //Outro email que pode receber, nome é opcional
-        $mail->addReplyTo('rockxaba@gmail.com', 'RockXaba');        //Email de resposta
-
-        //Corpo do email
-        /* Usuário clicará no link "Clique aqui" que o levará à página confirmar_email, onde o método utilizado é igual
-        à variável $chave da página de Cadastro, consistindo em uma chave criptografada do email digitado pelo usuário e a data de cadastro */
-
-        $body = "Este email diz respeito à <strong> requisição de uma nova senha, </strong> 
-        no site RockXaba. Clique no link abaixo para realizá-la: <br>
-        <a href='http://localhost/root/nova_senha.php?chave=$chave''> Clique aqui </a>";
-
-        $assunto = 'Recuperando Senha';
-
-
-
-        }
-        else{
-
-        /* EMAIL DE CONFIRMAÇÃO DE CADASTRO - só está disponível para usuários que não logaram ainda */
-
-        //Remetentes e destinatários
-
-        $mail->setFrom('rockxaba@gmail.com', 'RockXaba');          //Qual email está enviando, tem que ser o mesmo email de username
-        $mail->addAddress($_POST['email'], $_POST['nome']);        //Quem vai receber esse email
-        /*$mail->addAddress('ellen@example.com'); */               //Outro email que pode receber, nome é opcional
-        $mail->addReplyTo('rockxaba@gmail.com', 'RockXaba');        //Email de resposta
-
-        //Corpo do email
-        /* Usuário clicará no link "Clique aqui" que o levará à página confirmar_email, onde o método utilizado é igual
-        à variável $chave da página de Cadastro, consistindo em uma chave criptografada do email digitado pelo usuário e a data de cadastro */
-
-        $body = "<strong>Este email foi utilizado para a realização do cadastro no site RockXaba, </strong> 
-        utilizando as seguintes informações: <br>
-        Nome: ".$_POST['nome']."<br>
-        Email: ".$_POST['email']."<br>
-        Para confirmar seu cadastro, clique no link abaixo: <br>
-        <a href='http://localhost/root/confirmar_email.php?chave=$chave'> Clique aqui </a>";
-
-        $assunto = 'Confirmando cadastro';
-
-        }
-
-    }
 
     /* Cópia de email ou cópia oculta (opcional)
 

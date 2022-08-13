@@ -5,7 +5,7 @@
     $servername = 'localhost:3306';
     $username = 'root';
     $password = 'usbw';
-    $db_name = 'rock_xaba';
+    $db_name = 'new_bd';
 
     /* Variável de conexão */
 

@@ -1,6 +1,5 @@
 <?php
 ob_start();
-date_default_timezone_set('America/Sao_Paulo');
 include 'header.php';
 require 'funcoes.php';
 ?>
