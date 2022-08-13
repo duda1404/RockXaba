@@ -93,8 +93,9 @@ if(isset($_SESSION['logado'])){
           <a href="perfil.php">Perfil</a>
           <a href="contato.php">Suporte</a>
           <a href="cadastro_bandas.php">Quero ser Artista</a>
+          <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
           <a href="editar_perfil.php">Editar Perfil</a>
-          <a href="artistas.php">Artistas</a>
+          
           <a href="?sair">Sair</a>
       </div>
 
