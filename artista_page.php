@@ -92,6 +92,7 @@ no banco. */
                                             }
                                         }
                                     </script>
+
                                     <!--Sessão de comentários-->
                                     <div class="media">
                                         <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="uploads/<?php echo $photo_user ?>">
@@ -109,15 +110,27 @@ no banco. */
 
                                             <!--Caixa de responder comentário-->
                                             <div class="reply-box">
-                                                <form>
 
-                                                    <textarea rows="2" cols="20" id="<?php echo $id_coment; ?>" style="display:none;"><?php echo $id_coment; ?> </textarea>
+                                            <div class="responder" id="<?php echo $id_coment; ?>" style="display:none;">
 
-                                                    <div class="ulala"> <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Responder</button>
+                                            <form method="POST" action="<?php enviarResposta($connect) ?>">
+                                    <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
+                                    <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
+                                    <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
+                                    <button class="button" type="submit" name="respo">Enviar</button>
+
+                                </form>
+
+                                                    
+
+                                                    
+                                    </div>
+                                                    <div class="ulala">
+                                                         <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Responder</button>
 
                                                         <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Cancelar</button>
                                                     </div>
-                                                </form>
+                                                
                                             </div>
 
                                             <!--Caixa de respostas-->

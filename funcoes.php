@@ -21,6 +21,31 @@ function enviarComentario($connect) {
    
 }
 
+function enviarResposta($connect) {
+    if (isset($_POST["respo"])) {
+    
+        $id = $_GET["myid"];
+        $id_coment = $rows['id_coment'];
+        $resp = mysqli_real_escape_string($connect, $_POST["resp"]);
+        $FK_USUARIO_id_user = mysqli_real_escape_string($connect, $_POST["FK_USUARIO_id_user"]);
+        $date_coment = mysqli_real_escape_string($connect, $_POST["date_coment"]);
+    
+        $sql = mysqli_query($connect, "INSERT INTO comentario_artista (dsc_coment, date_coment, FK_USUARIO_id_user, FK_ARTISTA_id_artista, FK_TIPO_COMENTARIO_id_tipo_coment	
+        ) Values ('" . $resp . "','". $date_coment . "' ,'". $FK_USUARIO_id_user . "','". $id . "', 2)");
+
+
+
+
+        header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+        exit();
+    
+       
+    
+    }
+
+   
+}
+
 
 
 
