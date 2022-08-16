@@ -2,6 +2,7 @@
 
 include 'header.php';
 
+
 /* Se o usuário está logado, redireciona para a página index.php com o método ?acao=negado, que mostra uma mensagem
 	informando que precisa sair do perfil para acessar o Login novamente */
 
@@ -133,11 +134,91 @@ if (isset($_POST['btn-entrar'])):
  	<a href="cadastro.php">
     	<input type="button" name="cadastro" value="Criar conta">
  	</a>
+
+	 <div id="g_id_onload"
+         data-client_id="75991242224-4b2kpbl51f2aj8774krit95hj62h2mmj.apps.googleusercontent.com"
+         data-login_uri="<script> document.write(loc); </script>"
+         data-auto_prompt="false"
+		 data-callback="handleCredentialResponse">
+      </div>
+      <div class="g_id_signin"
+         data-type="icon"
+         data-size="large"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-shape="circle"
+         data-logo_alignment="left"
+		 >
+	</div>
+
+	  <script>
+			function handleCredentialResponse(response) {
+
+				// decodeJwtResponse() is a custom function defined by you
+				// to decode the credential response.
+				const responsePayload = jwt_decode(response.credential);
+				var email = responsePayload.email;
+
+				var loc = "http://localhost/root/index.php?key="+email;
+
+				console.log(loc)
+           		
+				console.log("ID: " + responsePayload.sub);
+				console.log('Full Name: ' + responsePayload.name);
+				console.log('Given Name: ' + responsePayload.given_name);
+				console.log('Family Name: ' + responsePayload.family_name);
+				console.log("Image URL: " + responsePayload.picture);
+				console.log("Email: " + responsePayload.email);
+
+				
+
+
+			}
+
+		</script>
+
+		<?php
+
+		if(isset($_GET['key'])):
+
+			$confirmaEmail = $_GET['key'];
+
+			$confirma_user = mysqli_query($connect, "SELECT FK_SIT_USUARIO_id_sit FROM usuario WHERE email_user = $confirmaEmail");
+			$confirmado = $confirma_user->fetch_assoc();
+
+			$resultado = mysqli_query($connect,"SELECT id_user FROM usuario WHERE email_user = $confirmaEmail");
+
+			if($confirmado['FK_SIT_USUARIO_id_sit'] == 1){
+
+				$dados = mysqli_fetch_array($resultado);
+				$_SESSION['logado']= true;
+				$_SESSION['id_user']= $dados['id_user'];
+				//comando que redireciona para página index.php
+				header('Location: index.php');	
+
+
+			}
+
+			else{
+
+				echo ("<SCRIPT LANGUAGE='JavaScript'>
+            	window.alert('Você precisa confirmar sua conta antes de logar no site!');
+            	</SCRIPT>");
+
+
+			}
+
+		endif;
+
+	?>
+
+
 	 <a href="recuperar_senha.php">
     	<input type="button" name="recuperaSenha" value="Recuperar Senha">
  	</a>
 
-
+	 <script src="https://accounts.google.com/gsi/client" async defer></script>
+	 <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
 </form>
 
 
