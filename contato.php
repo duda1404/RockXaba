@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
       $emailEnvia = $dados['email_user'];
       $apelidoEnvia = $dados['nome_user'];
-      $emailRecebe = 'rockxaba@gmail.com';
+      $emailRecebe = 'rockxaba027@gmail.com';
       $apelidoRecebe = 'RockXaba';
 
       $body = "Mensagem enviada por usuário para fins de Suporte: <br>

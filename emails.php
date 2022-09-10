@@ -23,8 +23,8 @@ try {
     $mail->isSMTP(); //Chama a função isSMTP
     $mail->Host       = 'smtp.gmail.com';                     //Define o host (nesse caso, o gmail)
     $mail->SMTPAuth   = true;                                   //Define se requer, ou não, autenticação
-    $mail->Username   = 'rockxaba@gmail.com';                     //Seu email
-    $mail->Password   = 'wmkxrohhtbaascly';                         //Senha do seu email
+    $mail->Username   = 'rockxaba027@gmail.com';                     //Seu email
+    $mail->Password   = 'szkwqpqjhndlhjgz';                         //Senha do seu email
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Criptografia
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     

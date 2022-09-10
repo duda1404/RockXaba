@@ -135,7 +135,4 @@ if (isset($_POST['btn-entrar'])):
     	<input type="button" name="cadastro" value="Criar conta">
  	</a>
 
-	 <a href="recuperar_senha.php">
-    	<input type="button" name="recuperaSenha" value="Recuperar Senha">
- 	</a>
 </body>
