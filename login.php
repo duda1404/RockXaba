@@ -2,6 +2,7 @@
 
 include 'header.php';
 
+
 /* Se o usuário está logado, redireciona para a página index.php com o método ?acao=negado, que mostra uma mensagem
 	informando que precisa sair do perfil para acessar o Login novamente */
 
@@ -133,12 +134,5 @@ if (isset($_POST['btn-entrar'])):
  	<a href="cadastro.php">
     	<input type="button" name="cadastro" value="Criar conta">
  	</a>
-	 <a href="recuperar_senha.php">
-    	<input type="button" name="recuperaSenha" value="Recuperar Senha">
- 	</a>
-
-
-</form>
-
 
 </body>

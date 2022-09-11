@@ -104,8 +104,9 @@ if (isset($_POST['btnentrar'])) {
 
       /* Insere o cadastro do usuário no Banco de Dados */
 
+      $dat_add_artista = date('Y-m-d H:i:s');
 
-      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "')";
+      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user, dat_add_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "')";
       $resultado = mysqli_query($connect, $sqlArtista);
 
       $result = mysqli_query($connect, "SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 include 'header.php';
-require 'funcoes.php';
+include 'funcoes.php';
 ?>
 
 <!-- Texto e imagem do artista/banda-->
@@ -114,6 +114,7 @@ no banco. */
                                             <div class="responder" id="<?php echo $id_coment; ?>" style="display:none;">
 
                                             <form method="POST" action="<?php enviarResposta($connect) ?>">
+                                    <input type='hidden' name='reply_of' value="<?php echo $id_coment; ?>">
                                     <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
                                     <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
                                     <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>

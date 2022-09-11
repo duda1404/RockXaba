@@ -224,7 +224,7 @@ if (isset($_POST['btnentrar'])){
 
 		    mysqli_close($connect);
 
-        $emailEnvia = 'rockxaba@gmail.com';
+        $emailEnvia = 'rockxaba027@gmail.com';
         $apelidoEnvia = 'RockXaba';
         $emailRecebe = $_POST['email'];
         $apelidoRecebe = $_POST['nome'];
