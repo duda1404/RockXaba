@@ -27,9 +27,9 @@
 
 /*Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações do usuário*/
             $sql = "SELECT * FROM usuario WHERE id_user='{$_SESSION["id_user"]}'";
-            $result = mysqli_query($connect, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+            $result = pg_query($connect, $sql);
+            if (pg_num_rows($result) > 0) {
+                while ($row = pg_fetch_assoc($result)) {
             ?>
 
 <div class="imgg">

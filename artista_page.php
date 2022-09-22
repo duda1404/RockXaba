@@ -11,11 +11,11 @@ include 'funcoes.php';
 
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
-    $image_query = mysqli_query($connect, "select artista.id_artista, artista.nome_artista, 
+    $image_query = pg_query($connect, "select artista.id_artista, artista.nome_artista, 
     artista.dsc_artista, artista.link_play, foto_artista.photo_artista from artista inner join
     foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = id_artista");
 
-    while ($rows = mysqli_fetch_array($image_query)) {
+    while ($rows = pg_fetch_array($image_query)) {
         $nome_artista = $rows['nome_artista'];
         $dsc_artista = $rows['dsc_artista'];
         $link = $rows['link_play'];
@@ -65,12 +65,12 @@ no banco. */
 
                                 <?php
                                 /* Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
-                                $resultadon = mysqli_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
+                                $resultadon = pg_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
                                 comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment
                                  FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
                                  WHERE usuario.id_user = comentario_artista.FK_USUARIO_id_user");
 
-                                while ($rows = mysqli_fetch_array($resultadon)) {
+                                while ($rows = pg_fetch_array($resultadon)) {
                                     $id_coment = $rows['id_coment'];
                                     $nome_userr = $rows['nome_user'];
                                     $photo_user = $rows['photo_user'];

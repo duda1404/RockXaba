@@ -44,8 +44,8 @@ $erroLoginSenha = "";
 if (isset($_POST['btn-entrar'])):
 
 	//mysqli_escape_string - função que limpa os dados e evita sqlinjection e outros caracteres indevidos.
-	$login = mysqli_escape_string($connect, $_POST['login']);
-	$senha = mysqli_escape_string($connect, $_POST['senha']);
+	$login = pg_escape_string($connect, $_POST['login']);
+	$senha = pg_escape_string($connect, $_POST['senha']);
 	
 	
 	if(empty($login) or empty($senha)):
@@ -57,20 +57,20 @@ if (isset($_POST['btn-entrar'])):
 		/* Faz uma consulta sql para pegar a situação do usuário (1 - Ativo, 2 - Inativo, 3 - Aguardando Confirmação) e
 		a transforma em um item no array $confirmado */
 
-		$confirma_user = mysqli_query($connect, "SELECT FK_SIT_USUARIO_id_sit FROM usuario WHERE nome_user = '$login'");
-		$confirmado = $confirma_user->fetch_assoc();
+		$confirma_user = pg_query($connect, "SELECT FK_SITUACAO_id_sit FROM usuario WHERE nome_user = '$login'");
+		$confirmado = pg_fetch_assoc($confirma_user);
 
 		/* Seleciona, no banco de dados, o nome de usuário igual ao nome de usuário digitado (se ele existe, retorna 1) */
 
-		$resultado = mysqli_query($connect,"SELECT id_user FROM usuario WHERE nome_user= '$login'");
+		$resultado = pg_query($connect,"SELECT id_user FROM usuario WHERE nome_user= '$login'");
 
 		/* Seleciona, no banco de dados, a senha criptografada ligada ao nome de usuário igual ao nome de usuário digitado */
 
-		$senhaCriptografada = mysqli_query($connect, "SELECT senha_user FROM usuario WHERE nome_user = '$login'");
+		$senhaCriptografada = pg_query($connect, "SELECT senha_user FROM usuario WHERE nome_user = '$login'");
 
 		/* Transforma a senha criptografada ligada ao nome de usuário digitado em um item no array $row */
 
-		$row = $senhaCriptografada->fetch_assoc();
+		$row = pg_fetch_assoc($senhaCriptografada);
 
 		if (!empty($row['senha_user'])){
 
@@ -83,16 +83,16 @@ if (isset($_POST['btn-entrar'])):
 		
 		//fechando a conexão depois de armazenar os dados
 
-		mysqli_close($connect);
+		pg_close($connect);
 		
 		//numeros de linhas do resultado da query maior que 0 ou se houver algum registro do nome de usuário na tabela na tabela, $verificaSenha igual a TRUE se a senha digitada é compatível com a senha do banco de dados
 		/* Se o nome e senha digitados pelo usuário são compatíveis com nome e senha de um usuário no banco de dados, ele loga no site */
 
-		if ((mysqli_num_rows($resultado) > 0) && ($verificaSenha == TRUE)){
+		if ((pg_num_rows($resultado) > 0) && ($verificaSenha == TRUE)){
 
 			/* Se o usuário não está ativo, envia um alerta pedindo a ele para confirmar sua conta */
 
-			if($confirmado['FK_SIT_USUARIO_id_sit'] != 1){
+			if($confirmado['FK_SITUACAO_id_sit'] != 1){
 
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
             	window.alert('Você precisa confirmar sua conta antes de logar no site!');
@@ -102,9 +102,9 @@ if (isset($_POST['btn-entrar'])):
 
 			/* Se o usuário está ativo, a sessão 'logado' é iniciada */
 
-			elseif($confirmado['FK_SIT_USUARIO_id_sit'] == 1){
+			elseif($confirmado['FK_SITUACAO_id_sit'] == 1){
 
-				$dados = mysqli_fetch_array($resultado);
+				$dados = pg_fetch_array($resultado);
 				$_SESSION['logado']= true;
 				$_SESSION['id_user']= $dados['id_user'];
 				//comando que redireciona para página index.php

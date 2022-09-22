@@ -20,9 +20,9 @@ if(isset($_SESSION['logado'])){
   //Dados
   $id = $_SESSION['id_user'];
   //Busca no banco de dados o id do user logado
-  $resultado = mysqli_query($connect,"SELECT * FROM usuario WHERE id_user='$id'");
+  $resultado = pg_query($connect,"SELECT * FROM usuario WHERE id_user='$id'");
   //transforma a variavel resultado em array 
-  $dados = mysqli_fetch_array($resultado);
+  $dados = pg_fetch_array($resultado);
   //fechando a conexão depois de armazenar os dados
 
 
