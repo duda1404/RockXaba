@@ -92,7 +92,7 @@ if (isset($_POST['btn-entrar'])):
 
 			/* Se o usuário não está ativo, envia um alerta pedindo a ele para confirmar sua conta */
 
-			if($confirmado['FK_SITUACAO_id_sit'] != 1){
+			if($confirmado['fk_situacao_id_sit'] != 1){
 
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
             	window.alert('Você precisa confirmar sua conta antes de logar no site!');
@@ -102,7 +102,7 @@ if (isset($_POST['btn-entrar'])):
 
 			/* Se o usuário está ativo, a sessão 'logado' é iniciada */
 
-			elseif($confirmado['FK_SITUACAO_id_sit'] == 1){
+			elseif($confirmado['fk_situacao_id_sit'] == 1){
 
 				$dados = pg_fetch_array($resultado);
 				$_SESSION['logado']= true;

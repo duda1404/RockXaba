@@ -22,7 +22,7 @@ if (!empty($chave)){
 
         /* Update da situação do usuário de "Aguardando Confirmação" para "Ativo" */
 
-        $update = "UPDATE usuario SET FK_SIT_USUARIO_id_sit = 1  WHERE id_user = '".$array['id_user']."'";
+        $update = "UPDATE usuario SET FK_SITUACAO_id_sit = 1  WHERE id_user = '".$array['id_user']."'";
         $confirma_conta = pg_query($connect, $update);
 
         $deleta_chave =  "UPDATE usuario SET chave_confirm = NULL WHERE id_user = '".$array['id_user']."'";
