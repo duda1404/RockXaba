@@ -38,6 +38,8 @@ if(isset($_SESSION['logado'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+
+    
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900">
 
@@ -69,17 +71,19 @@ if(isset($_SESSION['logado'])){
 
     <header>
       <nav>
-        <a class="logo" href="index.php">RockXaba</a> 
+        
+        <a class="logo" href="index.php">
+          <img width=100px; weight=100px; src= "img/rockxaba_icon.png"> </a> 
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
         <ul class="nav-list">
-          <li><a href="index.php">Home</a></li>
-          <li><a href="about.php">Sobre</a></li>
-          <li><a href="artistas.php">Artistas</a></li>
-          <li><a href="follow.php">Siga-nos</a></li>
+          <li><a href="index.php"><b>HOME</b></a></li>
+          <li><a href="about.php"><b>SOBRE</b></a></li>
+          <li><a href="artistas.php"><b>ARTISTAS</b></a></li>
+          <li><a href="follow.php"><b>SIGA-NOS</a></b></li>
 
 <?php if(!isset($_SESSION['logado'])): ?>
 

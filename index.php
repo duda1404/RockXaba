@@ -29,142 +29,68 @@ if (isset($_GET['acao'])){
 
 ?>
 
-   <!-- Seção do Slideshow, sendo cada slide uma classe, e cada classe contendo uma imagem-->
-   <div class="carousel">
-  <div class="progress-bar progress-bar--primary hide-on-desktop">
-    <div class="progress-bar__fill"></div>
-  </div>
-
-<header class="main-post-wrapper">
-  
-  <div class="slides">
-    <article class="main-post main-post--active">
-      <div class="main-post__image">
-        <img src="img/1.jpg" alt="New McLaren wind tunnel 'critical' to future performance, says Tech Director Key" />
+   <!-- Seção do Slideshow-->
+<section class="carousel" aria-label="Gallery">
+  <ol class="carousel__viewport">
+    <li id="carousel__slide1"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <a href="#carousel__slide4"
+           class="carousel__prev">Go to last slide</a>
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>
       </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">News</span>
-        </div>
-        <h1 class="main-post__title">New McLaren wind tunnel 'critical' to future performance, says Tech Director Key</h1>
-        <a class="main-post__link" href="#">
-              <span class="main-post__link-text">find out more</span>
-              <svg
-                class="main-post__link-icon main-post__link-icon--arrow"
-                width="37"
-                height="12"
-                viewBox="0 0 37 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-                  stroke="white"
-                />
-              </svg>
-            </a>
-      </div>
-    </article>
-    <article class="main-post main-post--not-active">
-      <div class="main-post__image">
-        <img src="img/2.jpg" alt="What To Watch For in the 2019 Hungarian Grand Prix" />
-      </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">Video</span>
-        </div>
-        <h1 class="main-post__title">What To Watch For in the 2019 Hungarian Grand Prix</h1>
-        <a class="main-post__link" href="#">
-              <svg
-                class="main-post__link-icon main-post__link-icon--play-btn"
-                width="30"
-                height="30"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="9"
-                  stroke="#C20000"
-                  stroke-width="2"
-                />
-                <path d="M14 10L8 6V14L14 10Z" fill="white" />
-              </svg>
-              <span class="main-post__link-text">play video</span>
-            </a>
-      </div>
-    </article>
-    <article class="main-post main-post--not-active">
-      <div class="main-post__image">
-        <img src="img/3.jpg" alt="Hamilton wants harder championship fight from Leclerc and
-            Verstappen" />
-      </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">News</span>
-        </div>
-        <h1 class="main-post__title">Hamilton wants harder championship fight from Leclerc and Verstappen
-        </h1>
-        <a class="main-post__link" href="#">
-              <span class="main-post__link-text">find out more</span>
-              <svg
-                class="main-post__link-icon main-post__link-icon--arrow"
-                width="37"
-                height="12"
-                viewBox="0 0 37 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-                  stroke="white"
-                />
-              </svg>
-            </a>
-      </div>
-    </article>
-  </div>
-</header>
-
-<div class="posts-wrapper hide-on-mobile">
-  <article class="post post--active">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">News</span>
-      <p class="post__published">16 August 2019</p>
-    </header>
-    <h2 class="post__title">New McLaren wind tunnel 'critical' to future performance, says Tech Director Key</h2>
-  </article>
-  <article class="post">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">Video</span>
-      <p class="post__published">12 August 2019</p>
-    </header>
-    <h2 class="post__title">What To Watch For in the 2019 Hungarian Grand Prix</h2>
-  </article>
-  <article class="post">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">News</span>
-      <p class="post__published">08 August 2019</p>
-    </header>
-    <h2 class="post__title">Hamilton wants harder championship fight from Leclerc and Verstappen
-    </h2>
-  </article>
-</div>
-</div>
-<main style="min-height: 100vh; background: black;"></main>
-
-  <script type="text/javascript" src="js/script.js"></script>
+    </li>
+    <li id="carousel__slide2"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"></div>
+      <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide3"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"></div>
+      <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide4"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide4"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"></div>
+      <a href="#carousel__slide3"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to first slide</a>
+    </li>
+  </ol>
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide1"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide2"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide3"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide4"
+           class="carousel__navigation-button">Go to slide 4</a>
+      </li>
+    </ol>
+  </aside>
+</section>
 
 </body>
 </html>
