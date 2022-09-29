@@ -5,7 +5,7 @@ header("Content-type: text/css");
 ?>
 /* O body das páginas que contém o background image*/
 
-.about, .follow, .contato, .login, .cadastro, .wrapper{
+.about, .follow, .contato, .login, .cadastro, .wrapper, .index{
   height: 100%;
   width:100%;
   margin: 0 auto;
@@ -24,6 +24,43 @@ header("Content-type: text/css");
   /*font-family:'Josefin Sans';*/
   color: #e92eed;
   background-color: black;}
+
+/* ********************************************************************************************************************************* */
+/* ********************************************************************************************************************************* */
+
+/* ************************************************************ HEADER ************************************************************* */
+
+/* ********************************************************************************************************************************* */
+/* ********************************************************************************************************************************* */
+header{
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  transition: 0.4s;
+}
+
+.logo{
+  margin-right: auto;
+}
+
+.nav-list ul {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+
+.nav-list a {
+  transition: all o.3s ease 0s;
+}
+
+.nav-list a :hover {
+  transition: all o.3s ease 0s;
+}
+
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
@@ -152,230 +189,110 @@ nav {
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
 
-@keyframes tonext {
-  75% {
-    left: 0;
-  }
-  95% {
-    left: 100%;
-  }
-  98% {
-    left: 100%;
-  }
-  99% {
-    left: 0;
-  }
-}
-
-@keyframes tostart {
-  75% {
-    left: 0;
-  }
-  95% {
-    left: -300%;
-  }
-  98% {
-    left: -300%;
-  }
-  99% {
-    left: 0;
-  }
-}
-
-@keyframes snap {
-  96% {
-    scroll-snap-align: center;
-  }
-  97% {
-    scroll-snap-align: none;
-  }
-  99% {
-    scroll-snap-align: none;
-  }
-  100% {
-    scroll-snap-align: center;
-  }
-}
-
-* {
-  box-sizing: border-box;
-  scrollbar-color: transparent transparent; /* thumb and track color */
-  scrollbar-width: 0px;
-}
-
-*::-webkit-scrollbar {
-  width: 0;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: transparent;
-  border: none;
-}
-
-* {
-  -ms-overflow-style: none;
-}
-
-ol, li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .carousel {
-  position: relative;
-  
-  padding-top: 75%;
-  filter: drop-shadow(0 0 10px #0003);
-  perspective: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
 }
 
-.carousel__viewport {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.slides {
   display: flex;
   overflow-x: scroll;
-  counter-reset: item;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;  
 }
 
-.carousel__slide {
+.slides::-webkit-scrollbar {
+  display: none;
+}
+
+.slides-item {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 100px;
+  height: 600px;
+  justify-content: center;
+  margin: 0 1rem;
   position: relative;
-  flex: 0 0 100%;
+  scroll-snap-align: start;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform .5s;
   width: 100%;
-  background-image: url(../img/natureza.jpg);
-  counter-increment: item;
 }
 
-/*******************************************************imagem do slide 4 ***********************************************************/
-.carousel__slide:nth-child(even) {
-  background-image: url(../img/orgas.png);
+.carousel__nav {
+  padding: 1.25rem .5rem;
 }
 
-/*******************************************************texto do slide *************************************************************/
-.carousel__slide:before {
-  content: counter(item);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%,-40%,70px);
-  color: rgb(255, 255, 255);
-  font-size: 2em;
-}
-
-.carousel__snapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: center;
-}
-/*******************************************************config da animação *********************************************************/
-@media (hover: hover) {
-  .carousel__snapper {
-    animation-name: tonext, snap;
-    animation-timing-function: ease;
-    animation-duration: 0s;
-    animation-iteration-count: infinite;
-  }
-
-  .carousel__slide:last-child .carousel__snapper {
-    animation-name: tostart, snap;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel__snapper {
-    animation-name: none;
-  }
-}
-
-.carousel:hover .carousel__snapper,
-.carousel:focus-within .carousel__snapper {
-  animation-name: none;
-}
-
-.carousel__navigation {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-}
-
-.carousel__navigation-list,
-.carousel__navigation-item {
-  display: inline-block;
-}
-
-.carousel__navigation-button {
-  display: inline-block;
-  width: 1.5rem;
+.slider-nav {
+  align-items: center;
+  background-color: #ddd;
+  color: #000;
+  display: inline-flex;
   height: 1.5rem;
-  background-color: #333;
-  background-clip: content-box;
-  border: 0.25rem solid transparent;
-  border-radius: 50%;
-  font-size: 0;
-  transition: transform 0.1s;
+  justify-content: center;
+  padding: .5rem;
+  position: relative;
+  text-decoration: none;
+  width: 1.5rem;
 }
 
-.carousel::before,
-.carousel::after,
-.carousel__prev,
-.carousel__next {
+.slider-nav:hover,
+.slider-nav:active {
+  background-color: #000;
+  color: #fff;
+}
+
+.slide-1 {
+
+}
+
+.slide-2 {
+
+}
+
+.slide-3 {
+  background-color: #cdf;
+}
+
+.slide-4 {
+  background-color: #dca;
+}
+
+.slide-5 {
+  background-color: #ffc;
+}
+
+
+.carousel__skip-link {
+  height: 1px;
+  overflow: hidden;
   position: absolute;
-  top: 0;
-  margin-top: 37.5%;
-  width: 4rem;
-  height: 4rem;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  font-size: 0;
-  outline: 0;
+  top: auto;
+  width: 1px;
 }
 
-.carousel::before,
-.carousel__prev {
-  left: -1rem;
+.carousel__skip-link:focus {
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  opacity: .8;
+  width: 100%;
+  z-index: 10;
 }
 
-.carousel::after,
-.carousel__next {
-  right: -1rem;
-}
-
-.carousel::before,
-.carousel::after {
-  content: '';
-  z-index: 1;
-  background-color: #333;
-  background-size: 1.5rem 1.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  color: transparent;
-  font-size: 2.5rem;
-  line-height: 4rem;
-  text-align: center;
-  pointer-events: none;
-}
-
-/* imagem da seta do carrossel */
-.carousel::before {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
-}
-
-.carousel::after {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+.carousel__skip-message {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem;
+  width: 100%;
 }
 
 /* ********************************************************************************************************************************* */

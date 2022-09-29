@@ -61,7 +61,6 @@ if(isset($_SESSION['logado'])){
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;1,700&display=swap" rel="stylesheet">
     
     
-    
   </head>
 
   <!-- Título com o nome de usuário -->
@@ -70,20 +69,18 @@ if(isset($_SESSION['logado'])){
   <link rel="icon" type="image/x-icon" href="img/rockxaba_icon.png">
 
     <header>
-      <nav>
-        
-        <a class="logo" href="index.php">
-          <img width=100px; weight=100px; src= "img/rockxaba_icon.png"> </a> 
+      
+    <img class="logo" width=100px 10%; weight=100px 10%; src= "img/rockxaba_icon.png" alt="logo"> </a> 
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
         <ul class="nav-list">
-          <li><a href="index.php"><b>HOME</b></a></li>
-          <li><a href="about.php"><b>SOBRE</b></a></li>
-          <li><a href="artistas.php"><b>ARTISTAS</b></a></li>
-          <li><a href="follow.php"><b>SIGA-NOS</a></b></li>
+          <li><a href="index.php">HOME</a></li>
+          <li><a href="about.php">SOBRE</a></li>
+          <li><a href="artistas.php">ARTISTAS</a></li>
+          <li><a href="follow.php">SIGA-NOS</a></li>
 
 <?php if(!isset($_SESSION['logado'])): ?>
 
@@ -106,7 +103,6 @@ if(isset($_SESSION['logado'])){
   <?php endif; ?>
           </li>
         </ul>
-      </nav>
     </header>
 
 

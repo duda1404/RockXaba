@@ -30,67 +30,23 @@ if (isset($_GET['acao'])){
 ?>
 
    <!-- Seção do Slideshow-->
-<section class="carousel" aria-label="Gallery">
-  <ol class="carousel__viewport">
-    <li id="carousel__slide1"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-        <a href="#carousel__slide4"
-           class="carousel__prev">Go to last slide</a>
-        <a href="#carousel__slide2"
-           class="carousel__next">Go to next slide</a>
-      </div>
-    </li>
-    <li id="carousel__slide2"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"></div>
-      <a href="#carousel__slide1"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide3"
-         class="carousel__next">Go to next slide</a>
-    </li>
-    <li id="carousel__slide3"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"></div>
-      <a href="#carousel__slide2"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide4"
-         class="carousel__next">Go to next slide</a>
-    </li>
-    <li id="carousel__slide4"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"></div>
-      <a href="#carousel__slide3"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide1"
-         class="carousel__next">Go to first slide</a>
-    </li>
-  </ol>
-  <aside class="carousel__navigation">
-    <ol class="carousel__navigation-list">
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide1"
-           class="carousel__navigation-button">Go to slide 1</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide2"
-           class="carousel__navigation-button">Go to slide 2</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide3"
-           class="carousel__navigation-button">Go to slide 3</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide4"
-           class="carousel__navigation-button">Go to slide 4</a>
-      </li>
-    </ol>
-  </aside>
-</section>
+<section class="carousel" aria-label="carousel" Tabindex="0">
+  <a class="carousel__skip-link" href="#skip-link">Carousel überspringen</a>
+  <div class="slides">
+    <div class="slides-item slide-1" id="slide-1" aria-label="slide 1 of 5" tabindex="0"><img src="./img/orgas.png">1</div>      
+    <div class="slides-item slide-2" id="slide-2" aria-label="slide 2 of 5" tabindex="0"><img src="./img/dungeon_fest.png">2</div>
+    <div class="slides-item slide-3" id="slide-3" aria-label="slide 3 of 5" tabindex="0">3</div>
+    <div class="slides-item slide-4" id="slide-4" aria-label="slide 4 of 5" tabindex="0">4</div>
+    <div class="slides-item slide-5" id="slide-5" aria-label="slide 5 of 5" tabindex="0">5</div>       
+  </div>
+  <div class="carousel__nav">
+    <a class="slider-nav" href="#slide-1" aria-label="Go to slide 1"></a>
+    <a class="slider-nav" href="#slide-2" aria-label="Go to slide 2"></a>
+    <a class="slider-nav" href="#slide-3" aria-label="Go to slide 3"></a>
+    <a class="slider-nav" href="#slide-4" aria-label="Go to slide 4"></a>
+    <a class="slider-nav" href="#slide-5" aria-label="Go to slide 5"></a>
+  </div>
 
+</section>
 </body>
 </html>
