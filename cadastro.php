@@ -160,8 +160,6 @@ if (isset($_POST['btnentrar'])){
 
 /* Inclui a conexão com o Banco de Dados*/
 
-  include_once('config.php');
-
   $email =  $_POST['email'];
   $nome = $_POST['nome'];
 
@@ -171,26 +169,26 @@ if (isset($_POST['btnentrar'])){
 
   /* Faz uma consulta sql para verificar se o email e/ou o nome digitado pelo usuário já foi cadastrado ou não */
 
-  $verifica_sql = mysqli_query($connect, "SELECT * FROM usuario WHERE email_user = '$email' || nome_user = '$nome'");
+  $verifica_sql = pg_query($connect, "SELECT * FROM usuario WHERE email_user = '$email' and nome_user = '$nome' or email_user = '$email' or nome_user = '$nome'");
 
   /* Verifica se o resultado da consulta foi mais de 0, significando que o email e/ou o usuário já foi cadastrado, e informando o usuário sem cadastra-lo no banco de dados */
 
-    if(mysqli_num_rows($verifica_sql) > 0){
+    if(pg_num_rows($verifica_sql) > 0){
 
       /* Verificam separadamente se o email ou o nome de usuário já existem no banco de dados */
       
-      $verifica_email = mysqli_query($connect, "SELECT * FROM usuario WHERE email_user = '$email'");
-      $verifica_nome = mysqli_query($connect, "SELECT * FROM usuario WHERE nome_user = '$nome'");
+      $verifica_email = pg_query($connect, "SELECT * FROM usuario WHERE email_user = '$email'");
+      $verifica_nome = pg_query($connect, "SELECT * FROM usuario WHERE nome_user = '$nome'");
 
       /* Se o email já existe no banco de dados, informa ao usuário */
 
-      if (mysqli_num_rows($verifica_email)>0){
+      if (pg_num_rows($verifica_email)>0){
 
         echo 'Email já cadastrado!<br>';}
 
       /* Se o nome de usuário já existe no banco de dados, informa ao usuário */
 
-      if(mysqli_num_rows($verifica_nome)>0){
+      if(pg_num_rows($verifica_nome)>0){
 
         echo 'Nome de usuário não disponível!';
 
@@ -215,14 +213,12 @@ if (isset($_POST['btnentrar'])){
         $sit_user = 3;
         $data_add = date('Y-m-d H:i:s');
 
-
-        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SIT_USUARIO_id_sit, data_add_user) 
-        VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "','" . $data_add . "')";
-        $resultado = mysqli_query($connect,$sql);
+        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SITUACAO_id_sit, data_add_user) VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "','" . $data_add . "')";
+        $resultado = pg_query($connect, $sql);
 
         //fechando a conexão depois de armazenar os dados
 
-		    mysqli_close($connect);
+		    pg_close($connect);
 
         $emailEnvia = 'rockxaba027@gmail.com';
         $apelidoEnvia = 'RockXaba';
@@ -245,6 +241,7 @@ if (isset($_POST['btnentrar'])){
 
         /* Redireciona à página de Login se o cadastro é concluído sem erros e mostra uma mensagem informando que precisa confirmá-lo */
 
+       
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Cadastro concluído. Acesse sua caixa de email para confirmá-lo!');
         window.location.href='index.php'

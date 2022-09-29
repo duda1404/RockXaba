@@ -66,7 +66,7 @@ function limpaPost($valor)
 if (isset($_POST['btnentrar'])) {
 
 
-  $photo_name = mysqli_real_escape_string($connect, $_FILES["photo"]["name"]);
+  $photo_name = pg_escape_string($connect, $_FILES["photo"]["name"]);
   $photo_tmp_name = $_FILES["photo"]["tmp_name"];
   $photo_size = $_FILES["photo"]["size"];
   $photo_new_name = rand() . $photo_name;
@@ -74,7 +74,7 @@ if (isset($_POST['btnentrar'])) {
 
   $nome_artista = $_POST['nome_artista'];
   $link_play = $_POST['link_play'];
-  $dsc_artista = mysqli_real_escape_string($connect, $_POST["dsc_artista"]);
+  $dsc_artista = pg_escape_string($connect, $_POST["dsc_artista"]);
 
 
 
@@ -84,11 +84,11 @@ if (isset($_POST['btnentrar'])) {
 
   /* Faz uma consulta sql para verificar se o email e/ou o nome digitado pelo usuário já foi cadastrado ou não */
 
-  $verifica_sql = mysqli_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
+  $verifica_sql = pg_query($connect, "SELECT * FROM artista WHERE nome_artista = '$nome_artista'");
 
   /* Verifica se o resultado da consulta foi mais de 0, significando que o email e/ou o usuário já foi cadastrado, e informando o usuário sem cadastra-lo no banco de dados */
 
-  if (mysqli_num_rows($verifica_sql) > 0) {
+  if (pg_num_rows($verifica_sql) > 0) {
 
     echo 'Nome de usuário não disponível!';
   } else {
@@ -107,16 +107,16 @@ if (isset($_POST['btnentrar'])) {
       $dat_add_artista = date('Y-m-d H:i:s');
 
       $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user, dat_add_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "')";
-      $resultado = mysqli_query($connect, $sqlArtista);
+      $resultado = pg_query($connect, $sqlArtista);
 
-      $result = mysqli_query($connect, "SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");
+      $result = pg_query($connect, "SELECT id_artista FROM artista WHERE FK_USUARIO_id_user ='$id'");
 
-      $array = $result->fetch_assoc();
+      $array = pg_fetch_assoc($result);
 
       $id_artista_FK = $array['id_artista'];
 
       $sqlFotosArtista = "INSERT INTO foto_artista(photo_artista, FK_ARTISTA_id_artista) VALUES ('" . $photo_new_name . "', '" . $id_artista_FK . "')";
-      $sqlInsereDados = mysqli_query($connect, $sqlFotosArtista);
+      $sqlInsereDados = pg_query($connect, $sqlFotosArtista);
 
       move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
 
@@ -127,34 +127,34 @@ if (isset($_POST['btnentrar'])) {
 
         case 1:
          
-          $sqlComando1 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 1, '" . $id_artista_FK . "')");
+          $sqlComando1 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 1, '" . $id_artista_FK . "')");
          
           break;
         case 2:
       
-          $sqlComando2 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 2, '" . $id_artista_FK . "')");
+          $sqlComando2 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 2, '" . $id_artista_FK . "')");
           break;
         case 3:
           
-          $sqlComando3 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 3, '" . $id_artista_FK . "')");
+          $sqlComando3 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 3, '" . $id_artista_FK . "')");
           break;
         case 4:
           
-          $sqlComando4 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 4, '" . $id_artista_FK . "')");
+          $sqlComando4 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 4, '" . $id_artista_FK . "')");
           break;
         case 5:
 
-          $sqlComando5 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 5, '" . $id_artista_FK . "')");
+          $sqlComando5 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 5, '" . $id_artista_FK . "')");
           break;
         case 6:
 
-          $sqlComando6 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 6, '" . $id_artista_FK . "')");
+          $sqlComando6 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 6, '" . $id_artista_FK . "')");
 
           break;
 
           case 6:
 
-            $sqlComando6 = mysqli_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 7, '" . $id_artista_FK . "')");
+            $sqlComando6 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 7, '" . $id_artista_FK . "')");
   
             break;
       }

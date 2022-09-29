@@ -2,20 +2,14 @@
 
     /* Variáveis que referenciam o Banco de Dados (nome do Host, nome do user, senha do user e nome do banco de dados) */
 
-    $servername = 'localhost:3306';
-    $username = 'root';
-    $password = 'usbw';
-    $db_name = 'new_bd';
+    $servername = 'kesavan.db.elephantsql.com';
+    $username = 'jrngkpyd';
+    $password = '4_6AXCXvkopay3ZgpEABse8buFWXNJdI';
+    $db_name = 'jrngkpyd';
 
     /* Variável de conexão */
 
-    $connect = mysqli_connect($servername,$username,$password,$db_name);
+    $connect = pg_connect("host=$servername dbname=$db_name user=$username password=$password") or die ("Não foi possível conectar ao servidor PostGreSQL");
 
-    //codifica com o caracteres ao manipular dados do banco de dados
-    //mysqli_set_charset($connect, "utf8");
-    
-    if(mysqli_connect_error()):
-        echo "Falha na conexão: ". mysqli_connect_error();
-    endif;
     
 ?>

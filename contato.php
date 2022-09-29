@@ -86,11 +86,11 @@ if(isset($_POST['btnenviar'])){
   $id_user_FK = $dados['id_user'];
   $data = date('Y-m-d H:i:s');
   $suporteSql = "INSERT INTO suporte(dsc_msg, data_msg, FK_USUARIO_id_user) VALUES ('" . $mensagem . "','". $data. "','" . $id_user_FK . "')";
-  $incluiSuporte = mysqli_query($connect, $suporteSql);
+  $incluiSuporte = pg_query($connect, $suporteSql);
 
   //fechando a conexão depois de armazenar os dados
 
-  mysqli_close($connect);
+  pg_close($connect);
 		
 
 

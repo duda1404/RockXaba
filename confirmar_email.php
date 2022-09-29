@@ -15,22 +15,22 @@ if (!empty($chave)){
     id em um item do $array. Se existe algum id_user que preenche esses requisitos, muda a situação do usuário para 'Ativo'
     no Banco de Dados, e coloca sua chave como NULL (nula) para que não possa utilizá-la mais de uma vez, confirmando sua conta novamente */
 
-    $verifica_chave = mysqli_query($connect, "SELECT id_user FROM usuario WHERE chave_confirm = '$chave' LIMIT 1");
-    $array = $verifica_chave->fetch_assoc();
+    $verifica_chave = pg_query($connect, "SELECT id_user FROM usuario WHERE chave_confirm = '$chave' LIMIT 1");
+    $array = pg_fetch_assoc($verifica_chave);
 
-    if (mysqli_num_rows($verifica_chave)>0){
+    if (pg_num_rows($verifica_chave)>0){
 
         /* Update da situação do usuário de "Aguardando Confirmação" para "Ativo" */
 
-        $update = "UPDATE usuario SET FK_SIT_USUARIO_id_sit = 1  WHERE id_user = '".$array['id_user']."'";
-        $confirma_conta = mysqli_query($connect, $update);
+        $update = "UPDATE usuario SET FK_SITUACAO_id_sit = 1  WHERE id_user = '".$array['id_user']."'";
+        $confirma_conta = pg_query($connect, $update);
 
         $deleta_chave =  "UPDATE usuario SET chave_confirm = NULL WHERE id_user = '".$array['id_user']."'";
-        $deletando = mysqli_query($connect, $deleta_chave);
+        $deletando = pg_query($connect, $deleta_chave);
 
         //fechando a conexão depois de atualizar os dados
 
-		mysqli_close($connect);
+		pg_close($connect);
 
         if($confirma_conta){
 
