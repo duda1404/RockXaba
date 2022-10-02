@@ -29,142 +29,24 @@ if (isset($_GET['acao'])){
 
 ?>
 
-   <!-- Seção do Slideshow, sendo cada slide uma classe, e cada classe contendo uma imagem-->
-   <div class="carousel">
-  <div class="progress-bar progress-bar--primary hide-on-desktop">
-    <div class="progress-bar__fill"></div>
-  </div>
-
-<header class="main-post-wrapper">
-  
+   <!-- Seção do Slideshow-->
+<section class="carousel" aria-label="carousel" Tabindex="0">
+  <a class="carousel__skip-link" href="#skip-link">Carousel überspringen</a>
   <div class="slides">
-    <article class="main-post main-post--active">
-      <div class="main-post__image">
-        <img src="img/1.jpg" alt="New McLaren wind tunnel 'critical' to future performance, says Tech Director Key" />
-      </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">News</span>
-        </div>
-        <h1 class="main-post__title">New McLaren wind tunnel 'critical' to future performance, says Tech Director Key</h1>
-        <a class="main-post__link" href="#">
-              <span class="main-post__link-text">find out more</span>
-              <svg
-                class="main-post__link-icon main-post__link-icon--arrow"
-                width="37"
-                height="12"
-                viewBox="0 0 37 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-                  stroke="white"
-                />
-              </svg>
-            </a>
-      </div>
-    </article>
-    <article class="main-post main-post--not-active">
-      <div class="main-post__image">
-        <img src="img/2.jpg" alt="What To Watch For in the 2019 Hungarian Grand Prix" />
-      </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">Video</span>
-        </div>
-        <h1 class="main-post__title">What To Watch For in the 2019 Hungarian Grand Prix</h1>
-        <a class="main-post__link" href="#">
-              <svg
-                class="main-post__link-icon main-post__link-icon--play-btn"
-                width="30"
-                height="30"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="9"
-                  stroke="#C20000"
-                  stroke-width="2"
-                />
-                <path d="M14 10L8 6V14L14 10Z" fill="white" />
-              </svg>
-              <span class="main-post__link-text">play video</span>
-            </a>
-      </div>
-    </article>
-    <article class="main-post main-post--not-active">
-      <div class="main-post__image">
-        <img src="img/3.jpg" alt="Hamilton wants harder championship fight from Leclerc and
-            Verstappen" />
-      </div>
-      <div class="main-post__content">
-        <div class="main-post__tag-wrapper">
-          <span class="main-post__tag">News</span>
-        </div>
-        <h1 class="main-post__title">Hamilton wants harder championship fight from Leclerc and Verstappen
-        </h1>
-        <a class="main-post__link" href="#">
-              <span class="main-post__link-text">find out more</span>
-              <svg
-                class="main-post__link-icon main-post__link-icon--arrow"
-                width="37"
-                height="12"
-                viewBox="0 0 37 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-                  stroke="white"
-                />
-              </svg>
-            </a>
-      </div>
-    </article>
+    <div class="slides-item slide-1" id="slide-1" aria-label="slide 1 of 5" tabindex="0"><img src="./img/orgas.png">1</div>      
+    <div class="slides-item slide-2" id="slide-2" aria-label="slide 2 of 5" tabindex="0"><img src="./img/dungeon_fest.png">2</div>
+    <div class="slides-item slide-3" id="slide-3" aria-label="slide 3 of 5" tabindex="0">3</div>
+    <div class="slides-item slide-4" id="slide-4" aria-label="slide 4 of 5" tabindex="0">4</div>
+    <div class="slides-item slide-5" id="slide-5" aria-label="slide 5 of 5" tabindex="0">5</div>       
   </div>
-</header>
+  <div class="carousel__nav">
+    <a class="slider-nav" href="#slide-1" aria-label="Go to slide 1"></a>
+    <a class="slider-nav" href="#slide-2" aria-label="Go to slide 2"></a>
+    <a class="slider-nav" href="#slide-3" aria-label="Go to slide 3"></a>
+    <a class="slider-nav" href="#slide-4" aria-label="Go to slide 4"></a>
+    <a class="slider-nav" href="#slide-5" aria-label="Go to slide 5"></a>
+  </div>
 
-<div class="posts-wrapper hide-on-mobile">
-  <article class="post post--active">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">News</span>
-      <p class="post__published">16 August 2019</p>
-    </header>
-    <h2 class="post__title">New McLaren wind tunnel 'critical' to future performance, says Tech Director Key</h2>
-  </article>
-  <article class="post">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">Video</span>
-      <p class="post__published">12 August 2019</p>
-    </header>
-    <h2 class="post__title">What To Watch For in the 2019 Hungarian Grand Prix</h2>
-  </article>
-  <article class="post">
-    <div class="progress-bar">
-      <div class="progress-bar__fill"></div>
-    </div>
-    <header class="post__header">
-      <span class="post__tag">News</span>
-      <p class="post__published">08 August 2019</p>
-    </header>
-    <h2 class="post__title">Hamilton wants harder championship fight from Leclerc and Verstappen
-    </h2>
-  </article>
-</div>
-</div>
-<main style="min-height: 100vh; background: black;"></main>
-
-  <script type="text/javascript" src="js/script.js"></script>
-
+</section>
 </body>
 </html>

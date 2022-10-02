@@ -38,6 +38,8 @@ if(isset($_SESSION['logado'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+
+    
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900">
 
@@ -59,7 +61,6 @@ if(isset($_SESSION['logado'])){
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;1,700&display=swap" rel="stylesheet">
     
     
-    
   </head>
 
   <!-- Título com o nome de usuário -->
@@ -68,18 +69,18 @@ if(isset($_SESSION['logado'])){
   <link rel="icon" type="image/x-icon" href="img/rockxaba_icon.png">
 
     <header>
-      <nav>
-        <a class="logo" href="index.php">RockXaba</a> 
+      
+    <img class="logo" width=100px 10%; weight=100px 10%; src= "img/rockxaba_icon.png" alt="logo"> </a> 
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
         <ul class="nav-list">
-          <li><a href="index.php">Home</a></li>
-          <li><a href="about.php">Sobre</a></li>
-          <li><a href="artistas.php">Artistas</a></li>
-          <li><a href="follow.php">Siga-nos</a></li>
+          <li><a href="index.php">HOME</a></li>
+          <li><a href="about.php">SOBRE</a></li>
+          <li><a href="artistas.php">ARTISTAS</a></li>
+          <li><a href="follow.php">SIGA-NOS</a></li>
 
 <?php if(!isset($_SESSION['logado'])): ?>
 
@@ -102,7 +103,6 @@ if(isset($_SESSION['logado'])){
   <?php endif; ?>
           </li>
         </ul>
-      </nav>
     </header>
 
 
