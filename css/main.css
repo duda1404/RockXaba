@@ -5,7 +5,7 @@ header("Content-type: text/css");
 ?>
 /* O body das páginas que contém o background image*/
 
-.about, .follow, .contato, .login, .cadastro, .wrapper, .index{
+.follow, .contato, .login, .cadastro, .wrapper, .index{
   height: 100%;
   width:100%;
   margin: 0 auto;
@@ -302,7 +302,9 @@ nav {
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
-
+.about{
+  background-image:url(../img/bgsobre.png);
+}
 .about {
     width: 100%;
     padding: 20px 0px;
@@ -347,7 +349,7 @@ nav {
     letter-spacing: 1px;
     font-size: 18px;
     margin-bottom: 45px;
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Josefin Sans', sans-serif;
     text-align: justify;
 }
 
