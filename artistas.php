@@ -23,6 +23,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 					$id_artista = $rows['id_artista'];
 					$nome_artista = $rows['nome_artista'];
 					$photo = $rows['photo_artista'];
+					$dsc_artista = $rows['dsc_artista'];
 				?>
 
 		<ul class="caption-style-2">
@@ -33,7 +34,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 					<div class="blur"></div>
 					<div class="caption-text">
 						<h1><?php echo $nome_artista; ?></h1>
-						<p>Descrição</p>
+						<p><?php echo $dsc_artista; ?></p>
 					</div>
 				</div>
 				</a> 

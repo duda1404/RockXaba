@@ -21,8 +21,6 @@ $erroNome = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-
-
   /* VALIDA CAMPO USUÁRIO */
 
   /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */
@@ -106,7 +104,7 @@ if (isset($_POST['btnentrar'])) {
 
       $dat_add_artista = date('Y-m-d H:i:s');
 
-      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, FK_USUARIO_id_user, dat_add_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "')";
+      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, fk_usuario_id_user, dat_add_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "')";
       $resultado = pg_query($connect, $sqlArtista);
 
       $sqlCodeId = "SELECT id_artista FROM artista WHERE id_artista =(SELECT max(id_artista) FROM artista)";
@@ -123,46 +121,13 @@ if (isset($_POST['btnentrar'])) {
       move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
 
 
-      $seletor = $_POST[('meu-select')];
-
-      switch ($seletor) {
-
-        case 1:
-         
-          $sqlComando1 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 1, '" . $id_artista_FK . "')");
-         
-          break;
-        case 2:
-      
-          $sqlComando2 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 2, '" . $id_artista_FK . "')");
-          break;
-        case 3:
-          
-          $sqlComando3 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 3, '" . $id_artista_FK . "')");
-          break;
-        case 4:
-          
-          $sqlComando4 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 4, '" . $id_artista_FK . "')");
-          break;
-        case 5:
-
-          $sqlComando5 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 5, '" . $id_artista_FK . "')");
-          break;
-        case 6:
-
-          $sqlComando6 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 6, '" . $id_artista_FK . "')");
-
-          break;
-
-          case 6:
-
-            $sqlComando6 = pg_query($connect, "INSERT INTO artista_genero(FK_GENERO_id_gen, FK_ARTISTA_id_artista) VALUES ( 7, '" . $id_artista_FK . "')");
-  
-            break;
-      }
+    
+      /*
 
       header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
       exit();
+
+      */
 
       
       //fechando a conexão depois de armazenar os dados
