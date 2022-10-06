@@ -203,20 +203,6 @@ if (isset($_POST['btnentrar'])) {
     </label>
 
     <label class="form-group">
-
-      <select class="form-control" name="meu-select" <?php if (isset($_POST['generos'])) ?>>
-
-        <?php $sqlGeneros  = mysqli_query($connect, "SELECT id_gen, dsc_genero FROM genero"); ?>
-        <?php
-        while ($resultadoGeneros = pg_fetch_array($sqlGeneros)) { ?>
-          <option value="<?php echo $resultadoGeneros['id_gen']; ?>"><?php echo $resultadoGeneros['dsc_genero']; ?></option>
-        <?php } ?>
-      </select>
-
-      <span class="border"></span>
-    </label>
-
-    <label class="form-group">
       <input type="text" id="dsc_artista" name="dsc_artista" class="form-control" <?php if (isset($_POST['dsc_artista'])) ?> placeholder="Descrição" required>
 
       <span class="border"></span>
