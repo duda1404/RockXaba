@@ -8,12 +8,15 @@ function enviarComentario($connect) {
         $FK_USUARIO_id_user = pg_escape_string($connect, $_POST["FK_USUARIO_id_user"]);
         $date_coment = pg_escape_string($connect, $_POST["date_coment"]);
     
-        $sql = pg_query($connect, "INSERT INTO comentario_artista (dsc_coment, date_coment, FK_USUARIO_id_user, FK_ARTISTA_id_artista, FK_TIPO_COMENTARIO_id_tipo_coment	
+        $sql = pg_query($connect, "INSERT INTO comentario_artista (dsc_coment, date_coment, fk_usuario_id_user, fk_artista_id_artista, fk_tipo_comentario_id_tipo_coment	
         ) Values ('" . $mensagem . "','". $date_coment . "' ,'". $FK_USUARIO_id_user . "','". $id . "', 1)");
+
+        /*
         
         header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         exit();
     
+        */
        
     
     }

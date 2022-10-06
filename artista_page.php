@@ -67,8 +67,9 @@ no banco. */
                                 /* Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
                                 $resultadon = pg_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
                                 comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment
-                                 FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
-                                 WHERE usuario.id_user = comentario_artista.FK_USUARIO_id_user");
+                                FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.fk_usuario_id_user 
+                                WHERE usuario.id_user = comentario_artista.fk_usuario_id_user");
+                                
 
                                 while ($rows = pg_fetch_array($resultadon)) {
                                     $id_coment = $rows['id_coment'];
