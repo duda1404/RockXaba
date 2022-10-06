@@ -104,6 +104,9 @@ header('Location: login.php?acao=negado');
         
         <button class="profile-card__button button--orange"><a href="editar_perfil.php"> Editar Perfil</button>
       </div>
+      <div class="profile-card-ctr">
+        <button class="profile-card__button button--orange"><a href="deletar_conta.php"> Deletar Conta</button>
+      </div>
     </div>
 
     <div class="profile-card-message js-message">
