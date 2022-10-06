@@ -307,20 +307,20 @@ nav {
 }
 .about {
     width: 100%;
-    padding: 20px 0px;
+    padding: 5vh 0vw;
 }
 
-.about img{
-    height: auto;
-    width: 430px;
+.rockxabaicon{
+    height: 37vh;
+    width: 37vw;
 }
 
 .about-text{
-    width: 550px;
+    width: 100vw;
 }
 
 .main-about{
-    width: 1130px;
+    width: 70vw;
     max-width: 95%;
     margin: 0 auto;
     display: flex;
@@ -337,7 +337,7 @@ nav {
 }
 
 .about-text h2 span{
-    color: white;
+    color: rgb(255, 37, 201);
 }
 
 .about-text p span{
@@ -345,13 +345,42 @@ nav {
 }
 
 .about-text p{
-    line-height: 28px;
-    letter-spacing: 1px;
-    font-size: 18px;
-    margin-bottom: 45px;
+    line-height: 1.8vmax;
+    letter-spacing: 0.1vmax;
+    font-size: 1.5vmax;
+    margin-bottom: 1.5vmax;
     font-family:'Josefin Sans', sans-serif;
     text-align: justify;
 }
+/*************************************/
+.about-text  ul li{
+  display: inline-block;
+  list-style: none;
+  margin-left: 0.5vh;
+  max-width: 100%;
+  padding-top: 0.5vh;
+  padding-right: 5vh;    
+}
+
+.about img{
+height: auto;
+}
+
+.about img:hover{
+-moz-transform: scale(1.1);
+-webkit-transform: scale(1.1);
+transform: scale(1.1);
+}
+
+.about-text h2 span{
+color: white;
+}
+
+.waves-effect.waves-light
+{background-color: #d200f2;}
+/* ***************************************************** */
+
+
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
@@ -424,7 +453,13 @@ input.invalido{
 
 /* ***************************************************** */
 
-/* Página de Login */
+/* ********************************************************************************************************************************* */
+/* ********************************************************************************************************************************* */
+
+/* ************************************************************** LOGIN ************************************************************ */
+
+/* ********************************************************************************************************************************* */
+/* ********************************************************************************************************************************* */
 
 /* Muda a fonte do "Login" no formulário */
 
