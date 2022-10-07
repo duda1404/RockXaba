@@ -68,7 +68,9 @@ no banco. */
                                 $resultadon = pg_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
                                 comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment
                                  FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
-                                 WHERE usuario.id_user = comentario_artista.FK_USUARIO_id_user");
+                                 INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista
+                                 WHERE FK_ARTISTA_id_artista = $id");
+                                
 
                                 while ($rows = pg_fetch_array($resultadon)) {
                                     $id_coment = $rows['id_coment'];
@@ -100,7 +102,7 @@ no banco. */
                                             <div class="row">
                                                 <div class="col-8 d-flex">
                                                     <h5><?php echo $nome_userr ?></h5>
-                                                    <span>- 2 hours ago</span>
+                                                    <span> - <?php echo $date_coment ?></span>
                                                 </div>
                                                 <div class="col-4">
                                                 </div>
@@ -136,15 +138,15 @@ no banco. */
 
                                             <!--Caixa de respostas-->
                                             <div class="media mt-4">
-                                                <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a>
+                                                <!-- <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a> -->
                                                 <div class="media-body">
                                                     <div class="row">
                                                         <div class="col-12 d-flex">
-                                                            <h5>Simona Disa</h5>
-                                                            <span>- 3 hours ago</span>
+                                                            <h5></h5>
+                                                            <span></span>
                                                         </div>
                                                     </div>
-                                                    letters, as opposed to using 'Content here, content here', making it look like readable English.
+                                                    
                                                 </div>
                                             </div>
 

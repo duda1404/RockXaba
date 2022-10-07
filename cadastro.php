@@ -5,14 +5,13 @@ include 'header.php';
 /* Se existir a sessão logado (se o usuário já logou), volta para a página index, com o método ?acao=negado, para
   mostrar uma mensagem ao usuário informando que ele precisa sair do perfil para acessar o cadastro novamente */
 
-if(isset($_SESSION['logado'])){
+if (isset($_SESSION['logado'])) {
 
   header('Location: index.php?acao=negado');
-
-
 }
 
-/* Validação do formulário */  
+
+/* Validação do formulário */
 
 /* Inicialização de variáveis utilizadas na validação */
 
@@ -21,132 +20,112 @@ $erroNome = "";
 $erroSenha = "";
 $erroRepeteSenha = "";
 
-  if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    /* VALIDA CAMPO EMAIL */
+  /* VALIDA CAMPO EMAIL */
 
-    /* Verifica se o campo de email está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, preenche uma variável com uma mensagem pedindo seu preenchimento */  
-    if(empty($_POST['email'])){
+  /* Verifica se o campo de email está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, preenche uma variável com uma mensagem pedindo seu preenchimento */
+  if (empty($_POST['email'])) {
 
-        $erroEmail = "Por favor, informe um email";
+    $erroEmail = "Por favor, informe um email";
+  } else {
 
+    /* Recebe uma variável email que é preenchida com o que foi escrito no campo de email e chama a função limpaPost*/
+
+    $email = limpaPost($_POST['email']);
+
+    /* Verifica se o que foi digitado é um email válido ou não. Caso seja diferente de válido, coloca uma mensagem de erro dentro da variável $erroEmail */
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+      $erroEmail = "Email inválido!";
     }
-    
-    else{
-
-        /* Recebe uma variável email que é preenchida com o que foi escrito no campo de email e chama a função limpaPost*/
-
-        $email = limpaPost($_POST['email']);
-
-        /* Verifica se o que foi digitado é um email válido ou não. Caso seja diferente de válido, coloca uma mensagem de erro dentro da variável $erroEmail */
-
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-
-          $erroEmail = "Email inválido!";
-
-        }
-
-    }
-
-    /* VALIDA CAMPO USUÁRIO */
-
-    /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */  
-    if(empty($_POST['nome'])){
-
-        $erroNome = "Por favor, preencha o nome de usuário";
-
-    }
-    
-    else{
-
-        /* Recebe uma variável nome que é preenchida com o que foi escrito no campo de usuário e chama a função limpaPost*/
-
-        $nome = limpaPost($_POST['nome']);
-
-        /* Verifica se o que foi digitado é um texto válido ou não */
-        /* Preg_match - Verifica o que foi inserido na String (nome) e, caso alguma condição seja acionada (! - caso seja falsa), retorna true ou false)*/
-        /* Aceita letras minúsculas, maísculas de A até Z, números de 0-9, underline e exige começar com letra*/
-
-        if(!preg_match("/^[a-zA-Z][a-zA-Z\d_]*$/", $nome)){
-
-          $erroNome = "Apenas aceitamos nomes de usuário que possuam letras, números e underline!";
-
-        }
-
-    }
-
-    /* VALIDA CAMPO SENHA */
-
-    if(empty($_POST['senha'])){
-
-      $erroSenha = "Por favor, preencha sua senha";
-
   }
 
-    else{
+  /* VALIDA CAMPO USUÁRIO */
 
-          /* Recebe uma variável senha que é preenchida com o que foi escrito no campo de Senha e chama a função limpaPost*/
+  /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */
+  if (empty($_POST['nome'])) {
 
-          $senha = limpaPost($_POST['senha']);
+    $erroNome = "Por favor, preencha o nome de usuário";
+  } else {
 
-          /* Verifica se o que foi digitado é uma senha válida ou não */
-          /* strlen - verifica o tamanho da variável (senha) digitada*/
-          /* Caso a senha tenhos que 6 dígitos, emite uma mensagem de erro*/
-          
-          if(strlen($senha) < 6){
+    /* Recebe uma variável nome que é preenchida com o que foi escrito no campo de usuário e chama a função limpaPost*/
 
-              $erroSenha = "A senha precisa ter, no mínimo, 6 dígitos";
+    $nome = limpaPost($_POST['nome']);
 
+    /* Verifica se o que foi digitado é um texto válido ou não */
+    /* Preg_match - Verifica o que foi inserido na String (nome) e, caso alguma condição seja acionada (! - caso seja falsa), retorna true ou false)*/
+    /* Aceita letras minúsculas, maísculas de A até Z, números de 0-9, underline e exige começar com letra*/
+
+    if (!preg_match("/^[a-zA-Z][a-zA-Z\d_]*$/", $nome)) {
+
+      $erroNome = "Apenas aceitamos nomes de usuário que possuam letras, números e underline!";
+    }
+  }
+
+  /* VALIDA CAMPO SENHA */
+
+  if (empty($_POST['senha'])) {
+
+    $erroSenha = "Por favor, preencha sua senha";
+  } else {
+
+    /* Recebe uma variável senha que é preenchida com o que foi escrito no campo de Senha e chama a função limpaPost*/
+
+    $senha = limpaPost($_POST['senha']);
+
+    /* Verifica se o que foi digitado é uma senha válida ou não */
+    /* strlen - verifica o tamanho da variável (senha) digitada*/
+    /* Caso a senha tenhos que 6 dígitos, emite uma mensagem de erro*/
+
+    if (strlen($senha) < 6) {
+
+      $erroSenha = "A senha precisa ter, no mínimo, 6 dígitos";
     }
 
     /* VALIDA CAMPO REPETE SENHA */
 
-    if(empty($_POST['repeteSenha'])){
+    if (empty($_POST['repeteSenha'])) {
 
-        $erroRepeteSenha = "Por favor, preencha novamente sua senha";
-  
-    }
-  
-      else{
-  
-            /* Recebe uma variável repeteSenha que é preenchida com o que foi escrito no campo de repeteSenha e chama a função limpaPost*/
-  
-            $repeteSenha = limpaPost($_POST['repeteSenha']);
-  
-            /* Verifica se a senha digitada é igual à senha digitada no campo Senha, caso contrário, preenche a variável de erro com uma mensagem informando o problema*/
-            
-            if($repeteSenha != $senha){
-  
-                $erroRepeteSenha = "A senha está diferente da digitada anteriormente!";
-  
+      $erroRepeteSenha = "Por favor, preencha novamente sua senha";
+    } else {
+
+      /* Recebe uma variável repeteSenha que é preenchida com o que foi escrito no campo de repeteSenha e chama a função limpaPost*/
+
+      $repeteSenha = limpaPost($_POST['repeteSenha']);
+
+      /* Verifica se a senha digitada é igual à senha digitada no campo Senha, caso contrário, preenche a variável de erro com uma mensagem informando o problema*/
+
+      if ($repeteSenha != $senha) {
+
+        $erroRepeteSenha = "A senha está diferente da digitada anteriormente!";
       }
-        
-    } 
-  
-}
-
+    }
+  }
 }
 
 /* FUNÇÃO QUE IMPEDE A INSERÇÃO DE CÓDIGOS MALICIOSOS NO FORMULÁRIO */
 
-  /* Função que limpa o post (informação digitada pelo usuário) impedindo a inserção de códigos maliciosos no formulário*/
+/* Função que limpa o post (informação digitada pelo usuário) impedindo a inserção de códigos maliciosos no formulário*/
 
-  function limpaPost($valor){
-    
-    /* valor - variável qualquer digitada nos campos pelo usuário */
-    /* Tira os espaços em branco no início e no final de valor*/
-    $valor = trim($valor);
-     /* Tira as barras de valor*/
-    $valor = stripslashes($valor);
-     /* Tira caracteres especiais de html de valor*/
-     $valor = filter_var($valor, FILTER_SANITIZE_SPECIAL_CHARS);
-    return $valor;
+function limpaPost($valor)
+{
+
+  /* valor - variável qualquer digitada nos campos pelo usuário */
+  /* Tira os espaços em branco no início e no final de valor*/
+  $valor = trim($valor);
+  /* Tira as barras de valor*/
+  $valor = stripslashes($valor);
+  /* Tira caracteres especiais de html de valor*/
+  $valor = filter_var($valor, FILTER_SANITIZE_SPECIAL_CHARS);
+  return $valor;
 }
 
 
 /* Verifica se o formulário foi enviado, se sim, salva as informações no Banco de Dados */
 
-if (isset($_POST['btnentrar'])){
+if (isset($_POST['btnentrar'])) {
 
   /*
   echo "Email:" . $_POST['email'];
@@ -158,7 +137,7 @@ if (isset($_POST['btnentrar'])){
   echo "Repete Senha:" . $_POST['repeteSenha'] ; 
 */
 
-/* Inclui a conexão com o Banco de Dados*/
+  /* Inclui a conexão com o Banco de Dados*/
 
   $email =  $_POST['email'];
   $nome = $_POST['nome'];
@@ -173,89 +152,87 @@ if (isset($_POST['btnentrar'])){
 
   /* Verifica se o resultado da consulta foi mais de 0, significando que o email e/ou o usuário já foi cadastrado, e informando o usuário sem cadastra-lo no banco de dados */
 
-    if(pg_num_rows($verifica_sql) > 0){
+  if (pg_num_rows($verifica_sql) > 0) {
 
-      /* Verificam separadamente se o email ou o nome de usuário já existem no banco de dados */
-      
-      $verifica_email = pg_query($connect, "SELECT * FROM usuario WHERE email_user = '$email'");
-      $verifica_nome = pg_query($connect, "SELECT * FROM usuario WHERE nome_user = '$nome'");
+    /* Verificam separadamente se o email ou o nome de usuário já existem no banco de dados */
 
-      /* Se o email já existe no banco de dados, informa ao usuário */
+    $verifica_email = pg_query($connect, "SELECT * FROM usuario WHERE email_user = '$email'");
+    $verifica_nome = pg_query($connect, "SELECT * FROM usuario WHERE nome_user = '$nome'");
 
-      if (pg_num_rows($verifica_email)>0){
+    /* Se o email já existe no banco de dados, informa ao usuário */
 
-        echo 'Email já cadastrado!<br>';}
+    if (pg_num_rows($verifica_email) > 0) {
 
-      /* Se o nome de usuário já existe no banco de dados, informa ao usuário */
+      echo 'Email já cadastrado!<br>';
+    }
 
-      if(pg_num_rows($verifica_nome)>0){
+    /* Se o nome de usuário já existe no banco de dados, informa ao usuário */
 
-        echo 'Nome de usuário não disponível!';
+    if (pg_num_rows($verifica_nome) > 0) {
 
-      }
+      echo 'Nome de usuário não disponível!';
+    }
+  } else {
 
-}
-
-    else{
-
-      /* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
+    /* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
       da conta por email (envia um email pela biblioteca PHPMailer) */
 
-      if (($erroEmail == "") && ($erroNome == "") && ($erroSenha == "") && ($erroRepeteSenha == "")){
+    if (($erroEmail == "") && ($erroNome == "") && ($erroSenha == "") && ($erroRepeteSenha == "")) {
 
-        /* Gera uma chave criptografada com o email e a data para a confirmação do cadastro via email, pelo usuário */
+      /* Gera uma chave criptografada com o email e a data para a confirmação do cadastro via email, pelo usuário */
 
-        $chave = password_hash($_POST['email'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+      $chave = password_hash($_POST['email'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
 
-        /* Insere o cadastro do usuário no Banco de Dados */
+      /* Insere o cadastro do usuário no Banco de Dados */
 
-        $tipo_user = 1;
-        $sit_user = 3;
-        $data_add = date('Y-m-d H:i:s');
+      $tipo_user = 1;
+      $sit_user = 3;
+      $data_add = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SITUACAO_id_sit, data_add_user) VALUES ('" . $email . "','". $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "','" . $data_add . "')";
-        $resultado = pg_query($connect, $sql);
+      $sql = "INSERT INTO usuario(email_user, nome_user, senha_user, chave_confirm, FK_TIPO_USUARIO_codigo, FK_SITUACAO_id_sit, data_add_user) VALUES ('" . $email . "','" . $nome . "','" . $senha . "', '" . $chave . "', '" . $tipo_user . "', '" . $sit_user . "','" . $data_add . "')";
+      $resultado = pg_query($connect, $sql);
 
-        //fechando a conexão depois de armazenar os dados
+      //fechando a conexão depois de armazenar os dados
 
-		    pg_close($connect);
+      pg_close($connect);
 
-        $emailEnvia = 'rockxaba027@gmail.com';
-        $apelidoEnvia = 'RockXaba';
-        $emailRecebe = $_POST['email'];
-        $apelidoRecebe = $_POST['nome'];
+      $emailEnvia = 'rockxaba027@gmail.com';
+      $apelidoEnvia = 'RockXaba';
+      $emailRecebe = $_POST['email'];
+      $apelidoRecebe = $_POST['nome'];
 
-        $body = "<strong>Este email foi utilizado para a realização do cadastro no site RockXaba, </strong> 
+      $body = "<strong>Este email foi utilizado para a realização do cadastro no site RockXaba, </strong> 
         utilizando as seguintes informações: <br>
-        Nome: ".$_POST['nome']."<br>
-        Email: ".$_POST['email']."<br>
+        Nome: " . $_POST['nome'] . "<br>
+        Email: " . $_POST['email'] . "<br>
         Para confirmar seu cadastro, clique no link abaixo: <br>
         <a href='http://localhost/root/confirmar_email.php?chave=$chave'> Clique aqui </a>";
 
-        $assunto = 'Confirmando cadastro';
+      $assunto = 'Confirmando cadastro';
 
 
-        /* Inclui a página emails que enviará, por meio da biblioteca PHPMailer, um email para confirmação do cadastro */
+      /* Inclui a página emails que enviará, por meio da biblioteca PHPMailer, um email para confirmação do cadastro */
 
-        include 'emails.php';
+      include 'emails.php';
 
-        /* Redireciona à página de Login se o cadastro é concluído sem erros e mostra uma mensagem informando que precisa confirmá-lo */
+      $_SESSION['confirma_email'] = $email;
+      $_SESSION['confirma_nome'] = $nome;
+      $_SESSION['confirma_chave'] = $chave;
 
-       
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
+      /* Redireciona à página de Login se o cadastro é concluído sem erros e mostra uma mensagem informando que precisa confirmá-lo */
+
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Cadastro concluído. Acesse sua caixa de email para confirmá-lo!');
         window.location.href='index.php'
         </SCRIPT>");
-
-      }
-
+    }
   }
 }
 
 ?>
 
 <section class="cadastro">
-<form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+  <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
     <h1> Cadastro </h1>
 
@@ -265,16 +242,32 @@ if (isset($_POST['btnentrar'])){
     referente ao input, permitindo que a sombra do elemento fique vermelha -->
 
 
-    <input type="email" name="email" <?php if(!empty($erroEmail)){echo "class='invalido'";}?> <?php if(isset($_POST['email'])){echo "value='".$_POST['email']."'";} ?> placeholder="Email" required>
+    <input type="email" name="email" <?php if (!empty($erroEmail)) {
+                                        echo "class='invalido'";
+                                      } ?> <?php if (isset($_POST['email'])) {
+                                              echo "value='" . $_POST['email'] . "'";
+                                            } ?> placeholder="Email" required>
     <span class="erro"><?php echo $erroEmail; ?></span>
-    
-    <input type="text" name="nome" <?php if(!empty($erroNome)){echo "class='invalido'";}?> <?php if(isset($_POST['nome'])){echo "value='".$_POST['nome']."'";} ?> placeholder="Usuário" required>
+
+    <input type="text" name="nome" <?php if (!empty($erroNome)) {
+                                      echo "class='invalido'";
+                                    } ?> <?php if (isset($_POST['nome'])) {
+                                            echo "value='" . $_POST['nome'] . "'";
+                                          } ?> placeholder="Usuário" required>
     <span class="erro"><?php echo $erroNome; ?></span>
 
-    <input type="password" name="senha" <?php if(!empty($erroSenha)){echo "class='invalido'";}?> <?php if(isset($_POST['senha'])){echo "value='".$_POST['senha']."'";} ?> placeholder="Senha" required>
+    <input type="password" name="senha" <?php if (!empty($erroSenha)) {
+                                          echo "class='invalido'";
+                                        } ?> <?php if (isset($_POST['senha'])) {
+                                                echo "value='" . $_POST['senha'] . "'";
+                                              } ?> placeholder="Senha" required>
     <span class="erro"><?php echo $erroSenha; ?></span>
 
-    <input type="password" name="repeteSenha" <?php if(!empty($erroRepeteSenha)){echo "class='invalido'";}?> <?php if(isset($_POST['repeteSenha'])){echo "value='".$_POST['repeteSenha']."'";} ?> placeholder="Repita a senha" required>
+    <input type="password" name="repeteSenha" <?php if (!empty($erroRepeteSenha)) {
+                                                echo "class='invalido'";
+                                              } ?> <?php if (isset($_POST['repeteSenha'])) {
+                                                      echo "value='" . $_POST['repeteSenha'] . "'";
+                                                    } ?> placeholder="Repita a senha" required>
     <span class="erro"><?php echo $erroRepeteSenha; ?></span><br>
 
     <br><input type="checkbox" name="" id="op_email">
@@ -285,9 +278,9 @@ if (isset($_POST['btnentrar'])){
       <input class="button" type="button" name="voltar_login" value="Voltar">
     </a>
 
-    </form>
+  </form>
   <section>
-</body>
+    </body>
 
 
-</html>
+    </html>

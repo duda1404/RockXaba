@@ -10,6 +10,6 @@
     /* Variável de conexão */
 
     $connect = pg_connect("host=$servername dbname=$db_name user=$username password=$password") or die ("Não foi possível conectar ao servidor PostGreSQL");
-
+    
     
 ?>
