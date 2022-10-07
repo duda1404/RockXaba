@@ -248,11 +248,13 @@ nav {
 }
 
 .slide-1 {
-
+  height: auto;
+  width: auto;
 }
 
 .slide-2 {
-
+  height: auto;
+  width: auto;
 }
 
 .slide-3 {
@@ -1464,12 +1466,7 @@ p{
   margin: 25px;  
   border:2px solid #5500ff;
 } 
-img:hover{
-  filter: grayscale(100%);
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
+
 h3{
   padding: 15px; 
   
