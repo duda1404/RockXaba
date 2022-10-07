@@ -11,12 +11,12 @@ function enviarComentario($connect) {
         $sql = pg_query($connect, "INSERT INTO comentario_artista (dsc_coment, date_coment, fk_usuario_id_user, fk_artista_id_artista, fk_tipo_comentario_id_tipo_coment	
         ) Values ('" . $mensagem . "','". $date_coment . "' ,'". $FK_USUARIO_id_user . "','". $id . "', 1)");
 
-        /*
+        
         
         header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
         exit();
     
-        */
+        
        
     
     }
