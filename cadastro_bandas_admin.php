@@ -95,7 +95,7 @@ if (isset($_POST['btnentrar'])) {
 
     if (($erroNome == "")) {
 
-      
+
       /* Gera uma chave criptografada
      com o email e a data para a confirmação do cadastro via email, pelo usuário */
 
@@ -121,7 +121,7 @@ if (isset($_POST['btnentrar'])) {
       move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
 
 
-    
+
       /*
 
       header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
@@ -129,7 +129,7 @@ if (isset($_POST['btnentrar'])) {
 
       */
 
-      
+
       //fechando a conexão depois de armazenar os dados
 
 
