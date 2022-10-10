@@ -21,6 +21,7 @@ include 'header.php';
 	</div>
 
 	<div class="container-a2">
+	<ul class="caption-style-2">
 		<?php
 		/*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
@@ -34,17 +35,9 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 			$dsc_artista = $rows['dsc_artista'];
 		?>
 
-			<ul class="caption-style-2">
 				<li>
 					<a href="artista_page.php?myid=<?php echo $id_artista; ?>" target="new window">
-						<img src="uploads/<?php echo $photo; ?>" alt="" title="<?php echo $nome_artista; ?>" />
-						<div class="caption">
-							<div class="blur"></div>
-							<div class="caption-text">
-								<h1><?php echo $nome_artista; ?></h1>
-								<p><?php echo $dsc_artista; ?></p>
-							</div>
-						</div>
+						<img src="uploads/<?php echo $photo; ?>" class="testando" alt="" title="<?php echo $nome_artista; ?>" />
 					</a>
 				</li>
 			<?php

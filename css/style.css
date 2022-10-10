@@ -268,11 +268,14 @@ textarea.form-control {
 }
 
 .container-a2{
-  padding:20px 100px;}
+  padding:20px 100px;
+ 
+}
 
 .container-a2 img {
   height: 400px; 
 width: 350px;
+margin: 0px;
 max-width: 100%; 
 
 
@@ -287,12 +290,23 @@ h1,h2,h3,h4{
   list-style-type: none;
   margin: 0px;
   padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
   
+  
+}
+.caption-style-2 a{
+
+  box-sizing: content-box;
 }
 
 .caption-style-2 li{
   float: left;
   padding: 0px;
+  box-sizing: border-box;
+ 
   position: relative;
   overflow: hidden;
 }
@@ -310,47 +324,13 @@ h1,h2,h3,h4{
 
 .caption-style-2 img{
   margin: 0px;
-  padding: 30px;
+  padding: 0;
+  width: 20vmax;  
+  height: 20vmax;
   float: left;
+  border: 5px solid #3b3a3a;
   z-index: 4;
 }
-
-
-.caption-style-2 .caption{
-  cursor: pointer;
-  position: absolute;
-  opacity: 0;
-  top:300px;
-  -webkit-transition:all 0.15s ease-in-out;
-  -moz-transition:all 0.15s ease-in-out;
-  -o-transition:all 0.15s ease-in-out;
-  -ms-transition:all 0.15s ease-in-out;
-  transition:all 0.15s ease-in-out;
-
-}
-.caption-style-2 .blur{
-  background-color: rgba(0,0,0,0.7);
-  height: 400px; 
-  width: 350px;
-  z-index: 5;
-  position: absolute;
-}
-
-.caption-style-2 .caption-text h1{
-  text-transform: uppercase;
-  font-size: 18px;
-}
-.caption-style-2 .caption-text{
-  z-index: 10;
-  color: #fff;
-  position: absolute;
-  height: 400px; 
-  width: 350px;
-  text-align: center;
-  top:20px;
-}
-
-
 
 /** content **/
 .content{
@@ -401,11 +381,6 @@ p a{
 
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
-
-
-
-
-
 
 
 
