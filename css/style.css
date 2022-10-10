@@ -332,6 +332,15 @@ h1,h2,h3,h4{
   z-index: 4;
 }
 
+.caption-style-2 img:hover{
+
+  border-image: linear-gradient(#c850c0, #4158d0) 30;
+border-width: 4px;
+border-style: solid;
+
+
+}
+
 /** content **/
 .content{
   margin-top: 100px;
