@@ -323,6 +323,8 @@ h1,h2,h3,h4{
 
 
 .caption-style-2 img{
+
+
   margin: 0px;
   padding: 0;
   width: 20vmax;  
@@ -334,51 +336,48 @@ h1,h2,h3,h4{
 
 .caption-style-2 img:hover{
 
-  border-image: linear-gradient(#c850c0, #4158d0) 30;
+  border-image: linear-gradient(60deg,#c850c0, #0099f9) 30;
   border-width: 5px;
   border-style: solid;
 
 
 }
 
+
+
 /** content **/
+
+
 .content{
-  margin-top: 100px;
-  margin-left: 100px;
-  width: 700px;
-}
-.content h1, .content h2{
-  font-family: "Source Sans Pro",sans-serif;
-  color: #ecf0f1;
-  padding: 0px;
-  margin: 0px;
-  font-weight: normal;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  
 }
 
-.content h1{
-  font-weight: 900;
-  font-size: 64px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
-.content h2{
-  font-size:26px;
-}
+.content h3{
 
-.content p{
-  color: #ecf0f1;
-  font-family: "Lato";
-  line-height: 28px;
-  font-size: 15px;
-  padding-top: 50px;
-}
+  background-color: #0099f9;
+  color: #0d0d0d;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-bottom: 8vmax;
+  padding-top: 2vmax;
+  width: 40vmax;
+  height: 8vmax;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 6vmax; 
+  text-align: center;
+  box-shadow: 0px 4px 4px 0px #0099f9;
+ 
 
-p.credit{
-  padding-top: 20px;
-  font-size: 12px;
-}
 
-p a{
-  color: #ecf0f1;
 }
 
 /** fork icon**/
