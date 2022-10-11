@@ -70,7 +70,12 @@ if (isset($_SESSION['logado'])) {
 
     <?php if (!isset($_SESSION['logado'])) : ?>
 
-      <li class="dropbtn"><a href="login.php">Fazer login</a></li>
+    </ul>
+    <ul class="nav-list-entrar">
+
+      <li class="dropbtn"><a href="login.php"> ENTRAR </a></li>
+
+    </ul>
 
     <?php elseif (isset($_SESSION['logado'])) :  ?>
 

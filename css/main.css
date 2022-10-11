@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+
 /*<?php
 // Define que o arquivo terá a codificação de saída no formato CSS
 header("Content-type: text/css");
@@ -33,33 +36,89 @@ header("Content-type: text/css");
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
 header{
-  overflow:visible;
+  overflow: visible;
   background-color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 10px;
+  padding: 10px 5px;
   transition: 0.4s;
+  display: -webkit-box;
+  
+}
+
+.nav-list-entrar{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+
+}
+
+.dropbtn{
+
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: lighter;
+  font-size: xx-large;
+  background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-right: 1vmax;
+  
+  
+
+
+}
+
+
+
+.nav-list{
+  
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0 auto;
+  list-style: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+ 
+
+
+}
+
+.logo, .nav-list, .nav-list-entrar{
+
+  justify-content: space-evenly;
+  
 }
 
 .logo{
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .nav-list ul {
+
   display: flex;
-  align-items: center;
-  padding: 0px 20px;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-left: 12vmax;
+  justify-content: center;
+  
+  
+
 }
 
 
-.nav-list a {
-  transition: all o.3s ease 0s;
+
+.nav-list a:hover {
+  border-bottom: 8px solid #7974d8;
+  color: white;
+  padding-bottom: 3.4vmax;
+  animation: none;
+  transition: none;
+ 
 }
 
-.nav-list a :hover {
-  transition: all o.3s ease 0s;
-}
+
 .dropdown{
   position:absolute;
   overflow:visible;
@@ -86,11 +145,6 @@ a {
   transition: 0.3s;
 }
 
-a:hover {
-
-  color: #fb9afc;
-    
-}
 
 .logo {
   font-size: 24px;
@@ -109,14 +163,18 @@ nav {
   height: 13vh;
 }
 
+
 .nav-list {
   list-style: none;
   display: flex;
+  margin-left: 27.5vmax;
+ 
 }
 
 .nav-list li {
   letter-spacing: 3px;
   margin-left: 32px;
+  margin-right: 32px;
 }
 
 .mobile-menu {
@@ -132,58 +190,9 @@ nav {
   transition: 0.3s;
 }
 
-@media (max-width: 999px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-list {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    width: 50vw;
-    height: 92vh;
-    background: #23232e;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in;
-  }
-  .nav-list li {
-    margin-left: 0;
-    opacity: 0;
-  }
-  .mobile-menu {
-    display: block;
-  }
-}
 
-.nav-list.active {
-  transform: translateX(0);
-}
 
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-.mobile-menu.active .line1 {
-  transform: rotate(-45deg) translate(-8px, 8px);
-}
-
-.mobile-menu.active .line2 {
-  opacity: 0;
-}
-
-.mobile-menu.active .line3 {
-  transform: rotate(45deg) translate(-5px, -7px);
-}
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
@@ -1057,14 +1066,7 @@ input.invalido{
 /* Estilização do Menu Dropdown */
 
 
-.dropbtn {
-  
-  font-family: 'Staatliches';
-  color: white;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
+
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -1528,7 +1530,6 @@ p{
   --darkgray: #010101;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 select {
   /* Reset Select */
@@ -1579,7 +1580,7 @@ select::-ms-expand {
 .searchform input[type=search] { 
 
 
-  font: 1em/1.618 Open Sans, Arial, Sans-serif;
+  font: 1em/1.618 'Josefin Sans', sans-serif;
   border: .125em solid linear-gradient(60deg,#c850c0, #0099f9) 30;
   border-width: 0 0 3px;
   background-color: transparent;
