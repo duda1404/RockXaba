@@ -1178,15 +1178,6 @@ a, a:hover {
   text-decoration: none;
 }
 
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-
 .wrapper {
   width: 100%;
   width: 100%;
@@ -1195,6 +1186,7 @@ a, a:hover {
   padding: 50px 20px;
   padding-top: 100px;
   display: flex;
+  background-image: url(../img/bgcontactus.png);
 
 }
 @media screen and (max-width: 768px) {
@@ -1207,12 +1199,11 @@ a, a:hover {
 
 .profile-card {
   width: 100%;
-  min-height: 460px;
+  min-height: 600px;
   margin: auto;
-  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
-  background: rgb(0, 0, 0);
-  border-radius: 12px;
-  max-width: 700px;
+  background-image: -webkit-linear-gradient(10deg,#c850c0, #0099f9);
+  border-radius: 50px;
+  max-width: 900px;
   position: relative;
 }
 .profile-card.active .profile-card__cnt {
@@ -1238,7 +1229,7 @@ a, a:hover {
   overflow: hidden;
   position: relative;
   z-index: 4;
-  box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
+  box-shadow: 0px 5px 25px 0px #0099f9, 0px 0px 0px 7px #0099f9;
 }
 @media screen and (max-width: 576px) {
   .profile-card__img {
@@ -1256,132 +1247,52 @@ a, a:hover {
 .profile-card__cnt {
   margin-top: -35px;
   text-align: center;
+  justify-content: center;
   padding: 0 20px;
   padding-bottom: 40px;
   transition: all 0.3s;
 }
+
 .profile-card__name {
-  font-weight: 700;
-  font-size: 24px;
-  color: #6944ff;
-  margin-bottom: 15px;
+  
+  border-radius: 20px;
+  background: rgba(123,65,139,0.5);
+  backdrop-filter: blur(2px);
+  color: rgba(114,43,111,225);
+  height: 3vmax;
+  width: 25vmax;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 2vmax;
 }
+
+#nome-perfil{
+
+  padding-top: 4px;
+  font-weight: 200;
+  font-size: 18px;
+  color: rgba(114,43,111,225);
+  
+}
+
 .profile-card__txt {
-  font-size: 18px;
+  font-size: 15px;
+  padding: 1vmax;
+  border-radius: 20px;
   font-weight: 500;
-  color: #324e63;
-  margin-bottom: 15px;
+  background: rgba(123,65,139,0.5);
+  backdrop-filter: blur(2px);
+  color: rgba(114,43,111,225);
+  margin: 0 auto;
+  margin-left: 12vmax;
+  margin-right: 12vmax;
 }
-.profile-card__txt strong {
-  font-weight: 700;
-}
-.profile-card-loc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 600;
-}
-.profile-card-loc__icon {
-  display: inline-flex;
-  font-size: 27px;
-  margin-right: 10px;
-}
-.profile-card-inf {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin-top: 35px;
-}
-.profile-card-inf__item {
-  padding: 10px 35px;
-  min-width: 150px;
-}
-@media screen and (max-width: 768px) {
-  .profile-card-inf__item {
-    padding: 10px 20px;
-    min-width: 120px;
-  }
-}
-.profile-card-inf__title {
-  font-weight: 700;
-  font-size: 27px;
-  color: #324e63;
-}
-.profile-card-inf__txt {
-  font-weight: 500;
-  margin-top: 7px;
-}
-.profile-card-social {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.profile-card-social__item {
-  display: inline-flex;
-  width: 55px;
-  height: 55px;
-  margin: 15px;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  background: #405de6;
-  box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
-  position: relative;
-  font-size: 21px;
-  flex-shrink: 0;
-  transition: all 0.3s;
-}
-@media screen and (max-width: 768px) {
-  .profile-card-social__item {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .profile-card-social__item:hover {
-    transform: scale(1.2);
-  }
-}
-.profile-card-social__item.facebook {
-  background: linear-gradient(45deg, #3b5998, #0078d7);
-  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
-}
-.profile-card-social__item.twitter {
-  background: linear-gradient(45deg, #1da1f2, #0e71c8);
-  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
-}
-.profile-card-social__item.instagram {
-  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
-}
-.profile-card-social__item.behance {
-  background: linear-gradient(45deg, #1769ff, #213fca);
-  box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
-}
-.profile-card-social__item.github {
-  background: linear-gradient(45deg, #333333, #626b73);
-  box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
-}
-.profile-card-social__item.codepen {
-  background: linear-gradient(45deg, #324e63, #414447);
-  box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
-}
-.profile-card-social__item.link {
-  background: linear-gradient(45deg, #d5135a, #f05924);
-  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
-}
-.profile-card-social .icon-font {
-  display: inline-flex;
-}
+
+
 .profile-card-ctr {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 40px;
 }
@@ -1390,85 +1301,45 @@ a, a:hover {
     flex-wrap: wrap;
   }
 }
-.profile-card__button {
-  background: none;
+
+#edita-perfil{
+
   border: none;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 700;
-  font-size: 19px;
-  margin: 15px 35px;
-  padding: 15px 40px;
-  min-width: 201px;
-  border-radius: 50px;
-  min-height: 55px;
-  color: #fff;
-  cursor: pointer;
-  backface-visibility: hidden;
-  transition: all 0.3s;
+  background: none;
+  
+
 }
-@media screen and (max-width: 768px) {
-  .profile-card__button {
-    min-width: 170px;
-    margin: 15px 25px;
-  }
+
+#edita-perfil a{
+
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+
+
 }
-@media screen and (max-width: 576px) {
-  .profile-card__button {
-    min-width: inherit;
-    margin: 0;
-    margin-bottom: 16px;
-    width: 100%;
-    max-width: 300px;
-  }
-  .profile-card__button:last-child {
-    margin-bottom: 0;
-  }
+
+#deleta-conta{
+
+  border: none;
+  background: none;
+
 }
-.profile-card__button:focus {
-  outline: none !important;
+
+#deleta-conta a{
+
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+
+
 }
-@media screen and (min-width: 768px) {
-  .profile-card__button:hover {
-    transform: translateY(-5px);
-  }
+
+.seguranca{
+
+  width: 30px;
+  height: 30px;
 }
-.profile-card__button:first-child {
-  margin-left: 0;
-}
-.profile-card__button:last-child {
-  margin-right: 0;
-}
-.profile-card__button.button--blue {
-  background: linear-gradient(45deg, #1da1f2, #0e71c8);
-  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
-}
-.profile-card__button.button--blue:hover {
-  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
-}
-.profile-card__button.button--orange {
-  background: linear-gradient(45deg, #d5135a, #f05924);
-  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
-}
-.profile-card__button.button--orange:hover {
-  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
-}
-.profile-card__button.button--gray {
-  box-shadow: none;
-  background: #dcdcdc;
-  color: #142029;
-}
-.profile-card-message {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 130px;
-  padding-bottom: 100px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
+
+
 .profile-card-form {
   box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
   max-width: 80%;
@@ -1503,24 +1374,7 @@ a, a:hover {
     flex-wrap: wrap;
   }
 }
-.profile-card textarea {
-  width: 100%;
-  resize: none;
-  height: 210px;
-  margin-bottom: 20px;
-  border: 2px solid #dcdcdc;
-  border-radius: 10px;
-  padding: 15px 20px;
-  color: #324e63;
-  font-weight: 500;
-  font-family: "Quicksand", sans-serif;
-  outline: none;
-  transition: all 0.3s;
-}
-.profile-card textarea:focus {
-  outline: none;
-  border-color: #8a979e;
-}
+
 .profile-card__overlay {
   width: 100%;
   height: 100%;
@@ -1534,14 +1388,170 @@ a, a:hover {
   transition: all 0.3s;
 }
 
+.seguindo-notificacoes{
 
-
-
-
-
-input[type="file"] {
-  display: none;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  height: 450px;
+  margin-top: 2vmax;
 }
+
+.artistas-seguidos{
+  width: 100%;
+  
+}
+
+.caixa-notificacoes{
+
+  background: rgba(123,65,139,0.4);
+  backdrop-filter: blur(2px);
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  padding: 1vmax;
+  overflow-y: scroll;
+
+}
+
+.notificacao{
+
+
+  background: rgba(51,62,110,0.7);
+  backdrop-filter: blur(2px);
+  height: 80px;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 60px;
+  margin-bottom: 2vmax;
+  padding: 1vmax;
+
+
+}
+
+#texto-notificacao{
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-size: 14px;
+  
+}
+
+.notificacoes{
+
+  width: 100%;
+  
+ 
+}
+
+#titulo-notificacoes{
+
+  margin: 0;
+  color: white;
+  font-size: 25px;
+  font-weight: 100;
+  
+}
+
+#titulo-artistas-seguidos{
+
+  margin: 0;
+  color: white;
+  font-size: 25px;
+  font-weight: 100;
+
+}
+
+#artistas-logo-seguidos{
+
+  border: 5px solid #3b3a3a;
+  width: 350px;
+  height: 350px;
+
+
+}
+
+.ativa-desativa-notificacoes{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+#notificacoes-switch-texto{
+
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
 
 /***************  BANDAS E ARTISTAS   **************/
 
@@ -1580,7 +1590,7 @@ p{
 
 
 :root {
-  --background-gradient: linear-gradient(30deg, #fd0e0e 30%, #ee0606);
+
   --gray: #010101;
   --darkgray: #010101;
 }
