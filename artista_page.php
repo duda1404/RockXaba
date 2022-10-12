@@ -37,7 +37,9 @@ no banco. */
                     <p class="curtidas"> 145 curtidas </p>
                 </div>
                 <div class="seguir-curtir">
-                    <img id="curtida" src="" class="curtida-seguir" alt="Botão de curtida">
+                    <a id="curtida" href="" class="curtida-seguir">
+                        <img id="curtida" src="img/guitar-pick.svg" width="35px" height="45px" class="curtida-seguir" alt="Botão de curtida">
+                    </a>
                     <button id="seguir" class="curtida-seguir"> SEGUIR </button>
                 </div>
                 <div class="generos">

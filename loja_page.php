@@ -6,24 +6,22 @@ include 'header.php';
 
 <body class="body_caption">
 
+<?php 
 
-	<div class="content">
-		<h3 id="titulo-lojas"> LOJAS </h3>
-	</div>
+$id = $_GET["myid"];
 
-	<div class="artista-buscar-filtrar">
-		<form class=" clearfix searchform">
-			<label for="search-box">
-				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
-			</label>
-			<input type="search" id="search-box" placeholder="Buscar loja de artistas, bandas..." />
-		</form>
-		<div class="select">
-			<select name="ORDENAR">
-				<option selected disabled value="1">ORDENAR: </option>
-				<option value="2">ORDENAR: A-Z</option>
-			</select>
-		</div>
+$nome_query = pg_query($connect, "select nome_artista from artista where $id = id_artista");
+
+$arrayNome = pg_fetch_array($nome_query);
+
+$nome = $arrayNome['nome_artista'];
+
+
+?>
+
+	<div class="content" id="loja-nome">
+		<h3 id="titulo-loja-artista"> LOJA </h3>
+        <h1 id="nome-loja-artista"><?php echo $nome; ?> </h1>
 	</div>
 
 	<div class="container-a2">
@@ -42,7 +40,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 			?>
 
 				<li>
-					<a href="loja_page.php?myid=<?php echo $id_artista; ?>" target="new window">
+					<a href="artista_page.php?myid=<?php echo $id_artista; ?>" target="new window">
 						<img src="uploads/<?php echo $photo; ?>" class="testando" alt="" title="<?php echo $nome_artista; ?>" />
 					</a>
 				</li>

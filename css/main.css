@@ -143,15 +143,39 @@ header{
   margin-left: 9vmax;
 }
 
-/* LOJAS */
+/* LOJAS E LOJA */
 
 #titulo-lojas{
 
   background-color: #7572d9;
   box-shadow: 0px 4px 4px 0px #7572d9;
-  width: 26vmax;
+  width: 24vmax;
+  margin-bottom: 8%;
 
 
+
+}
+
+#titulo-loja-artista{
+
+  background-color: #7572d9;
+  box-shadow: 0px 4px 4px 0px #7572d9;
+  width: 24vmax;
+  margin-bottom: 3vmax;
+
+}
+
+#loja-nome{
+
+  flex-direction: column;
+  margin-bottom: 3vmax;
+}
+
+#nome-loja-artista{
+
+  color: #7572d9;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 8vmax;
 
 }
 
@@ -1736,7 +1760,7 @@ select::-ms-expand {
   display: flex;
   flex-direction: row;
   justify-content: center;
-
+  align-items: center;
 
 
 }
