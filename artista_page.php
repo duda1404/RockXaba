@@ -65,8 +65,8 @@ no banco. */
 
         </div>
 
-        <!--Sessão de enviar comentários-->
-        <div class="container mb-5 mt-5">
+       <!--Sessão de enviar comentários-->
+       <div class="container mb-5 mt-5">
             <div class="card">
                 <div class="row">
                     <div class="col-md-12">
@@ -92,7 +92,7 @@ no banco. */
                                 comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment
                                  FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
                                  INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista
-                                 WHERE FK_ARTISTA_id_artista = $id");
+                                 WHERE FK_ARTISTA_id_artista = $id and reply_of is null");
 
 
                                 while ($rows = pg_fetch_array($resultadon)) {
@@ -100,7 +100,6 @@ no banco. */
                                     $nome_userr = $rows['nome_user'];
                                     $photo_user = $rows['photo_user'];
                                     $coment = $rows['dsc_coment'];
-
                                     $date_coment = $rows['date_coment'];
                                 ?>
 
@@ -147,9 +146,6 @@ no banco. */
 
                                                     </form>
 
-
-
-
                                                 </div>
                                                 <div class="ulala">
                                                     <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Responder</button>
@@ -158,29 +154,95 @@ no banco. */
                                                 </div>
 
                                             </div>
+                                            
+                                            <?php
+                                            $resultado_reply = pg_query($connect, "WITH RECURSIVE tree AS 
+                                            ( select
+            comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment, comentario_artista.reply_of, 
+            lpad(id_coment::text, 2, '0') as path, usuario.nome_user, usuario.photo_user   
+
+                                             FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
+            
+                                             INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista where id_artista = 6 and reply_of is null
+                                            
+                                            union all 
+                                            
+                                            select 
+            comentario_artista.dsc_coment, comentario_artista.date_coment, comentario_artista.id_coment, comentario_artista.reply_of,
+            tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_user, usuario.photo_user
+                                            
+                                             FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
+            
+                                             INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista, tree 
+            
+                                              WHERE comentario_artista.reply_of = tree.id_coment
+                                            )
+                                            SELECT * FROM tree where path like '$id_coment%' and reply_of is not null");
+
+
+while ($reply_array = pg_fetch_array($resultado_reply)) {
+    $id_reply = $reply_array['id_coment'];
+    $reply = $reply_array['dsc_coment'];
+    $nome_user_reply = $reply_array['nome_user'];
+    $data_reply = $reply_array['date_coment'];
+    $photo_reply = $reply_array['photo_user'];
+
+?>
 
                                             <!--Caixa de respostas-->
-                                            <div class="media mt-4">
-                                                <!-- <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="https://i.imgur.com/xELPaag.jpg" /></a> -->
+                                            <div class="media mt-4" >
+                                                 <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="uploads/<?php echo $photo_reply; ?>" /></a> 
                                                 <div class="media-body">
                                                     <div class="row">
                                                         <div class="col-12 d-flex">
-                                                            <h5></h5>
-                                                            <span></span>
+                                                        
+                                                            <h5><?php echo $nome_user_reply; ?></h5>
+                                                            <span>- <?php echo $data_reply; ?></span>
                                                         </div>
                                                     </div>
+                                                    <?php echo $reply ?>
 
+                                                      <!--Caixa de responder resposta-->
+                                            <div class="reply-box">
+
+<div class="responder" id="<?php echo $id_reply; ?>" style="display:none;">
+
+    <form method="POST" action="<?php enviarResposta($connect) ?>">
+        <input type='hidden' name='reply_of' value="<?php echo $id_reply; ?>">
+        <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
+        <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
+        <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
+        <button class="button" type="submit" name="respo">Enviar</button>
+
+    </form>
+
+</div>
+<div class="ulala">
+    <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Responder</button>
+
+    <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Cancelar</button>
+</div>
+
+</div>
                                                 </div>
+                                                
                                             </div>
 
+                                            
+                                            <?php
+                                } 
+                                ?>
 
                                         </div>
+                                        
                                     </div>
-                                <?php
-                                }
+                                    <?php
+                                } 
                                 ?>
                             </div>
+                            
                         </div>
+                        
                     </div>
                 </div>
 
