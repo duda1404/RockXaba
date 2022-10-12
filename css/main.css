@@ -1683,20 +1683,25 @@ select::-ms-expand {
 
 /* ARTISTA_PAGE */
 
+
 #nome-artista{
 
-  font-family: 'Josefin Sans', sans-serif;
-  background-color:#06d388;
-  font-size: 7vmax;
-  color:#0d0d0d;
-  margin: 0 auto;
-  padding-bottom: 4vmax;
-  padding-top: 1vmax;
-  margin-bottom: 10vmax;
-  width: 22vmax;
-  height: 8vmax;
-  box-shadow: 0px 5px 20px 0px #06d388, 0px 0px 0px 7px #06d388;
+  margin-bottom: 30%;
+  text-align: center;
+  
+
 }
+
+#nome-artista span{
+
+  background-color:#06d388;
+  color:#0d0d0d;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 7vmax;
+  box-shadow: 0px 5px 20px 0px #06d388, 0px 0px 0px 7px #06d388;
+
+}
+  
 
 .rexx{
 
@@ -1710,6 +1715,7 @@ select::-ms-expand {
 
 #logo-artista{
 
+  margin-top: 0%;
   box-shadow: 0px 5px 50px 0px #06d388, 0px 0px 0px 7px #06d388;
 
 

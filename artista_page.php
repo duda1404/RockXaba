@@ -26,7 +26,7 @@ no banco. */
             <img class="image_rex" src="img/mortiz_foto.png" id="foto-artista">
             <div class="rexx-text">
                 <div class="logo-titulo-artista">
-                    <h3 id="nome-artista"><?php echo $nome_artista; ?></h3>
+                    <h3 id="nome-artista"><span><?php echo $nome_artista; ?></span></h3>
                     <div class="profile-card__img" id="logo-artista">
                         <img src="uploads/<?php echo $photo ?>" alt="Logo do Artista">
                     </div>
@@ -65,8 +65,8 @@ no banco. */
 
         </div>
 
-       <!--Sessão de enviar comentários-->
-       <div class="container mb-5 mt-5">
+        <!--Sessão de enviar comentários-->
+        <div class="container mb-5 mt-5">
             <div class="card">
                 <div class="row">
                     <div class="col-md-12">
@@ -154,7 +154,7 @@ no banco. */
                                                 </div>
 
                                             </div>
-                                            
+
                                             <?php
                                             $resultado_reply = pg_query($connect, "WITH RECURSIVE tree AS 
                                             ( select
@@ -180,69 +180,69 @@ no banco. */
                                             SELECT * FROM tree where path like '$id_coment%' and reply_of is not null");
 
 
-while ($reply_array = pg_fetch_array($resultado_reply)) {
-    $id_reply = $reply_array['id_coment'];
-    $reply = $reply_array['dsc_coment'];
-    $nome_user_reply = $reply_array['nome_user'];
-    $data_reply = $reply_array['date_coment'];
-    $photo_reply = $reply_array['photo_user'];
+                                            while ($reply_array = pg_fetch_array($resultado_reply)) {
+                                                $id_reply = $reply_array['id_coment'];
+                                                $reply = $reply_array['dsc_coment'];
+                                                $nome_user_reply = $reply_array['nome_user'];
+                                                $data_reply = $reply_array['date_coment'];
+                                                $photo_reply = $reply_array['photo_user'];
 
-?>
+                                            ?>
 
-                                            <!--Caixa de respostas-->
-                                            <div class="media mt-4" >
-                                                 <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="uploads/<?php echo $photo_reply; ?>" /></a> 
-                                                <div class="media-body">
-                                                    <div class="row">
-                                                        <div class="col-12 d-flex">
-                                                        
-                                                            <h5><?php echo $nome_user_reply; ?></h5>
-                                                            <span>- <?php echo $data_reply; ?></span>
+                                                <!--Caixa de respostas-->
+                                                <div class="media mt-4">
+                                                    <a class="pr-3" href="#"><img class="rounded-circle" alt="Bootstrap Media Another Preview" src="uploads/<?php echo $photo_reply; ?>" /></a>
+                                                    <div class="media-body">
+                                                        <div class="row">
+                                                            <div class="col-12 d-flex">
+
+                                                                <h5><?php echo $nome_user_reply; ?></h5>
+                                                                <span>- <?php echo $data_reply; ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <?php echo $reply ?>
+
+                                                        <!--Caixa de responder resposta-->
+                                                        <div class="reply-box">
+
+                                                            <div class="responder" id="<?php echo $id_reply; ?>" style="display:none;">
+
+                                                                <form method="POST" action="<?php enviarResposta($connect) ?>">
+                                                                    <input type='hidden' name='reply_of' value="<?php echo $id_reply; ?>">
+                                                                    <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
+                                                                    <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
+                                                                    <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
+                                                                    <button class="button" type="submit" name="respo">Enviar</button>
+
+                                                                </form>
+
+                                                            </div>
+                                                            <div class="ulala">
+                                                                <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Responder</button>
+
+                                                                <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Cancelar</button>
+                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                    <?php echo $reply ?>
 
-                                                      <!--Caixa de responder resposta-->
-                                            <div class="reply-box">
-
-<div class="responder" id="<?php echo $id_reply; ?>" style="display:none;">
-
-    <form method="POST" action="<?php enviarResposta($connect) ?>">
-        <input type='hidden' name='reply_of' value="<?php echo $id_reply; ?>">
-        <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
-        <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
-        <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
-        <button class="button" type="submit" name="respo">Enviar</button>
-
-    </form>
-
-</div>
-<div class="ulala">
-    <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Responder</button>
-
-    <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_reply; ?>)">Cancelar</button>
-</div>
-
-</div>
                                                 </div>
-                                                
-                                            </div>
 
-                                            
+
                                             <?php
-                                } 
-                                ?>
+                                            }
+                                            ?>
 
                                         </div>
-                                        
+
                                     </div>
-                                    <?php
-                                } 
+                                <?php
+                                }
                                 ?>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
 
