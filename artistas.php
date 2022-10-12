@@ -25,6 +25,7 @@ include 'header.php';
 				<option value="3">ORDENAR: LIKES</option>
 			</select>
 		</div>
+		
 	</div>
 
 	<div class="container-a2">
@@ -46,6 +47,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 					<a href="artista_page.php?myid=<?php echo $id_artista; ?>" target="new window">
 						<img src="uploads/<?php echo $photo; ?>" class="testando" alt="" title="<?php echo $nome_artista; ?>" />
 					</a>
+					<p class="nome-artista-logo"><?php echo $nome_artista; ?></p>
 				</li>
 			<?php
 			}

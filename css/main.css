@@ -1035,6 +1035,7 @@ input.invalido{
   
   height: auto;
   width: 430px;
+  margin-top: 5vmax;
 
 }
 
@@ -1048,7 +1049,7 @@ input.invalido{
   max-width: 95%;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
@@ -1785,4 +1786,9 @@ select::-ms-expand {
 .curtida-seguir{
 
   margin: 0 auto;
+}
+
+.nome-artista-logo{
+
+  font-family: 'Josefin Sans', sans-serif;
 }
