@@ -79,6 +79,7 @@ if (isset($_SESSION['logado'])) {
       </ul>
 
     <?php elseif (isset($_SESSION['logado'])) :  ?>
+      
       <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo" id="logo-logado"> </a>
       <ul class="nav-list">
 
