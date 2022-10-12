@@ -163,7 +163,7 @@ no banco. */
 
                                              FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
             
-                                             INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista where id_artista = 6 and reply_of is null
+                                             INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista where id_artista = $id and reply_of is null
                                             
                                             union all 
                                             
