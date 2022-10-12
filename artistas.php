@@ -11,19 +11,20 @@ include 'header.php';
 		<h3> ARTISTAS </h3>
 	</div>
 
-	<form class="clearfix searchform">
-		<label for="search-box">
-			<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
-			
-		</label>
-		<input type="search" id="search-box" placeholder="Buscar artista, banda, gênero..." />
-	</form>
-	<div class="select">
-		<select name="ORDENAR">
-			<option selected disabled value="1">ORDENAR: </option>
-			<option value="2">ORDENAR: A-Z</option>
-			<option value="3">ORDENAR: LIKES</option>
-		</select>
+	<div class="artista-buscar-filtrar">
+		<form class=" clearfix searchform">
+			<label for="search-box">
+				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
+			</label>
+			<input type="search" id="search-box" placeholder="Buscar artista, banda, gênero..." />
+		</form>
+		<div class="select">
+			<select name="ORDENAR">
+				<option selected disabled value="1">ORDENAR: </option>
+				<option value="2">ORDENAR: A-Z</option>
+				<option value="3">ORDENAR: LIKES</option>
+			</select>
+		</div>
 	</div>
 
 	<div class="container-a2">

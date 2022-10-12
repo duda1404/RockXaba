@@ -10,13 +10,13 @@ html {
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
+
   color: #fff;
   font-size: 15px;
   margin: 0; }
 
 input, textarea, select, button {
-  font-family: "Quicksand", sans-serif;
+ 
   color: #fff;
   font-size: 15px; }
 
@@ -262,7 +262,6 @@ textarea.form-control {
 
 .body_caption{
   /*height: 10000px;*/
-  font-family: "Lato";
   background-color: black;
 
   margin: 0px;
@@ -367,13 +366,13 @@ h1,h2,h3,h4{
   background-color: #0099f9;
   color: #0d0d0d;
   margin-top: 5%;
-  margin-bottom: 5%;
-  padding-bottom: 8vmax;
+  margin-bottom: 8%;
+  padding-bottom: 7vmax;
   padding-top: 2vmax;
   width: 40vmax;
   height: 8vmax;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 6vmax; 
+  font-size: 6.5vmax; 
   text-align: center;
   box-shadow: 0px 4px 4px 0px #0099f9;
  

@@ -41,16 +41,14 @@ header{
   padding: 10px 5px;
   transition: 0.4s;
   display: -webkit-box;
-  
+
 }
 
 .nav-list-entrar{
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  
   list-style: none;
-  margin: 0;
+
 
 }
 
@@ -62,9 +60,10 @@ header{
   background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-right: 1vmax;
-  
-  
+  margin-right: 2vmax;
+  margin-left: 15vmax;
+
+
 
 
 }
@@ -72,28 +71,18 @@ header{
 
 
 .nav-list{
-  
+
   font-family: 'Josefin Sans', sans-serif;
-  margin: 0 auto;
   list-style: none;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
- 
+
 
 
 }
 
-.logo, .nav-list, .nav-list-entrar{
-
-  justify-content: space-evenly;
-  
-}
-
-.logo{
-  margin: 0 auto;
-}
 
 .nav-list ul {
 
@@ -102,8 +91,8 @@ header{
   align-content: center;
   margin-left: 12vmax;
   justify-content: center;
-  
-  
+
+
 
 }
 
@@ -115,13 +104,34 @@ header{
   padding-bottom: 3.4vmax;
   animation: none;
   transition: none;
+
+}
+
+#nome-perfil{
+
+  list-style: none;
+
+
+}
+
+.dropdown{
+
+  font-family: 'Josefin Sans', sans-serif;
+  position:absolute;
+  overflow:visible;
  
 }
 
+.dropdown-content a:hover{
 
-.dropdown{
-  position:absolute;
-  overflow:visible;
+  background-color: #142029;
+
+
+}
+
+.dropdown-content{
+
+  margin-left: 9vmax;
 }
 
 
@@ -139,43 +149,52 @@ header{
   padding: 0;
 }
 
-a {
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
 
 .logo {
   font-size: 24px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  margin-right: 15vmax;
+  
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  /*font-family: 'Staatliches';*/
-  font-family: "Quicksand", sans-serif;
+  
   background: black;
   height: 13vh;
 }
 
+.nav-list li a{
+
+  color: white;
+}
+
+.nav-list li a:hover{
+
+  outline: none;
+}
+
 
 .nav-list {
+
   list-style: none;
   display: flex;
-  margin-left: 27.5vmax;
- 
+  flex-direction: row;
+  justify-items: space-evenly;
+  width: 100%;
+
+
 }
 
-.nav-list li {
-  letter-spacing: 3px;
-  margin-left: 32px;
-  margin-right: 32px;
+.navbar-header{
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
 }
+
 
 .mobile-menu {
   display: none;
@@ -347,7 +366,7 @@ nav {
     font-size: 75px;
     text-transform: capitalize;
     margin-bottom: 20px;
-    font-family: 'Staatliches', cursive;
+    font-family: 'Josefin Sans', sans-serif;
     text-align: justify;
 }
 
@@ -374,7 +393,7 @@ nav {
   margin-left: 0.5vh;
   max-width: 100%;
   padding-top: 0.5vh;
-  padding-right: 5vh;    
+  padding-right: 5vh;
 }
 
 .about img{
@@ -411,7 +430,7 @@ color: white;
     margin-left: 20px;
     max-width: 100%;
     padding-top: 100px;
-    padding-right: 40px;    
+    padding-right: 40px;
 }
 
 .follow {
@@ -512,7 +531,7 @@ input.invalido{
   outline: none;
   color: white;
   border-radius: 24px;
-  transition: o.25s; 
+  transition: o.25s;
 }
 
 /* Altera as propriedades dos inputs do formulário quando são acessados */
@@ -572,7 +591,7 @@ input.invalido{
   color: white;
   font-weight: 500;
   text-transform: uppercase;
-  
+
 
 }
 
@@ -589,7 +608,7 @@ input.invalido{
   background: black;
   text-align: center;
   font-family: sans-serif;
-  
+
 
 }
 
@@ -609,7 +628,7 @@ input.invalido{
   color: white;
   border-radius: 24px;
   transition: 0.25s;
-  
+
 }
 
 .formulario textarea[name="mensagem"]{
@@ -659,7 +678,7 @@ input.invalido{
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
-  
+
 
 
 }
@@ -688,7 +707,7 @@ input.invalido{
   color: white;
   font-weight: 500;
   text-transform: uppercase;
-  
+
 
 }
 
@@ -705,7 +724,7 @@ input.invalido{
   background: black;
   text-align: center;
   font-family: sans-serif;
-  
+
 
 }
 
@@ -725,7 +744,7 @@ input.invalido{
   color: white;
   border-radius: 24px;
   transition: o.25s;
-  
+
 }
 
 
@@ -754,7 +773,7 @@ input.invalido{
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
-  
+
 
 
 }
@@ -791,7 +810,7 @@ input.invalido{
   max-width: 100%;
   padding-top: 50px;
   padding-right: 40px;
-     text-align:center;
+  text-align:center;
 }
 
 .main-bandas{
@@ -801,7 +820,7 @@ input.invalido{
     align-items: center;
     justify-content: center;
     text-align:center;
-    
+
 
 }
 
@@ -810,7 +829,7 @@ input.invalido{
   text-transform: capitalize;
   margin-bottom: 20px;
   font-family: 'Staatliches', cursive;
- 
+
 }
 
 .bandas img{
@@ -821,13 +840,13 @@ input.invalido{
   display: inline-block;
   width: 300px;
   height: 300px;
- 
-  
+
+
 	-moz-transition: all 0.3s;
 	-webkit-transition: all 0.3s;
   transition: transform 0.5s, filter 0.5s ease-in-out;
   filter: grayscale(0);
-  
+
 }
 
 .bandas img:hover{
@@ -854,7 +873,7 @@ input.invalido{
 
 .pink img{
   height: 50%;
-  width: 40%;  
+  width: 40%;
 
 }
 
@@ -912,7 +931,7 @@ input.invalido{
 
 .redd img{
   height: 60%;
-  width: 40%; 
+  width: 40%;
 
 }
 
@@ -968,13 +987,14 @@ input.invalido{
 }
 
 .image_rex{
+  
   height: auto;
   width: 430px;
-  
 
 }
 
 .rexx-text{
+
   width: 550px;
 }
 
@@ -993,7 +1013,7 @@ input.invalido{
   margin-bottom: 20px;
   font-family: 'Staatliches', cursive;
   text-align: center;
- 
+
   letter-spacing: 1px;
 }
 
@@ -1011,7 +1031,7 @@ input.invalido{
   letter-spacing: 1px;
   font-size: 15px;
   margin-bottom: 45px;
-  
+
   font-family: "Quicksand", sans-serif;
   text-align: justify;
 
@@ -1023,11 +1043,11 @@ input.invalido{
   max-width: 300px;
 }
 .spotify_1{
-  left: 0; 
-  width: 184%; 
-  height: 0; 
-  position: relative; 
-  padding-bottom: 100%; 
+  left: 0;
+  width: 184%;
+  height: 0;
+  position: relative;
+  padding-bottom: 100%;
   padding-top: 80px;
 }
 
@@ -1065,9 +1085,6 @@ input.invalido{
 /* ***************************************************** */
 /* Estilização do Menu Dropdown */
 
-
-
-
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
@@ -1078,9 +1095,9 @@ input.invalido{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #e92eed;
+  background-color: black;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(255, 0, 187, 0.894);
+  box-shadow: none;
   z-index: 1;
 }
 
@@ -1092,18 +1109,10 @@ input.invalido{
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #e716a1}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropbtn:hover {
-  background-color: #e716a1;
-  transition: 0.3s;
 }
 
 
@@ -1140,7 +1149,7 @@ a, a:hover {
   padding: 50px 20px;
   padding-top: 100px;
   display: flex;
-  
+
 }
 @media screen and (max-width: 768px) {
   .wrapper {
@@ -1494,29 +1503,29 @@ input[type="file"] {
 
 .body_caption{
 
-  background-color: #0d0d0d;
+  background-image: url(../img/bgartistas.png);
 }
 
 .img-box{
   margin-top: 20px;}
 .img-block{
-  float: left; 
-  margin-right: 5px; 
+  float: left;
+  margin-right: 5px;
   text-align: center;}
 p{
   margin-top: 0;}
 .img-block img{
-  
+
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: transform 0.5s, filter 0.5s ease-in-out;
   filter: grayscale(0);
-  height: 360px; 
+  height: 360px;
   width: 310px;
-  max-width: 100%; 
-  margin: 25px;  
+  max-width: 100%;
+  margin: 25px;
   border:2px solid #5500ff;
-} 
+}
 
 /*
   background: linear-gradient(-135deg, #c850c0, #0099f9);
@@ -1539,7 +1548,7 @@ select {
   box-shadow: none;
   /* Personalize */
   flex: 1;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Josefin Sans', sans-serif;
   padding: 0 1em;
   color: #3b3a3a;
@@ -1554,13 +1563,15 @@ select::-ms-expand {
 /* Custom Select wrapper */
 .select {
 
+  display: flex;
   position: relative;
   font-weight: 700;
   margin: 0;
-  width: 13em;
-  height: 3em;
+  width: 10em;
+  height: 2em;
   border-radius: 8vmax;
   overflow: hidden;
+  justify-content: center;
 }
 /* Arrow */
 .select::after {
@@ -1577,7 +1588,7 @@ select::-ms-expand {
   color: #393939;
 }
 
-.searchform input[type=search] { 
+.searchform input[type=search] {
 
 
   font: 1em/1.618 'Josefin Sans', sans-serif;
@@ -1599,14 +1610,134 @@ select::-ms-expand {
 }
 
 @media only screen and (min-width: 48em) {
-  .searchform input[type=search]{ width: 50%; }
+  .searchform input[type=search]{ width: 50vmax;
+  margin-left: 1vmax; }
 }
 
-.select, .clearfix{
+.artista-buscar-filtrar{
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vmax;
+
+
+}
+
+/* ARTISTA_PAGE */
+
+#nome-artista{
+
+  font-family: 'Josefin Sans', sans-serif;
+  background-color:#06d388;
+  font-size: 7vmax;
+  color:#0d0d0d;
+  margin: 0 auto;
+  padding-bottom: 4vmax;
+  padding-top: 1vmax;
+  margin-bottom: 10vmax;
+  width: 22vmax;
+  height: 8vmax;
+  box-shadow: 0px 5px 20px 0px #06d388, 0px 0px 0px 7px #06d388;
+}
+
+.rexx{
+
+  background-image: url(../img/bgcontactus.png);
+}
+
+.main-rexx{
+
+  margin-top: 4vmax;
+}
+
+#logo-artista{
+
+  box-shadow: 0px 5px 50px 0px #06d388, 0px 0px 0px 7px #06d388;
+
+
+}
+
+
+#dsc-artista{
+
+  font-family: Arial, Helvetica, sans-serif;
+  color:#06d388;
+  font-size: large;
+  text-shadow: 2px 2px 12px #06d388;
+  text-align: center;
+}
+
+#foto-artista{
+
+  margin-bottom: 30vmax;
+  width: 500px;
+}
+
+.info-artista{
+
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.generos{
 
   display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  align-items:stretch;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2vmax;
+
+
 }
 
+.gen-artista{
+
+  font-family: 'Josefin Sans', sans-serif;
+  color: #383637;
+  font-weight: 600;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  border-radius: 12px;
+}
+
+.logo-titulo-artista{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seguir-curtir{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+
+
+}
+
+#seguir{
+
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #06d388;
+  box-shadow: 0px 5px 50px 0px #06d388, 0px 0px 0px 7px #06d388;
+  color: #383637;
+  border: none;
+  font-size: 19px;
+  padding: 0;
+  height: 1em;
+}
+
+#seguir:focus{
+
+  outline-style: none;
+}
+
+.curtida-seguir{
+
+  margin: 0 auto;
+}

@@ -23,10 +23,31 @@ no banco. */
 
     ?>
         <div class="main-rexx">
-            <img class="image_rex" src="uploads/<?php echo $photo; ?>">
+            <img class="image_rex" src="img/mortiz_foto.png" id="foto-artista">
             <div class="rexx-text">
-                <h2><?php echo $nome_artista; ?></h2>
-                <p> <?php echo $dsc_artista; ?> </p>
+                <div class="logo-titulo-artista">
+                    <h3 id="nome-artista"><?php echo $nome_artista; ?></h3>
+                    <div class="profile-card__img" id="logo-artista">
+                        <img src="uploads/<?php echo $photo ?>" alt="Logo do Artista">
+                    </div>
+                </div>
+                <div class="info-artista">
+                    <p class="seguidores"> 650 seguidores </p>
+                    <p class="seguindo"> 1023 views </p>
+                    <p class="curtidas"> 145 curtidas </p>
+                </div>
+                <div class="seguir-curtir">
+                    <img id="curtida" src="" class="curtida-seguir" alt="Botão de curtida">
+                    <button id="seguir" class="curtida-seguir"> SEGUIR </button>
+                </div>
+                <div class="generos">
+                    <p class="gen-artista"> INDIE </p>
+                    <p class="gen-artista"> INDIE-ROCK </p>
+                    <p class="gen-artista"> ALTERNATIVO </p>
+                    <p class="gen-artista"> GARAGE ROCK </p>
+                </div>
+                <p id="dsc-artista"> <?php echo $dsc_artista; ?> </p>
+
 
                 <!--Classe do embed do Spotify -->
                 <div class="spotify_rex">
@@ -70,14 +91,14 @@ no banco. */
                                  FROM usuario INNER JOIN comentario_artista ON usuario.id_user = comentario_artista.FK_USUARIO_id_user 
                                  INNER JOIN artista ON artista.id_artista = comentario_artista.FK_ARTISTA_id_artista
                                  WHERE FK_ARTISTA_id_artista = $id");
-                                
+
 
                                 while ($rows = pg_fetch_array($resultadon)) {
                                     $id_coment = $rows['id_coment'];
                                     $nome_userr = $rows['nome_user'];
                                     $photo_user = $rows['photo_user'];
-                                    $coment = $rows['dsc_coment']; 
-                                    
+                                    $coment = $rows['dsc_coment'];
+
                                     $date_coment = $rows['date_coment'];
                                 ?>
 
@@ -113,27 +134,27 @@ no banco. */
                                             <!--Caixa de responder comentário-->
                                             <div class="reply-box">
 
-                                            <div class="responder" id="<?php echo $id_coment; ?>" style="display:none;">
+                                                <div class="responder" id="<?php echo $id_coment; ?>" style="display:none;">
 
-                                            <form method="POST" action="<?php enviarResposta($connect) ?>">
-                                    <input type='hidden' name='reply_of' value="<?php echo $id_coment; ?>">
-                                    <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
-                                    <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
-                                    <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
-                                    <button class="button" type="submit" name="respo">Enviar</button>
+                                                    <form method="POST" action="<?php enviarResposta($connect) ?>">
+                                                        <input type='hidden' name='reply_of' value="<?php echo $id_coment; ?>">
+                                                        <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
+                                                        <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
+                                                        <textarea rows="10" cols="100" name='resp' placeholder='Digite seu comentário'></textarea>
+                                                        <button class="button" type="submit" name="respo">Enviar</button>
 
-                                </form>
+                                                    </form>
 
-                                                    
 
-                                                    
-                                    </div>
-                                                    <div class="ulala">
-                                                         <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Responder</button>
 
-                                                        <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Cancelar</button>
-                                                    </div>
-                                                
+
+                                                </div>
+                                                <div class="ulala">
+                                                    <button id="" class="reply" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Responder</button>
+
+                                                    <button id="" class="hid" type="button" onclick="myFunction(<?php echo $id_coment; ?>)">Cancelar</button>
+                                                </div>
+
                                             </div>
 
                                             <!--Caixa de respostas-->
@@ -146,7 +167,7 @@ no banco. */
                                                             <span></span>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
 

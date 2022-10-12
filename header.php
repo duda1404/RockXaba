@@ -43,13 +43,13 @@ if (isset($_SESSION['logado'])) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 
-  
+
 </head>
 
 <!-- Título com o nome de usuário -->
@@ -61,14 +61,16 @@ if (isset($_SESSION['logado'])) {
 
 <header>
 
-  <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo"> </a>
+  <div class="navbar-header">
+    <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo"> </a>
 
-  <ul class="nav-list">
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">SOBRE</a></li>
-    <li><a href="artistas.php">ARTISTAS</a></li>
+    <ul class="nav-list">
+      <li><a href="index.php">HOME</a></li>
+      <li><a href="about.php">SOBRE</a></li>
+      <li><a href="artistas.php">ARTISTAS</a></li>
+      <li><a href="artistas.php"> LOJA </a></li>
 
-    <?php if (!isset($_SESSION['logado'])) : ?>
+      <?php if (!isset($_SESSION['logado'])) : ?>
 
     </ul>
     <ul class="nav-list-entrar">
@@ -77,23 +79,27 @@ if (isset($_SESSION['logado'])) {
 
     </ul>
 
-    <?php elseif (isset($_SESSION['logado'])) :  ?>
+  <?php elseif (isset($_SESSION['logado'])) :  ?>
 
-      <div class="dropdown">
-        <li class="dropbtn"> <?php echo $dados['nome_user']; ?></li>
-        <div class="dropdown-content">
-          <a href="perfil.php">Perfil</a>
-          <a href="contato.php">Suporte</a>
-          <a href="cadastro_bandas.php">Quero ser Artista</a>
-          <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
-          <a href="editar_perfil.php">Editar Perfil</a>
+    </ul>
+    
+    <div class="dropdown">
+    <li class="dropbtn" id="nome-perfil"> <?php echo $dados['nome_user']; ?></li>
+      <div class="dropdown-content">
+        <a href="perfil.php">Perfil</a>
+        <a href="contato.php">Suporte</a>
+        <a href="cadastro_bandas.php">Quero ser Artista</a>
+        <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
+        <a href="editar_perfil.php">Editar Perfil</a>
 
-          <a href="?sair">Sair</a>
-        </div>
+        <a href="?sair">Sair</a>
+      </div>
 
-      <?php endif; ?>
-      </li>
-  </ul>
+    <?php endif; ?>
+    </li>
+    </ul>
+   
+    
 </header>
 
 
