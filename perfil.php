@@ -19,7 +19,11 @@ if (!isset($_SESSION['logado'])) {
 
     <div class="profile-card__cnt js-profile-cnt">
       <div class="profile-card__name"><p id="nome-pagina-perfil"><?php echo $dados['nome_user']; ?></p></div>
+
+      <?php if(!empty($dados['dsc_user']) or $dados['dsc_user'] != ''){ ?>
       <div class="profile-card__txt"><?php echo $dados['dsc_user']; ?></div>
+
+      <?php } ?>
 
       <div class="seguindo-notificacoes">
         <div class="artistas-seguidos">
