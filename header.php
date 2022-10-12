@@ -62,44 +62,49 @@ if (isset($_SESSION['logado'])) {
 <header>
 
   <div class="navbar-header">
-    <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo"> </a>
 
-    <ul class="nav-list">
-      <li><a href="index.php">HOME</a></li>
-      <li><a href="about.php">SOBRE</a></li>
-      <li><a href="artistas.php">ARTISTAS</a></li>
-      <li><a href="lojas.php"> LOJAS </a></li>
 
-      <?php if (!isset($_SESSION['logado'])) : ?>
+    <?php if (!isset($_SESSION['logado'])) : ?>
+      <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo" id="logo-entrar"> </a>
+      <ul class="nav-list">
 
-    </ul>
-    <ul class="nav-list-entrar">
+        <li><a href="index.php">HOME</a></li>
+        <li><a href="about.php">SOBRE</a></li>
+        <li><a href="artistas.php">ARTISTAS</a></li>
+        <li><a href="lojas.php"> LOJAS </a></li>
+      </ul>
 
-      <li class="dropbtn"><a href="login.php"> ENTRAR </a></li>
+      <ul class="nav-list-entrar">
+        <li class="dropbtn"><a href="login.php"> ENTRAR </a></li>
+      </ul>
 
-    </ul>
+    <?php elseif (isset($_SESSION['logado'])) :  ?>
+      <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo" id="logo-logado"> </a>
+      <ul class="nav-list">
 
-  <?php elseif (isset($_SESSION['logado'])) :  ?>
+        <li><a href="index.php">HOME</a></li>
+        <li><a href="about.php">SOBRE</a></li>
+        <li><a href="artistas.php">ARTISTAS</a></li>
+        <li><a href="lojas.php"> LOJAS </a></li>
+      </ul>
 
-    </ul>
-    
-    <div class="dropdown">
-    <li class="dropbtn" id="nome-perfil"> <?php echo $dados['nome_user']; ?></li>
-      <div class="dropdown-content">
-        <a href="perfil.php">Perfil</a>
-        <a href="contato.php">Suporte</a>
-        <a href="cadastro_bandas.php">Quero ser Artista</a>
-        <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
-        <a href="editar_perfil.php">Editar Perfil</a>
+      <div class="dropdown">
+        <li class="dropbtn" id="nome-perfil"> <?php echo $dados['nome_user']; ?></li>
+        <div class="dropdown-content">
+          <a href="perfil.php">Perfil</a>
+          <a href="contato.php">Suporte</a>
+          <a href="cadastro_bandas.php">Quero ser Artista</a>
+          <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
+          <a href="editar_perfil.php">Editar Perfil</a>
 
-        <a href="?sair">Sair</a>
-      </div>
+          <a href="?sair">Sair</a>
+        </div>
 
-    <?php endif; ?>
-    </li>
-    </ul>
-   
-    
+      <?php endif; ?>
+      </li>
+      </ul>
+
+
 </header>
 
 
