@@ -145,11 +145,31 @@ header{
 
 /* HOME */
 
+#evento-titulo{
+
+  background-color: #f82b9f;
+  box-shadow: 0px 4px 4px 0px #f82b9f;
+
+}
+
+.link-evento{
+
+  color: white;
+}
+
+.link-evento:hover{
+
+  color: white;
+}
+
 .eventos{
 
   width: 100%;
-  height: 100%;
-  background-color: #0d0d0d;
+  height: fit-content;
+  background-image: url(../img/bg_loja.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
 }
 
 .organiza-evento{
@@ -168,6 +188,7 @@ header{
   background-color: black;
   display: flex;
   flex-direction: row;
+  margin-bottom: 2vmax;
    
 
 }
@@ -186,8 +207,11 @@ header{
   padding: 2vmax;
   font-size: 62px;
   border-image: linear-gradient(60deg,#c850c0, #0099f9) 30;
-  border: 5px solid;
- 
+  border-width: 5px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 
 
 
@@ -1615,7 +1639,7 @@ input:checked + .slider:before {
 
 .body_caption{
 
-  background-image: url(../img/bgartistas.png);
+  background-image: url(../img/bg_loja.png);
 }
 
 .img-box{
@@ -1892,6 +1916,7 @@ input[type=radio] {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-left: 5vmax;
 }
 
 .cards {

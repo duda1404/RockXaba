@@ -5,8 +5,6 @@ include 'header.php';
 </head>
 
 <body class="body_caption">
-
-
 	<div class="content">
 		<h3 id="titulo-lojas"> LOJAS </h3>
 	</div>

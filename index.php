@@ -29,7 +29,7 @@ if (isset($_GET['acao'])) {
   <div class="organiza-evento">
     <div class="titulo">
       <div class="content">
-        <h3> EVENTOS </h3>
+        <h3 id="evento-titulo"> EVENTOS </h3>
       </div>
       <div class="artista-buscar-filtrar">
         <form class=" clearfix searchform">
@@ -47,12 +47,30 @@ if (isset($_GET['acao'])) {
         </div>
       </div>
     </div>
-    <div class="caixa-de-eventos">
-      <img id="imagem-evento" src="" alt="Evento">
-      <div class="texto-evento">
-        FESTIVAL ORGAS MÃOZINHA
+    <a class="link-evento" href="">
+      <div class="caixa-de-eventos">
+        <img id="imagem-evento" src="img/festival.jpeg" alt="Evento">
+        <div class="texto-evento">
+          FESTIVAL ORGAS MÃOZINHA
+        </div>
       </div>
-    </div>
+    </a>
+    <a class="link-evento" href="">
+      <div class="caixa-de-eventos">
+        <img id="imagem-evento" src="img/gotica.jpeg" alt="Evento">
+        <div class="texto-evento">
+          PIRIGÓTICA FUNK x EMO x POP BR
+        </div>
+      </div>
+    </a>
+    <a class="link-evento" href="">
+      <div class="caixa-de-eventos">
+        <img id="imagem-evento" src="img/DOIDEIRAFEST.jpeg" alt="Evento">
+        <div class="texto-evento">
+          DOIDERA FEST
+        </div>
+      </div>
+    </a>
   </div>
   </div>
 </section>
