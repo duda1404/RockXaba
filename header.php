@@ -59,7 +59,7 @@ if (isset($_SESSION['logado'])) {
         } ?> </title>
 <link rel="icon" type="image/x-icon" href="img/rockxaba_icon.png">
 
-<header>
+<header id="header">
 
   <div class="navbar-header">
 

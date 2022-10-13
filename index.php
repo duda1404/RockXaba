@@ -47,7 +47,7 @@ if (isset($_GET['acao'])) {
         </div>
       </div>
     </div>
-    <a class="link-evento" href="">
+    <a class="link-evento" href="evento_page.php">
       <div class="caixa-de-eventos">
         <img id="imagem-evento" src="img/festival.jpeg" alt="Evento">
         <div class="texto-evento">
@@ -55,7 +55,7 @@ if (isset($_GET['acao'])) {
         </div>
       </div>
     </a>
-    <a class="link-evento" href="">
+    <a class="link-evento" href="evento_page.php">
       <div class="caixa-de-eventos">
         <img id="imagem-evento" src="img/gotica.jpeg" alt="Evento">
         <div class="texto-evento">
@@ -63,7 +63,7 @@ if (isset($_GET['acao'])) {
         </div>
       </div>
     </a>
-    <a class="link-evento" href="">
+    <a class="link-evento" href="evento_page.php">
       <div class="caixa-de-eventos">
         <img id="imagem-evento" src="img/DOIDEIRAFEST.jpeg" alt="Evento">
         <div class="texto-evento">
