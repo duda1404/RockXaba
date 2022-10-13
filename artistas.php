@@ -6,7 +6,6 @@ include 'header.php';
 
 <body class="body_caption">
 
-
 	<div class="content">
 		<h3> ARTISTAS </h3>
 	</div>

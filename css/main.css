@@ -143,6 +143,59 @@ header{
   margin-left: 9vmax;
 }
 
+/* HOME */
+
+.eventos{
+
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d0d;
+}
+
+.organiza-evento{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  align-items: center;
+}
+
+.caixa-de-eventos{
+
+  width: 800px;
+  height: 300px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+   
+
+}
+
+#imagem-evento{
+
+  width: 250px;
+  height: 100%;
+}
+
+.texto-evento{
+
+  width: 100%;
+  height: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 2vmax;
+  font-size: 62px;
+  border-image: linear-gradient(60deg,#c850c0, #0099f9) 30;
+  border: 5px solid;
+ 
+
+
+
+
+
+}
+
+
 /* LOJAS E LOJA */
 
 #titulo-lojas{
@@ -396,6 +449,7 @@ nav {
 
 .about-text{
     width: 100vw;
+    
 }
 
 .main-about{
@@ -408,7 +462,7 @@ nav {
 }
 
 .about-text h2{
-    font-size: 75px;
+    font-size: 70px;
     text-transform: capitalize;
     margin-bottom: 20px;
     font-family: 'Josefin Sans', sans-serif;
@@ -428,8 +482,9 @@ nav {
     letter-spacing: 0.1vmax;
     font-size: 1.5vmax;
     margin-bottom: 1.5vmax;
-    font-family:'Josefin Sans', sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     text-align: justify;
+    font-weight: 100;
 }
 /*************************************/
 .about-text  ul li{
@@ -1201,7 +1256,7 @@ a, a:hover {
   width: 100%;
   min-height: 600px;
   margin: auto;
-  background-image: -webkit-linear-gradient(10deg,#c850c0, #0099f9);
+  background-image: -webkit-linear-gradient(142deg, #0099f9, #c850c0);
   border-radius: 50px;
   max-width: 900px;
   position: relative;
