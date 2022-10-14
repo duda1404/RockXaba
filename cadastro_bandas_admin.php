@@ -73,7 +73,7 @@ if (isset($_POST['btnentrar'])) {
   $nome_artista = $_POST['nome_artista'];
   $link_play = $_POST['link_play'];
   $dsc_artista = pg_escape_string($connect, $_POST["dsc_artista"]);
-
+  $cor_artista = $_POST['cor_artista'];
 
 
   /* Transforma a senha digitada pelo usuário em uma senha criptografada (uma hash, utilizando do algoritmo PASSWORD_DEFAULT) dentro da variável $senha */
@@ -104,7 +104,7 @@ if (isset($_POST['btnentrar'])) {
 
       $dat_add_artista = date('Y-m-d H:i:s');
 
-      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, fk_usuario_id_user, dat_add_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "')";
+      $sqlArtista = "INSERT INTO artista(nome_artista, link_play, dsc_artista, fk_usuario_id_user, dat_add_artista, cor_artista) VALUES ('" . $nome_artista . "','" . $link_play . "','" . $dsc_artista . "','" . $id . "','" . $dat_add_artista . "', '" . $cor_artista . "')";
       $resultado = pg_query($connect, $sqlArtista);
 
       $sqlCodeId = "SELECT id_artista FROM artista WHERE id_artista =(SELECT max(id_artista) FROM artista)";
@@ -169,6 +169,12 @@ if (isset($_POST['btnentrar'])) {
 
     <label class="form-group">
       <input type="text" id="dsc_artista" name="dsc_artista" class="form-control" <?php if (isset($_POST['dsc_artista'])) ?> placeholder="Descrição" required>
+
+      <span class="border"></span>
+    </label>
+
+    <label class="form-group">
+      <input type="color" id="cor_artista" name="cor_artista" class="form-control" <?php if (isset($_POST['cor_artista'])) ?> placeholder="Cor" required>
 
       <span class="border"></span>
     </label>
