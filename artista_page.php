@@ -12,7 +12,7 @@ include 'funcoes.php';
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
     $image_query = pg_query($connect, "select artista.id_artista, artista.nome_artista, 
-    artista.dsc_artista, artista.link_play, foto_artista.photo_artista from artista inner join
+    artista.dsc_artista, artista.link_play, artista.cor_artista, foto_artista.photo_artista from artista inner join
     foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = id_artista");
 
     while ($rows = pg_fetch_array($image_query)) {
@@ -20,6 +20,7 @@ no banco. */
         $dsc_artista = $rows['dsc_artista'];
         $link = $rows['link_play'];
         $photo = $rows['photo_artista'];
+        $cor_artista = $rows['cor_artista'];
 
     ?>
         <div class="main-rexx">
@@ -43,6 +44,7 @@ no banco. */
                     </label>
                 </div>
 
+<<<<<<< Updated upstream
                 <div id="comentarios-caixa-artista-evento" style=" background: rgba(1,37,28,0.5); backdrop-filter: blur(2px)">
                     <div class="sessao-comentarios">
                         <div class="caixa-comentario">
@@ -74,6 +76,20 @@ no banco. */
                         <div class="caixa-comentario">
                             <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
                         </div>
+=======
+                <div class="caixa-notificacoes" id="comentarios-caixa-artista-evento">
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> <?php echo $cor_artista; ?> </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+>>>>>>> Stashed changes
                     </div>
                     <div class="caixa-enviar-comentario">
                         <textarea class="input-comentario" placeholder="digite aqui..."></textarea>
@@ -83,8 +99,8 @@ no banco. */
 
             <div class="rexx-text">
                 <div class="logo-titulo-artista">
-                    <h3 id="nome-artista"><span><?php echo $nome_artista; ?></span></h3>
-                    <div class="profile-card__img" id="logo-artista">
+                    <h3 id="nome-artista"> <span style="background-color: <?php echo $cor_artista; ?>; box-shadow: 0px 5px 20px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;"> <?php echo $nome_artista; ?> </span></h3>
+                    <div class="profile-card__img" id="logo-artista" style="box-shadow: 0px 5px 50px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;" >
                         <img src="uploads/<?php echo $photo ?>" alt="Logo do Artista">
                     </div>
                 </div>
@@ -97,7 +113,8 @@ no banco. */
                     <a id="curtida" href="" class="curtida-seguir">
                         <img id="curtida" src="img/guitar-pick.svg" width="35px" height="45px" class="curtida-seguir" alt="Botão de curtida">
                     </a>
-                    <button id="seguir" class="curtida-seguir"> SEGUIR </button>
+                    <button id="seguir" style="background-color: <?php echo $cor_artista; ?>;
+  box-shadow: 0px 5px 50px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;" class="curtida-seguir"> SEGUIR </button>
                 </div>
                 <div class="generos">
                     <p class="gen-artista"> INDIE </p>
@@ -105,7 +122,7 @@ no banco. */
                     <p class="gen-artista"> ALTERNATIVO </p>
                     <p class="gen-artista"> GARAGE ROCK </p>
                 </div>
-                <p id="dsc-artista"> <?php echo $dsc_artista; ?> </p>
+                <p id="dsc-artista" style="color:<?php echo $cor_artista; ?>; text-shadow: 2px 2px 12px #<?php echo $cor_artista; ?>;" > <?php echo $dsc_artista; ?> </p>
 
 
                 <!--Classe do embed do Spotify -->
