@@ -150,18 +150,52 @@ endif;
 
 ?>
 
-<section class="login">
+	
 
-	<form class="caixa" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+<section class="loginn">
 
-		<h1> Login </h1>
-		<input type="text" name="login" placeholder="Usuário"><br>
-		<input type="password" name='senha' placeholder="Senha">
-		<button class="button" type="submit" name="btn-entrar">Entrar</button>
-		<span class="erro"><?php echo $erroLoginSenha; ?></span>
-
-		<a href="cadastro.php">
-			<input type="button" name="cadastro" value="Criar conta">
-		</a>
+<div class="container-form">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="images/login.jpg" alt="Imagem Login">
+        <div class="text">
+          <span class="text-1">Cada novo amigo é uma <br> nova aventura</span>
+          <span class="text-2">Vamos nos conectar</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="images/register.jpg" alt="Imagem Cadastro">
+        <div class="text">
+          <span class="text-1">Compelte sua jornada <br> </span>
+          <span class="text-2">Vamos começar</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+      
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="login" placeholder="Digite seu email" >
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password"  name="senha" placeholder="Digite sua senha" >
+              </div>
+              <div class="text"><a href="#">Esqueceu a senha?</a></div>
+              <div class="button input-box">
+			  <input type="submit" name="btn-entrar" value="Enviar">
+              </div>
+              <div class="text sign-up-text">Não tem uma conta? <label for="flip">Inscreva-se agora</label></div>
+            </div>
+        </form>
+      </div>
 
 		</body>
+
+		
