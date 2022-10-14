@@ -43,21 +43,40 @@ no banco. */
                     </label>
                 </div>
 
-                <div class="caixa-notificacoes" id="comentarios-caixa-artista-evento">
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Uma banda que você segue adicionou uma nova imagem! </p>
+                <div id="comentarios-caixa-artista-evento" style=" background: rgba(1,37,28,0.5); backdrop-filter: blur(2px)">
+                    <div class="sessao-comentarios">
+                        <div class="caixa-comentario">
+                            <div class="comentarios-top">
+                                <div class="foto-perfil">
+                                    <img class="mr-3 rounded-circle" id="foto-perfil-comentario" src="img/rex_orange.jpg">
+                                </div>
+                                <div class="foto-nome-data-horario">
+                                    <h5> Walentim23_</h5>
+                                    <span> 22/10/2022 14:00 </span>
+                                </div>
+                            </div>
+                            <p id="texto-notificacao"> Uma banda que você segue adicionou uma nova imagem! </p>
+                            <div class="curtir-comentario">
+                            </div>
+                        </div>
+                        <div class="caixa-comentario">
+                            <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                        </div>
+                        <div class="caixa-comentario">
+                            <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                        </div>
+                        <div class="caixa-comentario">
+                            <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                        </div>
+                        <div class="caixa-comentario">
+                            <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                        </div>
+                        <div class="caixa-comentario">
+                            <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                        </div>
                     </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    <div class="caixa-enviar-comentario">
+                        <textarea class="input-comentario" placeholder="digite aqui..."></textarea>
                     </div>
                 </div>
             </div>
