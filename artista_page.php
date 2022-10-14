@@ -43,7 +43,23 @@ no banco. */
                     </label>
                 </div>
 
-
+                <div class="caixa-notificacoes" id="comentarios-caixa-artista-evento">
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Uma banda que você segue adicionou uma nova imagem! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                    <div class="notificacao">
+                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
+                    </div>
+                </div>
             </div>
 
             <div class="rexx-text">
