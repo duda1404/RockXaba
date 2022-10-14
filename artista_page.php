@@ -44,7 +44,7 @@ no banco. */
                     </label>
                 </div>
 
-<<<<<<< Updated upstream
+
                 <div id="comentarios-caixa-artista-evento" style=" background: rgba(1,37,28,0.5); backdrop-filter: blur(2px)">
                     <div class="sessao-comentarios">
                         <div class="caixa-comentario">
@@ -76,26 +76,17 @@ no banco. */
                         <div class="caixa-comentario">
                             <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
                         </div>
-=======
-                <div class="caixa-notificacoes" id="comentarios-caixa-artista-evento">
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> <?php echo $cor_artista; ?> </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
-                    </div>
-                    <div class="notificacao">
-                        <p id="texto-notificacao"> Um artista que você curtiu adicionou um novo produto na loja! </p>
->>>>>>> Stashed changes
+
+            
+
                     </div>
                     <div class="caixa-enviar-comentario">
                         <textarea class="input-comentario" placeholder="digite aqui..."></textarea>
                     </div>
-                </div>
+                
             </div>
+            </div>
+            
 
             <div class="rexx-text">
                 <div class="logo-titulo-artista">
