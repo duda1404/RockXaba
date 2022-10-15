@@ -59,7 +59,7 @@ no banco. */
                             <p id="texto-notificacao"> Uma banda que você segue adicionou uma nova imagem! </p>
                             <div class="curtir-comentario">
                                 <button class="ver-respostas-responder-curtir" id="ver-respostas" onclick="minhaFuncao()"> Ver respostas(54)</button>
-                                <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentario()"> Responder </button>
+                                <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentariosessao1()"> Responder </button>
                                 <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
                             </div>
                         </div>
@@ -76,7 +76,7 @@ no banco. */
                             <p id="texto-notificacao"> Uma banda que você segue adicionou uma nova imagem! </p>
                             <div class="curtir-comentario">
                                 <button class="ver-respostas-responder-curtir" id="ver-respostas" onclick="minhaFuncao()"> Ver respostas(54)</button>
-                                <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentario()"> Responder </button>
+                                <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentariosessao1()"> Responder </button>
                                 <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
                             </div>
                         </div>
@@ -154,6 +154,14 @@ no banco. */
                 function responderComentario() {
 
                     document.getElementById('text-area').focus().scrollIntoView({behavior: 'smooth' });
+                }
+
+                function responderComentariosessao1(){
+
+                    document.getElementById("sessao-comentarios1").style.display = "none";
+                    document.getElementById("sessao-comentarios2").style.display = "block";
+                    document.getElementById('text-area').focus().scrollIntoView({ behavior: 'smooth' });
+                    
                 }
             </script>
         </div>
