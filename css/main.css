@@ -167,7 +167,7 @@ header{
 
   width: 100%;
   height: fit-content;
-  background-image: url(../img/bg_loja.png);
+  background-image: url(../img/bg_home.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   
@@ -484,6 +484,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    
 }
 
 .about-text h2{
@@ -1127,12 +1128,14 @@ input.invalido{
 .main-rexx{
   padding: 0;
   width: 100%;
-  
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
+  
+
 }
+
 
 .rexx-text h2{
   font-size: 75px;
@@ -1788,7 +1791,9 @@ select::-ms-expand {
 
 .rexx{
 
-  background-image: url(../img/bgcontactus.png);
+  background-image: url(../img/bg_artista.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .main-rexx{
@@ -1925,7 +1930,8 @@ input[type=radio] {
   position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: 35vmax;
+  margin-bottom: 45vmax;
+  margin-left: 8vmax;
 }
 
 
@@ -1969,7 +1975,9 @@ input[type=radio] {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  background-color: #0d0d0d;
+  background: url(../img/bg_evento.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
 }
 
@@ -2116,6 +2124,11 @@ input[type=radio] {
 #local{
 
   margin-bottom: 1vmax;
+}
+
+.container{
+
+  width: 500px !important;
 }
 
 
@@ -2420,6 +2433,7 @@ input[type=radio] {
   display: flex;
   flex-direction: row;
   height: fit-content;
+  align-items:flex-start;
   width: 100%;
   margin-top: 1vmax;
   
@@ -2427,19 +2441,97 @@ input[type=radio] {
 
 #foto-perfil-comentario{
 
-  width: 50px;
+  width: 60px;
   height: 50px;
 
+}
+
+#respostas{
+
+  width: 100%;
+  height: 100%;
+  
 }
 
 .foto-perfil{
 
   margin-right: 1vmax;
+  display: flex;
+  flex-direction: row;
+}
+
+.fechar-aba-respostas{
+
+  background: none;
+  border: none;
+  margin-left: 12vmax;
+  padding-bottom: 1vmax;
+}
+
+.fechar-aba-respostas:focus{
+
+  outline-style: none;
+}
+
+#icone-fechar-aba{
+
+  width: 30px;
+  height: 30px;
 }
 
 .comentarios-top{
 
   display: flex;
   flex-direction: row;
+}
+
+.curtir-comentario{
+
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5vmax;
+  justify-content: space-evenly;
+  
+}
+
+#ver-respostas, #responder{
+
+  background: none;
+
+}
+
+.ver-respostas-responder-curtir{
+
+  border: none;
+}
+
+.ver-respostas-responder-curtir:focus{
+
+  outline-style: none;
+}
+
+#curtir{
+
+  background: none;
+}
+
+#imagem-curtida{
+
+  width: 20px;
+  height: 20px;
+}
+
+#comentario-principal-aba-respostas{
+
+  width: 100%;
+  border-radius: 0;
+  border: 2px solid #000000;
+}
+
+#sessao-comentarios2{
+
+  padding: 0;
+  
+
 }
 
