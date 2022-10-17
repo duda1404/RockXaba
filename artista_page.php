@@ -85,6 +85,7 @@ no banco. */
                         <?php
                                             }
                                             ?>
+                                            
                     </div>
                     
                  
@@ -171,6 +172,7 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
 
                 <div class="caixa-enviar-comentario" id="caixa-enviar">
                     <textarea id="text-area" class="input-comentario" placeholder="digite aqui..."></textarea>
+                    <button id="enviar-texto"> ENVIAR </button>
                 </div>
                 
             </div>
