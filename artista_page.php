@@ -169,10 +169,12 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                     </div>
                    
                 </div>
-
+                <form method="POST" action="<?php enviarComentario($connect) ?>">
+                <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
+                <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
                 <div class="caixa-enviar-comentario" id="caixa-enviar">
-                    <textarea id="text-area" class="input-comentario" placeholder="digite aqui..."></textarea>
-                    <button id="enviar-texto"> ENVIAR </button>
+                    <textarea id="text-area" class="input-comentario" name="mensagem" placeholder="digite aqui..."></textarea>
+                    <button id="enviar-texto" name="submit"> ENVIAR </button>
                 </div>
                 
             </div>
