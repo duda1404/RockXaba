@@ -1107,9 +1107,11 @@ input.invalido{
 /* Estilização da sub-página do Rex Orange County*/
 
 .rexx {
-  width: 100%;
+
   padding: 10px 0px;
   background-color: black;
+  position: relative;
+
 }
 
 .image_rex{
@@ -1646,6 +1648,9 @@ input:checked + .slider:before {
 .body_caption{
 
   background-image: url(../img/bg_loja.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .img-box{
@@ -1794,6 +1799,9 @@ select::-ms-expand {
   background-image: url(../img/bgcontactus.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: auto;
+  height: 100%;
+  
 }
 
 .main-rexx{
