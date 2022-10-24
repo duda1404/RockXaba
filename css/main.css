@@ -1,4 +1,5 @@
  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 
 /*<?php
@@ -461,6 +462,9 @@ nav {
 /* ********************************************************************************************************************************* */
 .about{
   background-image:url(../img/bgsobre.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .about {
     width: 100%;
@@ -1250,15 +1254,18 @@ input.invalido{
 
 /* PERFIL */
 @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
-html {
-  position: relative;
-  overflow-x: hidden !important;
-}
 
-* {
+
+* .perfil{
+
   box-sizing: border-box;
 }
 
+.perfilbody{
+  background-image: url(../img/bgcontactus.png);
+  background-repeat: no-repeat;
+
+}
 
 a, a:hover {
   text-decoration: none;
@@ -1272,7 +1279,7 @@ a, a:hover {
   padding: 50px 20px;
   padding-top: 100px;
   display: flex;
-  background-image: url(../img/bgcontactus.png);
+
 
 }
 @media screen and (max-width: 768px) {
@@ -1992,7 +1999,7 @@ input[type=radio] {
 .foto-titulo-evento{
 
   text-align: center;
-  height: 480px;
+  height: 50vh;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/orgas.png');
   background-size: 100% 100%;
   
@@ -2146,7 +2153,7 @@ input[type=radio] {
   position: relative;
   max-width: 850px;
   width: 100%;
-  background: #fff;
+  background: linear-gradient(#D43FA5, #509EFF);
   padding: 40px 30px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   perspective: 2700px;
@@ -2167,7 +2174,7 @@ input[type=radio] {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #FF9F5B;
+  background: linear-gradient(#D43FA5, #509EFF);
   opacity: 0.5;
   z-index: 100;
 }
@@ -2176,7 +2183,7 @@ input[type=radio] {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #FF9F5B;
+  background: linear-gradient(#D43FA5 #509EFF);
   opacity: 0.5;
   z-index: 100;
   transform: rotateY(180deg);
@@ -2225,7 +2232,7 @@ input[type=radio] {
 .container-form .forms{
   height: 100%;
   width: 100%;
-  background: #fff;
+  background: linear-gradient(#D43FA5, #509EFF);
 }
 .container-form .form-content{
   display: flex;
@@ -2240,7 +2247,7 @@ input[type=radio] {
   position: relative;
   font-size: 24px;
   font-weight: 500;
-  color: #333;
+  color: rgb(255, 255, 255);
 }
 .forms .form-content .title:before{
   content: '';
@@ -2249,7 +2256,7 @@ input[type=radio] {
   bottom: 0;
   height: 3px;
   width: 25px;
-  background: #FF9F5B;
+  background:rgb(255, 255, 255);
 }
 .forms .signup-form  .title:before{
   width: 20px;
@@ -2292,7 +2299,7 @@ input[type=radio] {
 }
 .forms .form-content .text a{
   text-decoration: none;
-  color: #FF9F5B;
+  color: #ffffff;
 }
 .forms .form-content .text a:hover{
   text-decoration: underline;

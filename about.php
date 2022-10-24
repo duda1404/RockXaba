@@ -4,7 +4,7 @@
 
 ?>
 
-<section class="about">
+<body class="about">
         <div class="main-about">
             <img class="rockxabaicon" src="./img/rockxaba_icon.png">
             <div class="about-text">
@@ -36,7 +36,7 @@
                 </ul>
             </div>
         </div>
-    </section>
+
 </body>
 
 </html>

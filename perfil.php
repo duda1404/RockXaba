@@ -11,6 +11,7 @@ if (!isset($_SESSION['logado'])) {
 
 ?>
 <!-- partial:index.partial.html -->
+<body class="perfilbody">
 <div class="wrapper">
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">

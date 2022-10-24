@@ -5,7 +5,7 @@ include 'funcoes.php';
 ?>
 
 <!-- Texto e imagem do artista/banda-->
-<section class="rexx">
+<body class="rexx">
     <?php
     $id = $_GET["myid"];
 
@@ -250,7 +250,6 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
         </div>
 
 
-</section>
 
 
 

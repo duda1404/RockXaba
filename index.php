@@ -25,7 +25,7 @@ if (isset($_GET['acao'])) {
 
 ?>
 
-<section class="eventos">
+<body class="eventos">
   <div class="organiza-evento">
     <div class="titulo">
       <div class="content">
@@ -73,7 +73,7 @@ if (isset($_GET['acao'])) {
     </a>
   </div>
   </div>
-</section>
+
 </body>
 
 </html>

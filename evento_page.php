@@ -4,7 +4,7 @@ include 'header.php';
 include 'funcoes.php';
 ?>
 
-<section class="evento_body">
+<body class="evento_body">
     <div class="foto-titulo-evento">
         <h3 id="nome-evento"> FESTIVAL ORGAS MÃOZINHA </h3>
     </div>
@@ -57,7 +57,7 @@ include 'funcoes.php';
         </div>
     </div>
     </div>
-</section>
+
 </body>
 
 </html>
