@@ -1,5 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 
 /*<?php
@@ -49,13 +48,13 @@ header{
 
   
   list-style: none;
+  font-family: 'Josefin Sans', sans-serif;
 
 
 }
 
 .dropbtn{
 
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: lighter;
   font-size: xx-large;
   background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
@@ -81,7 +80,6 @@ header{
 
 .nav-list{
 
-  font-family: 'Josefin Sans', sans-serif;
   list-style: none;
   flex-direction: row;
   justify-content: space-evenly;
@@ -120,7 +118,6 @@ header{
 #nome-perfil{
 
   list-style: none;
-
 
 }
 
@@ -205,7 +202,6 @@ header{
 
   width: 100%;
   height: 100%;
-  font-family: 'Josefin Sans', sans-serif;
   padding: 2vmax;
   font-size: 62px;
   border-image: linear-gradient(60deg,#c850c0, #0099f9) 30;
@@ -214,6 +210,7 @@ header{
   border-left: none;
   border-right: none;
   border-top: none;
+  font-family: 'Josefin Sans', sans-serif;
 
 
 
@@ -305,6 +302,7 @@ nav {
   flex-direction: row;
   justify-items: space-evenly;
   width: 100%;
+  font-family: 'Josefin Sans', sans-serif;
 
 
 }
@@ -468,7 +466,6 @@ nav {
 }
 .about {
     width: 100%;
-    padding: 5vh 0vw;
 }
 
 .rockxabaicon{
@@ -478,6 +475,7 @@ nav {
 
 .about-text{
     width: 100vw;
+    margin-top: 5vmax;
     
 }
 
@@ -492,7 +490,7 @@ nav {
 }
 
 .about-text h2{
-    font-size: 70px;
+    font-size: 80px;
     text-transform: capitalize;
     margin-bottom: 20px;
     font-family: 'Josefin Sans', sans-serif;
@@ -512,7 +510,7 @@ nav {
     letter-spacing: 0.1vmax;
     font-size: 1.5vmax;
     margin-bottom: 1.5vmax;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     text-align: justify;
     font-weight: 100;
 }
@@ -822,108 +820,7 @@ input.invalido{
 
 }
 
-/* ********************************************************************************************************************************* */
-/* ********************************************************************************************************************************* */
 
-/* ********************************************************* CADASTRO ************************************************************** */
-
-/* ********************************************************************************************************************************* */
-/* ********************************************************************************************************************************* */
-
-/* Muda a fonte do "Contato" no formulário */
-
-.form h1{
-
-  color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-
-
-}
-
-/* Propriedades da "caixa principal" do formulário */
-
-.form {
-
-  width: 400px;
-  padding: 10px;
-  position: absolute;
-  top: 66%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: black;
-  text-align: center;
-  font-family: sans-serif;
-
-
-}
-
-/* Altera as propriedades dos inputs do formulário */
-
-.form input[type = "text"], .form input[type= "password"], .form input[type="email"]{
-
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #e92eed;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: o.25s;
-
-}
-
-
-/* Altera as propridades dos inputs do formulário quando são acessados */
-
-.form input[type = "text"]:hover, .form input[type= "password"]:hover, .form input[type="email"]:hover{
-
-  width: 280px;
-  border-color: #58b9ff;
-
-}
-
-/* Altera as propriedades do botão*/
-
-.form input[type ="button"]{
-
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid  #58b9ff;
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-  cursor: pointer;
-
-
-
-}
-
-/* Altera as propriedades do botão quando se passa o mouse*/
-
-.form input[type ="button"]:hover{
-
-  background: #58b9ff;
-
-
-}
-
-.form p, label {
-
-  color: white;
-  font-family: sans-serif;
-
-
-}
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
@@ -1112,7 +1009,6 @@ input.invalido{
 
 .rexx {
 
-  padding: 10px 0px;
   background-color: black;
   position: relative;
 
@@ -1197,6 +1093,12 @@ input.invalido{
   height: 50%;
 
 
+}
+
+.lupa-de-busca{
+
+  width: 45px;
+  height: 30px;
 }
 
 .form-inline input[type= "search"]{
@@ -1742,6 +1644,7 @@ select::-ms-expand {
   color: #393939;
 }
 
+
 .searchform input[type=search] {
 
 
@@ -1827,10 +1730,8 @@ select::-ms-expand {
 
 #dsc-artista{
 
-  font-family: Arial, Helvetica, sans-serif;
-  
+  font-family: 'Josefin Sans', sans-serif;
   font-size: large;
- 
   text-align: center;
 }
 
@@ -1842,7 +1743,7 @@ select::-ms-expand {
 
 .info-artista{
 
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1873,7 +1774,9 @@ select::-ms-expand {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 }
+
 
 .seguir-curtir{
 
@@ -1889,7 +1792,7 @@ select::-ms-expand {
 
   font-family: 'Josefin Sans', sans-serif;
   
-  color: #383637;
+  color: black;
   border: none;
   font-size: 19px;
   padding: 0;
@@ -1999,7 +1902,8 @@ input[type=radio] {
 .foto-titulo-evento{
 
   text-align: center;
-  height: 50vh;
+  max-height: 70vh;
+  height: 100%;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/orgas.png');
   background-size: 100% 100%;
   
@@ -2082,7 +1986,7 @@ input[type=radio] {
 .titulo-bandas-horario-evento{
 
   margin: 0;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 19px;
   color: #f8ee1d;
   text-shadow: 0px 2px 10px #f8ee1d;
@@ -2094,7 +1998,7 @@ input[type=radio] {
 .nome-bandas-horario-evento{
 
   margin: 0;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 19px;
   color: #f8ee1d;
   text-shadow: 0px 2px 10px #f8ee1d;
@@ -2353,13 +2257,13 @@ input[type=radio] {
   }
 }
 
-.loginn{
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#pagina-login{
+
   background-image: url(../img/bgcontactus.png);
-  padding: 30px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+
 }
 
 #comentarios-caixa-artista-evento{
@@ -2566,3 +2470,256 @@ input[type=radio] {
 
 }
 
+/* LOGIN E CADASTRO */
+
+.align {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding-bottom: 8px;
+}
+
+.card-login-cadastro {
+	margin-top: 28px;
+	height: 100%;
+  max-height: 460px;
+	width: 396px;
+	background: black;
+	border: 1px solid #373737;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: 0.2s;
+  margin: 0 auto;
+  margin-top: 5vmax;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.extend {
+	max-height: 580px;
+}
+
+.head {
+	width: 100%;
+	display: flex;
+	height: 72px;
+	border-bottom: 1px solid #373737;
+	justify-content: space-between;
+}
+
+.head a {
+	height: 100%;
+	padding: 0 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(140,140,140);
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.head .selected {
+	position: relative;
+	background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	font-weight: 700;
+}
+
+.head .selected:after {
+	position: absolute;
+	content: "";
+	bottom: 0;
+	left: 0;
+	height: 5px;
+	width: 100%;
+	background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
+	border-radius: 99px 99px 0 0;
+}
+
+.tabs {
+	height: calc(100% - 72px);
+	display: flex;
+}
+
+.login-cadastro {
+	width: 100%;
+	height: 100%;
+	flex-shrink: 0;
+	padding: 44px 38px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	right: 0;
+	transition: right 0.2s;
+  
+}
+
+.extend .login-cadastro {
+	right: 100%;
+}
+
+.inputs {
+	width: 100%;
+	padding-top: 6px;
+  
+}
+
+.input {
+	position: relative;
+	margin-bottom: 20px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.input input {
+	width: 100%;
+	font-size: 17px;
+	background: #1C1C1C;
+	border-radius: 8px;
+	padding: 16px 18px 16px 51px;
+	color: rgb(220,220,220);
+  margin-bottom: 1vmax;
+}
+
+.checkbox {
+	height: 40px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.checkbox input {
+	position: absolute;
+	opacity: 0;
+	height: 0;
+	width: 0;
+}
+
+.checkbox span {
+	display: flex;
+	align-items: center;
+	color: rgb(110,110,110);
+	font-size: 16px;
+	user-select: none;
+}
+
+.checkbox span:before {
+	content: "";
+	width: 22px;
+	height: 22px;
+	border-radius: 6px;
+	margin-right: 16px;
+	background-color: #1C1C1C;
+}
+
+.checkbox:hover input ~ span:before {
+	background-color: rgb(50,50,50);
+}
+
+.checkbox input:checked ~ span:before {
+	background-image: url(../img/checked.png);
+	background-size: cover;
+}
+
+.card-login-cadastro button {
+	display: block;
+	background: -webkit-linear-gradient(60deg,#c850c0, #0099f9);
+	padding: 14px 52px;
+	border-radius: 12px;
+	color: black;
+	font-weight: 700;
+	font-size: 21px;
+	cursor: pointer;
+}
+
+.card-login-cadastro button:hover{
+
+  transform: scale(1.1);
+}
+
+
+/* ======================== FOTO COMENTÁRIO ======================== */
+
+
+#foto-perfil-comentario{
+
+  border-radius: 50px;
+}
+
+
+/* ======================== CONTATO ARTISTA ======================== */
+
+.contato-artista{
+
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  border-radius: 20px;
+  padding: 2vmax;
+}
+
+.titulo-contato{
+
+  text-align: center;
+  margin-bottom: 2vmax;
+  
+}
+
+.telefone-email{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2vmax;
+  
+}
+
+.texto{
+
+  color: #383637;
+  margin-right: 1vmax;
+}
+
+#texto-redes{
+
+  margin-right: none;
+  text-align: center;
+  margin-bottom: 2vmax;
+}
+
+.telefone{
+
+  margin-right: 2vmax;
+}
+.redes{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#rede-icone1{
+
+  width: 30px;
+  height: 30px;
+}
+
+#rede-icone2{
+
+  width: 30px;
+  height: 30px;
+}
+
+#rede-icone3{
+
+  width: 30px;
+  height: 30px;
+}

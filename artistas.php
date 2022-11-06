@@ -11,12 +11,18 @@ include 'header.php';
 	</div>
 
 	<div class="artista-buscar-filtrar">
+		<div class="lupa">
+			<a id="lupa" href="#search-box">
+				<img src="img/lupa.png" class="lupa-de-busca">
+			</a>
+		</div>
 		<form class=" clearfix searchform">
 			<label for="search-box">
 				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
 			</label>
 			<input type="search" id="search-box" placeholder="Buscar artista, banda, gênero..." />
 		</form>
+
 		<div class="select">
 			<select name="ORDENAR">
 				<option selected disabled value="1">ORDENAR: </option>
@@ -24,7 +30,7 @@ include 'header.php';
 				<option value="3">ORDENAR: LIKES</option>
 			</select>
 		</div>
-		
+
 	</div>
 
 	<div class="container-a2">
@@ -56,5 +62,4 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 		</ul>
 	</div>
 </body>
-
 </html>

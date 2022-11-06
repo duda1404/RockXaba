@@ -10,6 +10,11 @@ include 'header.php';
 	</div>
 
 	<div class="artista-buscar-filtrar">
+		<div class="lupa">
+			<a id="lupa" href="#search-box">
+				<img src="img/lupa.png" class="lupa-de-busca">
+			</a>
+		</div>
 		<form class=" clearfix searchform">
 			<label for="search-box">
 				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
