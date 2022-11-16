@@ -37,7 +37,7 @@ header("Content-type: text/css");
 /* ********************************************************************************************************************************* */
 header{
   overflow: visible;
-  background-color: black;
+  background-color: transparent;
   padding: 10px 5px;
   transition: 0.4s;
   display: -webkit-box;
@@ -106,7 +106,8 @@ header{
 
 
 .nav-list a:hover {
-  border-bottom: 6px solid #7974d8;
+  border-bottom: 6px solid white;
+  box-shadow: 0px 0px 35px 0px #f82b9f, 0px 0px 15px 0px, transparent inset;
   padding: auto;
   color: white;
   
@@ -147,7 +148,7 @@ header{
 #evento-titulo{
 
   background-color: #f82b9f;
-  box-shadow: 0px 4px 4px 0px #f82b9f;
+  box-shadow: 0px 0px 35px 0px #f82b9f, 0px 0px 15px 0px #ff71c2 inset;
 
 }
 
@@ -223,8 +224,9 @@ header{
 
 #titulo-lojas{
 
+
   background-color: #7572d9;
-  box-shadow: 0px 4px 4px 0px #7572d9;
+  box-shadow: 0px 0px 35px 0px #7572d9, 0px 0px 15px 0px #aba8ff inset;
   width: 24vmax;
   margin-bottom: 8%;
 
@@ -235,7 +237,7 @@ header{
 #titulo-loja-artista{
 
   background-color: #7572d9;
-  box-shadow: 0px 4px 4px 0px #7572d9;
+  box-shadow: 0px 0px 35px 0px #7572d9, 0px 0px 15px 0px #aba8ff inset;
   width: 24vmax;
   margin-bottom: 3vmax;
 
@@ -1165,6 +1167,7 @@ input.invalido{
 
 .perfilbody{
   background-image: url(../img/bgcontactus.png);
+  background-size:100%;
   background-repeat: no-repeat;
 
 }
@@ -1913,12 +1916,12 @@ input[type=radio] {
 #nome-evento{
 
   background-color: #f8ee1d;
+  box-shadow: 0px 0px 35px 0px #f8ee1d, 0px 0px 15px 0px #fff990 inset;
   color: #0d0d0d;
   width: 72vmax;
   height: 8vmax;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 4.5vmax; 
-  box-shadow: 0px 4px 4px 0px #f8ee1d;
   margin: auto;
   margin-top: 4vmax;
   padding-top: 2vmax;
