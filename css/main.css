@@ -155,11 +155,13 @@ header{
 .link-evento{
 
   color: white;
+
 }
 
 .link-evento:hover{
 
   color: white;
+  transform: scale(1.1);
 }
 
 .eventos{
@@ -1254,7 +1256,6 @@ a, a:hover {
 .profile-card__name {
   
   border-radius: 20px;
-  background: rgba(123,65,139,0.5);
   backdrop-filter: blur(2px);
   color: rgba(114,43,111,225);
   height: 3vmax;
@@ -1269,21 +1270,22 @@ a, a:hover {
   padding-top: 4px;
   font-weight: 200;
   font-size: 18px;
-  color: rgba(114,43,111,225);
+  color: black;
   
 }
 
 .profile-card__txt {
   font-size: 15px;
   padding: 1vmax;
-  border-radius: 20px;
   font-weight: 500;
   background: rgba(123,65,139,0.5);
   backdrop-filter: blur(2px);
-  color: rgba(114,43,111,225);
+  color: black;
   margin: 0 auto;
   margin-left: 12vmax;
   margin-right: 12vmax;
+  min-height: 100px;
+  max-height: 200px;
 }
 
 
