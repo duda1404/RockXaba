@@ -253,6 +253,7 @@ textarea.form-control {
 .container-a2 {
   padding: 20px 100px;
 
+
 }
 
 .container-a2 img {
@@ -268,10 +269,11 @@ textarea.form-control {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  display: grid;
+  row-gap: 5vmax;
+  grid-template-columns: auto auto auto;
+  justify-content: space-around;
+  
 
 
 }
@@ -285,9 +287,8 @@ textarea.form-control {
   float: left;
   padding: 0px;
   box-sizing: border-box;
-
   position: relative;
-  overflow: hidden;
+ 
 }
 
 .caption-style-2 li:hover .caption {
