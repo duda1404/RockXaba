@@ -14,7 +14,9 @@ body {
   color: #fff;
   font-size: 15px;
   margin: 0;
-  height: 200%;
+  position: relative;
+  height: 100%;
+  
   
 
 }

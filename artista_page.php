@@ -262,12 +262,16 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
             }
                 ?>
 
+<<<<<<< Updated upstream
                 </div>
             </div>
 
         </div>
 
         <script type="text/javascript" src="js/script.js"></script>
+=======
+<script type="text/javascript" src="js/script.js"></script>
+>>>>>>> Stashed changes
 
 
 </body>
