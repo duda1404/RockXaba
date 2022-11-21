@@ -12,15 +12,13 @@ include 'header.php';
 
 	<div class="artista-buscar-filtrar">
 		<div class="lupa">
-			<a id="lupa" href="#search-box">
-				<img src="img/lupa.png" class="lupa-de-busca">
-			</a>
+			<img src="img/lupa.png" class="lupa-de-busca">
 		</div>
 		<form class=" clearfix searchform">
 			<label for="search-box">
 				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
 			</label>
-			<input type="search" id="search-box" placeholder="Buscar artista, banda, gênero..." />
+			<input type="search" id="search-box" onkeyup="barraBusca()" placeholder="Buscar artista, banda, gênero..." />
 		</form>
 
 		<div class="select">
@@ -34,7 +32,7 @@ include 'header.php';
 	</div>
 
 	<div class="container-a2">
-		<ul class="caption-style-2">
+		<ul class="caption-style-2" id="myUL">
 			<?php
 			/*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
@@ -52,7 +50,6 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 					<a href="artista_page.php?myid=<?php echo $id_artista; ?>" target="new window">
 						<img src="uploads/<?php echo $photo; ?>" class="testando" alt="" title="<?php echo $nome_artista; ?>" />
 					</a>
-					<p class="nome-artista-logo"><?php echo $nome_artista; ?></p>
 				</li>
 			<?php
 			}
@@ -61,5 +58,29 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 
 		</ul>
 	</div>
+
+	<script>
+		function barraBusca() {
+			// Declare variables
+			var input, filter, ul, li, a, i, txtValue;
+			input = document.getElementById('search-box');
+			filter = input.value.toUpperCase();
+			ul = document.getElementById("myUL");
+			li = ul.getElementsByTagName('li');
+
+			// Loop through all list items, and hide those who don't match the search query
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName("img")[0];
+				txtValue = a.getAttribute('title');
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = "";
+				} else {
+					li[i].style.display = "none";
+				}
+			}
+		}
+	</script>
+
 </body>
+
 </html>

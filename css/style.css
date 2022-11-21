@@ -255,6 +255,7 @@ textarea.form-control {
 .container-a2 {
   padding: 20px 100px;
 
+
 }
 
 .container-a2 img {
@@ -270,10 +271,11 @@ textarea.form-control {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  display: grid;
+  row-gap: 5vmax;
+  grid-template-columns: auto auto auto;
+  justify-content: space-around;
+  
 
 
 }
@@ -287,9 +289,8 @@ textarea.form-control {
   float: left;
   padding: 0px;
   box-sizing: border-box;
-
   position: relative;
-  overflow: hidden;
+ 
 }
 
 .caption-style-2 li:hover .caption {
@@ -343,8 +344,8 @@ textarea.form-control {
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 .content h3 {
-
   background-color: #0099f9;
+  box-shadow: 0px 0px 35px 0px #0099f9, 0px 0px 15px 0px #4ebbff inset;
   color: #0d0d0d;
   margin-top: 5%;
   margin-bottom: 8%;
@@ -354,7 +355,6 @@ textarea.form-control {
   height: 8vmax;
   font-size: 6.5vmax;
   text-align: center;
-  box-shadow: 0px 4px 4px 0px #0099f9;
   font-family: 'Josefin Sans', sans-serif;
 
 
