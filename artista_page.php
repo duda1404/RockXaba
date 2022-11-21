@@ -198,6 +198,7 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                     function minhaFuncao() {
                         document.getElementById("sessao-comentarios1").style.display = "none";
                         document.getElementById("sessao-comentarios2").style.display = "block";
+                        
                     }
 
                     function funcaoFechar() {
@@ -262,16 +263,12 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
             }
                 ?>
 
-<<<<<<< Updated upstream
                 </div>
             </div>
 
         </div>
 
         <script type="text/javascript" src="js/script.js"></script>
-=======
-<script type="text/javascript" src="js/script.js"></script>
->>>>>>> Stashed changes
 
 
 </body>
