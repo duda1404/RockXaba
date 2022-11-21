@@ -12,9 +12,7 @@ include 'header.php';
 
 	<div class="artista-buscar-filtrar">
 		<div class="lupa">
-			<a id="lupa" href="#search-box">
-				<img src="img/lupa.png" class="lupa-de-busca">
-			</a>
+			<img src="img/lupa.png" class="lupa-de-busca">
 		</div>
 		<form class=" clearfix searchform">
 			<label for="search-box">

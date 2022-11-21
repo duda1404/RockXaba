@@ -32,6 +32,9 @@ if (isset($_GET['acao'])) {
         <h3 id="evento-titulo"> EVENTOS </h3>
       </div>
       <div class="artista-buscar-filtrar">
+        <div class="lupa">
+          <img src="img/lupa.png" class="lupa-de-busca">
+        </div>
         <form class=" clearfix searchform">
           <label for="search-box">
             <span class="fa fa-search fa-flip-horizontal fa-2x"></span>
