@@ -8,14 +8,14 @@ header("Content-type: text/css");
 ?>
 /* O body das páginas que contém o background image*/
 
-.follow, .contato, .login, .cadastro, .wrapper, .index{
+ .login, .cadastro, .index, .editar_perfil{
   height: 100%;
   width:100%;
   margin: 0 auto;
   font-family: 'Josefin Sans', sans-serif;
   /*font-family:'Josefin Sans';*/
   color: #e92eed;
-  background-image:url(../img/bgcontactus.png);
+  background-image:url(../img/bgsobre.png);
 }
 
 /* ***************************************************** */

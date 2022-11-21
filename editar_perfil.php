@@ -16,6 +16,7 @@
 <?php 
 /*Define um template vazio no HTML, do qual será preenchido de acordo com as informações do usuário logado */ 
 ?>
+<body class=editar_perfil>
 
 <div class="wrapper">
 
