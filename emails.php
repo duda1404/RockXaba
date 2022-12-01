@@ -24,9 +24,16 @@ try {
     $mail->Host       = 'smtp.gmail.com';                     //Define o host (nesse caso, o gmail)
     $mail->SMTPAuth   = true;                                   //Define se requer, ou não, autenticação
     $mail->Username   = 'rockxaba027@gmail.com';                     //Seu email
-    $mail->Password   = 'szkwqpqjhndlhjgz';                         //Senha do seu email
+    $mail->Password   = 'pvsbmxrqvyiknccs';                         //Senha do seu email
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Criptografia
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = 465;   
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        ));                                 
+        //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Remetentes e destinatários
 

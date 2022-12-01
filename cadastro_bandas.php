@@ -21,8 +21,6 @@ $erroNome = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-
-
   /* VALIDA CAMPO USUÁRIO */
 
   /* Verifica se o campo de usuário está vazio assim que o botão de Enviar formulário (submit) é pressionado, se sim, emite uma mensagem pedindo seu preenchimento */

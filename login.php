@@ -11,6 +11,8 @@ if (isset($_SESSION['logado'])) {
 	header('Location: index.php?acao=negado');
 }
 
+
+
 //If que estabelece a condição de que, se o método acao existe (caso o usuário tente acessar uma página
 // que requer o Login sem estar logado), ele emite um alert informando que precisa logar antes de acessá-la
 
@@ -324,6 +326,7 @@ if (isset($_POST['btnentrar'])) {
 		if (pg_num_rows($verifica_email) > 0) {
 
 			echo 'Email já cadastrado!<br>';
+			$erroEmail = "aa";
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='login.php#register'
         </SCRIPT>");
@@ -333,11 +336,19 @@ if (isset($_POST['btnentrar'])) {
 
 		if (pg_num_rows($verifica_nome) > 0) {
 
+			$erroNome = "aa";
 			echo 'Nome de usuário não disponível!';
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='login.php#register'
         </SCRIPT>");
 		}
+
+		if($_POST['senha'] != $_POST['repeteSenha']){
+
+			echo 'A senhas estão diferentes!';
+			$erroRepeteSenha = 'A senhas estão diferentes!';
+		}
+
 	} else {
 
 		/* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
@@ -387,10 +398,12 @@ if (isset($_POST['btnentrar'])) {
 
 			/* Redireciona à página de Login se o cadastro é concluído sem erros e mostra uma mensagem informando que precisa confirmá-lo */
 
+			/*
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Cadastro concluído. Acesse sua caixa de email para confirmá-lo!');
         window.location.href='index.php'
         </SCRIPT>");
+		*/
 		}
 	}
 }
@@ -412,7 +425,7 @@ if (isset($_POST['btnentrar'])) {
 			<form class="login-cadastro" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 				<div class="inputs">
 					<div class="input">
-						<input placeholder="Nome de usuário" name="login" type="text">
+						<input placeholder="Nome de usuário" name="login" type="text" >
 
 					</div>
 					<div class="input">
