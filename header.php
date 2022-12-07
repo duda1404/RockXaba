@@ -68,23 +68,20 @@ if (isset($_SESSION['logado'])) {
       </ul>
 
     <?php elseif (isset($_SESSION['logado'])) :  ?>
-      
+
       <img class="logo" width=100px 10%; weight=100px 10%; src="img/rockxaba_icon.png" alt="logo" id="logo-logado"> </a>
       <ul class="nav-list">
 
         <li><a href="index.php">HOME</a></li>
         <li><a href="about.php">SOBRE</a></li>
         <li><a href="artistas.php">ARTISTAS</a></li>
-        <li><a href="lojas.php"> LOJAS </a></li>
       </ul>
 
       <div class="dropdown">
         <li class="dropbtn" id="nome-perfil"> <?php echo $dados['nome_user']; ?></li>
         <div class="dropdown-content">
           <a href="perfil.php">Perfil</a>
-          <a href="contato.php">Suporte</a>
-          <a href="cadastro_bandas.php">Quero ser Artista</a>
-          <a href="cadastro_bandas_admin.php">Quero ser Artista (Admin)</a>
+          <a onclick="site2()">Quero ser Artista</a>
           <a href="editar_perfil.php">Editar Perfil</a>
 
           <a href="?sair">Sair</a>
@@ -100,5 +97,6 @@ if (isset($_SESSION['logado'])) {
 
 <body>
 
+  <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="js/mobile-navbar.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

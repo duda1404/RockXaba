@@ -61,5 +61,9 @@ var messageBox = document.querySelector('.js-message');
       });
   });
 
-  
 
+  
+function site2(){
+
+  window.location.replace("http://localhost/root/Artistas/");
+}

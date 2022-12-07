@@ -50,30 +50,33 @@ if (isset($_GET['acao'])) {
         </div>
       </div>
     </div>
-    <a class="link-evento" href="evento_page.php">
-      <div class="caixa-de-eventos">
-        <img id="imagem-evento" src="img/festival.jpeg" alt="Evento">
-        <div class="texto-evento">
-          FESTIVAL ORGAS MÃOZINHA
+    <?php
+    /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
+no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
+    $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, 
+      even.dsc_evento, even.google_maps, even.local_evento, even.dat_evento, even.dat_limite_ingresso, even.dat_inicio_ingresso, even.cor_evento,
+      even.artistas, foto_evento.photo_evento, foto_evento.front_page from evento even inner join
+      foto_evento foto_evento on even.id_evento = foto_evento.fk_evento_id_evento where even.fk_situacao_id_sit = 1 and foto_evento.front_page = 'front' order by even.dat_add_evento desc");
+    while ($rows = pg_fetch_array($image_query)) {
+      $id_evento = $rows['id_evento'];
+      $nome_evento = $rows['nome_evento'];
+      $photo = $rows['photo_evento'];
+      $dsc_evento = $rows['dsc_evento'];
+
+    ?>
+
+      <a class="link-evento" href="evento_page.php?event_id=<?php echo $id_evento; ?>">
+        <div class="caixa-de-eventos">
+          <img id="imagem-evento" src="uploads/<?php echo $photo; ?>" alt="Evento">
+          <div class="texto-evento">
+            <?php echo strtoupper($nome_evento); ?>
+          </div>
         </div>
-      </div>
-    </a>
-    <a class="link-evento" href="evento_page.php">
-      <div class="caixa-de-eventos">
-        <img id="imagem-evento" src="img/gotica.jpeg" alt="Evento">
-        <div class="texto-evento">
-          PIRIGÓTICA FUNK x EMO x POP BR
-        </div>
-      </div>
-    </a>
-    <a class="link-evento" href="evento_page.php">
-      <div class="caixa-de-eventos">
-        <img id="imagem-evento" src="img/DOIDEIRAFEST.jpeg" alt="Evento">
-        <div class="texto-evento">
-          DOIDERA FEST
-        </div>
-      </div>
-    </a>
+      </a>
+    <?php
+    }
+    ?>
+
   </div>
   </div>
 
