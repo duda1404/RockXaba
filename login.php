@@ -343,12 +343,11 @@ if (isset($_POST['btnentrar'])) {
         </SCRIPT>");
 		}
 
-		if($_POST['senha'] != $_POST['repeteSenha']){
+		if ($_POST['senha'] != $_POST['repeteSenha']) {
 
 			echo 'A senhas estão diferentes!';
 			$erroRepeteSenha = 'A senhas estão diferentes!';
 		}
-
 	} else {
 
 		/* Se o usuário ainda não foi cadastrado e se não houve erros na validação do formulário, insere seus dados no banco e pede a confirmação
@@ -425,7 +424,7 @@ if (isset($_POST['btnentrar'])) {
 			<form class="login-cadastro" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 				<div class="inputs">
 					<div class="input">
-						<input placeholder="Nome de usuário" name="login" type="text" >
+						<input placeholder="Nome de usuário" name="login" type="text">
 
 					</div>
 					<div class="input">
