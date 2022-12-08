@@ -1909,16 +1909,13 @@ input[type=radio] {
   text-align: center;
   max-height: 70vh;
   height: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/orgas.png');
-  background-size: 100% 100%;
+  
   
 
 }
 
 #nome-evento{
 
-  background-color: #f8ee1d;
-  box-shadow: 0px 0px 35px 0px #f8ee1d, 0px 0px 15px 0px #fff990 inset;
   color: #0d0d0d;
   width: 72vmax;
   height: 8vmax;
@@ -1963,13 +1960,10 @@ input[type=radio] {
 .curtir-evento{
 
   margin-bottom: 1vmax;
+  cursor:pointer;
 }
 
-.curtir-evento:focus{
 
-  outline-style: none;
-  
-}
 
 .localizacao-mapa-evento{
 
@@ -1993,8 +1987,7 @@ input[type=radio] {
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 19px;
-  color: #f8ee1d;
-  text-shadow: 0px 2px 10px #f8ee1d;
+  
 
 }
 
@@ -2005,15 +1998,12 @@ input[type=radio] {
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 19px;
-  color: #f8ee1d;
-  text-shadow: 0px 2px 10px #f8ee1d;
+ 
 }
 
 .curtir-evento{
 
   font-family: 'Josefin Sans', sans-serif;
-  background-color: #f8ee1d;
-  box-shadow: 0px 5px 50px 0px #f8ee1d, 0px 0px 0px 7px #f8ee1d;
   color: #383637;
   border: none;
   font-size: 19px;
@@ -2728,3 +2718,4 @@ input[type=radio] {
   width: 30px;
   height: 30px;
 }
+

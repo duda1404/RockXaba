@@ -65,7 +65,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 
     ?>
 
-      <a class="link-evento" href="evento_page.php?event_id=<?php echo $id_evento; ?>">
+      <a class="link-evento" href="evento_page.php?myid=<?php echo $id_evento; ?>">
         <div class="caixa-de-eventos">
           <img id="imagem-evento" src="uploads/<?php echo $photo; ?>" alt="Evento">
           <div class="texto-evento">
