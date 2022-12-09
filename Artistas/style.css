@@ -1,0 +1,224 @@
+/*
+####################################################################################################################
+######################################## ESTILIZAÇÃO ROCKXABA ARTISTAS #############################################
+####################################################################################################################
+*/
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+/*
+####################################################################################################################
+############################################### ESTILIZAÇÃO INDEX ###################################################
+####################################################################################################################
+*/
+
+
+/* estilização body do main */
+ .main {
+    width: 100%; 
+    height: 100%;
+    margin: 0 auto;
+    background-image: url( img/bg_main.png) ;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    justify-content: flex-start;
+}
+
+/* estilização títulos main */
+.texto-main {
+    width: 40vw;
+    max-width: 95%;
+    display: flex;
+    align-items: left;
+    justify-content: space-around;
+    font-size: 3vmax;
+    color: white;
+    opacity: 70%;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: justify;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8vmax;
+    text-align:left;
+}
+
+.texto-index{
+    margin: 0;
+    margin-top: 2vmax;
+}
+
+.texto-form{
+    
+    margin: 0;
+    margin-top: 2vmax;
+
+}
+
+/*
+####################################################################################################################
+########################################### ESTILIZAÇÃO CADASTRO ###################################################
+####################################################################################################################
+*/
+
+/* estilização body do cadastro */
+.cadastro-artista {
+    width: 100%; 
+    height: 100%;
+    margin: 0 auto;
+    background-image: url( img/bg_main.png) ;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    justify-content: flex-start;
+}
+
+/* texto 'Crie e Compartilhe com o RockXaba' */
+
+.texto-artista{
+
+    font-size: 4vmax;
+    color: white;
+    opacity: 70%;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: justify;
+    width: 45%;
+    font-weight: 100;
+
+
+
+}
+
+.conteudo{
+
+    margin-left: 4vmax;
+    margin-top: 5vmax;
+   
+    
+}
+
+/* formulário de cadastro do Artista */
+
+.cadastro-artista-form{
+
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+/* texto em cima dos campos do cadastro do Artista */
+
+.cadastro-artista-form p{
+
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5vmax;
+
+}
+
+/* parte do formulário de cadastro do Artista que fica na direita da página */
+.form-p2{
+
+    margin-left: 4vmax;
+}
+
+.erro{
+
+    font-size: 15px !important;
+    color: red !important;
+}
+
+/* ============================================= seletor de cores ============================================= */
+
+label{
+
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/*
+####################################################################################################################
+########################################### ESTILIZAÇÃO OBRIGADO ###################################################
+####################################################################################################################
+*/
+
+#muito-obrigado{
+
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+
+/*
+####################################################################################################################
+########################################### ESTILIZAÇÃO DASHBOARD ##################################################
+####################################################################################################################
+*/
+
+/* estilização do body do dashboard */
+
+.dashboard{
+
+    margin: 0px;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-image: url(img/bg_main.png);
+    background-position: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 2vmax;
+    
+}
+
+/* estilização da parte esquerda da página, que guarda o formulário de editar perfil */
+
+.editar-perfil{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+/* estilização da primeira div dentro do formulário de editar perfil (dividido em duas divs) */
+
+#editar-form-p1{
+
+    margin-left: 4vmax;
+}
+
+/* texto em cima dos campos do formulário de editar perfil */
+
+.editar-perfil p{
+
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5vmax;
+
+}
+
+/* estilização da parte direita da página, que guarda os formulários de cadastrar eventos e lojas */
+
+.evento-loja{
+
+    width: 100%;
+    height: 100%;
+}
+
+/* estilização do texto 'seu nome' */
+
+#seu-nome{
+
+    font-size: 80px;
+    font-weight: 300;
+    color: #6666d0;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    
+
+}
