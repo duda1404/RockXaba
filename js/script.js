@@ -1,7 +1,7 @@
 
 function site2(){
 
-  window.location.replace("http://localhost/root/Artistas/");
+  window.location.replace("http://localhost/RockXaba/Artistas/");
 }
 
 function curtirEvento(){
