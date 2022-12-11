@@ -30,23 +30,23 @@ no banco. */
     ?>
         <div class="main-rexx">
             <div class="container-slide">
-          
-<div id="sliderr" class="sliderr">
-<div class="wrapperr">
-<div id="items" class="items">
-  <span class="slidee">Slide 1</span>
-  <span class="slidee">Slide 2</span>
-  <span class="slidee">Slide 3</span>
-  <span class="slidee">Slide 4</span>
-  <span class="slidee">Slide 5</span>
-</div>
-</div>
-<a id="prev" class="control prev"></a>
-<a id="next" class="control next"></a>
-</div>
+
+                <div id="sliderr" class="sliderr">
+                    <div class="wrapperr">
+                        <div id="items" class="items">
+                            <span class="slidee">Slide 1</span>
+                            <span class="slidee">Slide 2</span>
+                            <span class="slidee">Slide 3</span>
+                            <span class="slidee">Slide 4</span>
+                            <span class="slidee">Slide 5</span>
+                        </div>
+                    </div>
+                    <a id="prev" class="control prev"></a>
+                    <a id="next" class="control next"></a>
+                </div>
 
 
-                
+
                 <div class="contato-artista">
                     <div class="titulo-contato"> CONTATOS DO ARTISTA </div>
                     <div class="telefone-email">
@@ -237,10 +237,13 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                     </div>
                 </div>
                 <div class="generos">
-                    <p class="gen-artista"> INDIE </p>
-                    <p class="gen-artista"> INDIE-ROCK </p>
-                    <p class="gen-artista"> ALTERNATIVO </p>
-                    <p class="gen-artista"> GARAGE ROCK </p>
+                    <?php
+
+                    $query_generos = pg_query($connect, "SELECT gen.dsc_genero FROM genero gen INNER JOIN artista_genero artgen ON artgen.fk_genero_id_gen = gen.id_gen WHERE artgen.fk_artista_id_artista = $id AND gen.id_gen = artgen.fk_genero_id_gen");
+
+                    while($row_generos = pg_fetch_array($query_generos)) { ?>
+                        <p class="gen-artista"><?php echo $row_generos['dsc_genero']; ?></p>
+                    <?php } ?>
                 </div>
                 <p id="dsc-artista" style="color:<?php echo $cor_artista; ?>; text-shadow: 2px 2px 12px #<?php echo $cor_artista; ?>;"> <?php echo $dsc_artista; ?> </p>
 
