@@ -37,15 +37,13 @@ include 'header.php';
 			/*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
 			$image_query = pg_query($connect, "select art.id_artista, art.nome_artista, 
-				art.dsc_artista, art.link_play from artista art inner join usuario userr on art.fk_usuario_id_user = userr.id_user where art.fk_situacao_id_sit = 1 and userr.fk_situacao_id_sit = 1 order by art.dat_add_artista desc");
+				art.dsc_artista, art.link_play, fot.photo_artista from artista art inner join usuario userr on art.fk_usuario_id_user = userr.id_user inner join foto_artista fot on art.id_artista = fot.fk_artista_id_artista where art.fk_situacao_id_sit = 1 and userr.fk_situacao_id_sit = 1 AND logo_foto = 'logo' order by art.dat_add_artista desc");
 			while ($rows = pg_fetch_array($image_query)) {
 				$id_artista = $rows['id_artista'];
 				$nome_artista = $rows['nome_artista'];
 				$dsc_artista = $rows['dsc_artista'];
 
-				$query_logo = pg_query($connect, "SELECT photo_artista FROM foto_artista WHERE fk_artista_id_artista = $id AND logo_foto = 'logo'");
-				$logo_row = pg_fetch_array($query_logo);
-				
+				$logo_artista = $rows['photo_artista'];
 				
 				
 
@@ -53,7 +51,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 
 				<li>
 					<a href="artista_page.php?myid=<?php echo $id_artista; ?>" target="new window">
-						<img src="uploads/" class="testando" alt="" title="<?php echo $nome_artista; ?>" name="<?php echo $nome_artista; ?>" />
+						<img src="uploads/<?php echo $logo_artista; ?>" class="testando" alt="" title="<?php echo $nome_artista; ?>" name="<?php echo $nome_artista; ?>" />
 					</a>
 				</li>
 			<?php
