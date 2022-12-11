@@ -273,6 +273,12 @@ else{
                     $row = $stmt->fetch();
                     $FK_id_evento = $row['id_evento'];
 
+                    $sql = "SELECT id_artista FROM artista WHERE fk_usuario_id_user = '$id'";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+                    $row = $stmt->fetch();
+                    $FK_id_artista = $row['id_artista'];
+
                     /* inserindo a logo na pasta de uploads */
 
                     $photo_name = $_FILES["logo-name"]["name"];
@@ -283,7 +289,7 @@ else{
 
                     /* consulta para a logo */
 
-                    $sql = "INSERT INTO foto_evento(photo_evento, fk_evento_id_evento, front_page) VALUES ('$photo_new_name_logo', $FK_id_evento, 'front')";
+                    $sql = "INSERT INTO foto_evento(photo_evento, fk_evento_id_evento, front_page, fk_artista_id_artista) VALUES ('$photo_new_name_logo', $FK_id_evento, 'front', $FK_id_artista)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
 

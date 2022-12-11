@@ -245,7 +245,7 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                 <div class="logo-titulo-artista" id="theDiv">
                     <h3 id="nome-artista"> <span style="background-color: <?php echo $cor_artista; ?>; box-shadow: 0px 5px 20px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;"> <?php echo $nome_artista; ?> </span></h3>
                     <div class="profile-card__img" id="logo-artista" style="box-shadow: 0px 5px 50px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;">
-                        <img src="uploads/<?php echo $photo ?>" alt="Logo do Artista">
+                        <img src="uploads/<?php echo $logo ?>" alt="Logo do Artista">
                     </div>
                 </div>
                 <div class="generos">
