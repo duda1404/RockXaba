@@ -55,8 +55,8 @@ if (isset($_GET['acao'])) {
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
     $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, 
       even.dsc_evento, even.google_maps, even.local_evento, even.dat_evento, even.dat_limite_ingresso, even.dat_inicio_ingresso, even.cor_evento,
-      even.artistas, foto_evento.photo_evento, foto_evento.front_page from evento even inner join
-      foto_evento foto_evento on even.id_evento = foto_evento.fk_evento_id_evento where even.fk_situacao_id_sit = 1 and foto_evento.front_page = 'front' order by even.dat_add_evento desc");
+      even.artistas, foto_evento.photo_evento, foto_evento.front_page from evento even inner join usuario userr on even.fk_usuario_id_user = userr.id_user inner join artista art on art.fk_usuario_id_user = userr.id_user inner join
+      foto_evento foto_evento on foto_evento.fk_artista_id_artista = art.id_artista where even.fk_situacao_id_sit = 1 and foto_evento.front_page = 'front'and userr.fk_situacao_id_sit = 1 order by even.dat_add_evento desc");
     while ($rows = pg_fetch_array($image_query)) {
       $id_evento = $rows['id_evento'];
       $nome_evento = $rows['nome_evento'];

@@ -62,7 +62,7 @@ if (isset($_POST['btn-entrar'])) :
 
 		/* Seleciona, no banco de dados, o nome de usuário igual ao nome de usuário digitado (se ele existe, retorna 1) */
 
-		$resultado = pg_query($connect, "SELECT id_user FROM usuario WHERE nome_user= '$login'");
+		$resultado = pg_query($connect, "SELECT id_user, nome_user, senha_user FROM usuario WHERE nome_user= '$login'");
 
 		/* Seleciona, no banco de dados, a senha criptografada ligada ao nome de usuário igual ao nome de usuário digitado */
 
@@ -81,10 +81,6 @@ if (isset($_POST['btn-entrar'])) :
 		} else {
 			$verificaSenha = FALSE;
 		}
-
-		//fechando a conexão depois de armazenar os dados
-
-		pg_close($connect);
 
 		//numeros de linhas do resultado da query maior que 0 ou se houver algum registro do nome de usuário na tabela na tabela, $verificaSenha igual a TRUE se a senha digitada é compatível com a senha do banco de dados
 		/* Se o nome e senha digitados pelo usuário são compatíveis com nome e senha de um usuário no banco de dados, ele loga no site */
@@ -107,37 +103,18 @@ if (isset($_POST['btn-entrar'])) :
 				$_SESSION['id_user'] = $dados['id_user'];
 				//comando que redireciona para página index.php
 				header('Location: index.php');
-			} elseif ($confirmado['fk_situacao_id_sit'] == 2) {
+			} 
+			
+			elseif ($confirmado['fk_situacao_id_sit'] == 2) {
+
+				$dados = pg_fetch_array($resultado);
+				$_SESSION['nome_prev'] = $dados['nome_user'];
+				$_SESSION['senha_prev'] = $dados['senha_user'];
 
 				echo ("<SCRIPT LANGUAGE='JavaScript'>
+				reativarConta('reativar.php');
+        		</SCRIPT>");
 
-				var x = false;
-
-				if (confirm('Sua conta foi desativada! Deseja reativá-la?') == true){
-
-					window.alert('Conta reativada!');
-					window.location.href = 'http://localhost/root/login.php?rt=true'
-					
-				}
-				else{
-
-					window.alert('Faça login com outro email ou reative sua antiga conta para entrar no RockXaba!');
-					window.location.href = 'http://localhost/root/login.php?rt=false'
-				}
-				
-            	</SCRIPT>");
-
-				$reativar = filter_input(INPUT_GET, "rt", FILTER_SANITIZE_STRING);
-				echo $reativar;
-
-				if (!empty($reativar)) {
-
-					if ($reativar == 'true') {
-
-						$update = "UPDATE usuario SET FK_SITUACAO_id_sit = 1  WHERE email_user = '$email' AND senha_user = '$senhaCriptografada'";
-						$confirma_conta = pg_query($connect, $update);
-					}
-				}
 			}
 		} else {
 
@@ -158,7 +135,7 @@ $erroNome = "";
 $erroSenha = "";
 $erroRepeteSenha = "";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['btnentrar'])) {
 
 	/* VALIDA CAMPO EMAIL */
 
@@ -411,6 +388,7 @@ if (isset($_POST['btnentrar'])) {
 
 ?>
 
+
 <body id="pagina-login">
 
 	<div class="card-login-cadastro">
@@ -483,6 +461,7 @@ if (isset($_POST['btnentrar'])) {
 	</div>
 
 	<script>
+
 		$(window).on("hashchange", function() {
 			if (location.hash.slice(1) == "register") {
 				$(".card-login-cadastro").addClass("extend");
@@ -495,6 +474,7 @@ if (isset($_POST['btnentrar'])) {
 			}
 		});
 		$(window).trigger("hashchange");
+
 	</script>
 
 </body>

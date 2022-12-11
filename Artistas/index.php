@@ -111,6 +111,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                     header('Location: dashboard.php');
                                 }
+
+                                /* Quando a conta da pessoa foi inativada */
+                                else if($row['fk_situacao_id_sit'] == 2){
+
+                                    header('inativado.php');
+                                }
                             } else {
                                 
                                

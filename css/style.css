@@ -428,3 +428,36 @@ textarea.form-control {
 
   text-decoration: none;
 }
+
+/* PÁGINA DE INATIVADOS */
+
+.main {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url(../img/bg_main.png);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  justify-content: flex-start;
+}
+
+#muito-obrigado{
+
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10%;
+  
+}
+
+/* estilização títulos main */
+.texto-main {
+  width: 40vw;
+  max-width: 95%;
+  font-size: 3vmax;
+  color: white;
+  opacity: 70%;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: justify;
+  
+}

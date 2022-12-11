@@ -13,53 +13,68 @@ include 'funcoes.php';
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
     $image_query = pg_query($connect, "select artista.id_artista, artista.nome_artista, 
-    artista.dsc_artista, artista.link_play, artista.cor_artista, foto_artista.photo_artista from artista inner join
-    foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = id_artista");
+    artista.dsc_artista, artista.link_play, artista.cor_artista, foto_artista.photo_artista, artista.contato, artista.nome_insta from artista inner join
+    foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = artista.id_artista and foto_artista.logo_foto = 'logo'");
 
     while ($rows = pg_fetch_array($image_query)) {
+
         $nome_artista = $rows['nome_artista'];
         $dsc_artista = $rows['dsc_artista'];
         $link = $rows['link_play'];
-        $photo = $rows['photo_artista'];
+        $logo = $rows['photo_artista'];
         $cor_artista = $rows['cor_artista'];
+        $contato = $rows['contato'];
+        $nome_insta = $rows['nome_insta'];
+
 
     ?>
         <div class="main-rexx">
             <div class="container-slide">
                 <input type="radio" name="slider" id="item-1" checked>
-                <input type="radio" name="slider" id="item-2">
-                <input type="radio" name="slider" id="item-3">
-                <input type="radio" name="slider" id="item-4">
+                <?php
+
+                $a = 1;
+                $query = pg_query($connect, "SELECT photo_artista FROM foto_artista WHERE fk_artista_id_artista = $id and logo_foto = 'foto'");
+                $rows_fotos_artista = pg_fetch_array($query);
+                $fileCount = count($rows_fotos_artista);
+                for ($i = 0; $i < $fileCount; $i++) {
+
+                    $a = $a + 1; ?>
+
+                    <input type="radio" name="slider" id="item-<?php echo $a; ?>">
+
+                <?php } ?>
                 <div class="cards">
-                    <label class="carta" for="item-1" id="song-1">
-                        <img src="uploads/<?php echo $photo ?>" alt="song">
-                    </label>
-                    <label class="carta" for="item-2" id="song-2">
-                        <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
-                    </label>
-                    <label class="carta" for="item-3" id="song-3">
-                        <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
-                    </label>
-                    <label class="carta" for="item-4" id="song-4">
-                        <img src="uploads/51911615FdoYeMWXoAAI4WU.png" alt="song">
-                    </label>
+
+                    <?php
+
+
+                    $query = pg_query($connect, "SELECT photo_artista FROM foto_artista WHERE fk_artista_id_artista = $id and logo_foto = 'foto'");
+                    $rows_fotos_artista = pg_fetch_array($query);
+                    $fileCount = count($rows_fotos_artista);
+                    for ($i = 0; $i < $fileCount; $i++) {  ?>
+                        <label class="carta" for="item-<?php echo $i + 1; ?>" id="song-<?php echo $i + 1; ?>">
+                            <img src="uploads/<?php echo $rows_fotos_artista[$i]; ?>" alt="song">
+                        </label>
+                    <?php } ?>
+
                 </div>
                 <div class="contato-artista">
                     <div class="titulo-contato"> CONTATOS DO ARTISTA </div>
                     <div class="telefone-email">
-                        <div class="texto"> Telefone: </div>
-                        <div class="telefone"> 4002-8922 </div>
                         <div class="texto"> Email: </div>
-                        <div class="email"> artista@gmail.com </div>
+                        <div class="email"><?php echo $contato; ?></div>
                     </div>
-                    <div class="texto" id="texto-redes"> Redes Sociais </div>
-                    <div class="redes">
-                        <img id="rede-icone1" src="img/facebook.png">
-                        <img id="rede-icone2" src="img/instagram.png">
-                        <img id="rede-icone3" src="img/twitter.png">
-                    </div>
+                    <?php if (!empty($nome_insta)) { ?>
+                        <div class="texto" id="texto-redes"> Redes Sociais </div>
+                        <div class="redes">
+                            <a href="https://www.instagram.com/<?php echo $nome_insta; ?>/">
+                                <img id="rede-icone2" src="img/instagram.png">
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
-                <div id="comentarios-caixa-artista-evento" style=" background: rgba(1,37,28,0.5); backdrop-filter: blur(2px)">
+                <div id="comentarios-caixa-artista-evento" style="background-color: <?php echo $cor_artista ?>; backdrop-filter: blur(2px)">
                     <div class="sessao-comentarios" id="sessao-comentarios1">
 
                         <?php $resultadon = pg_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
@@ -198,7 +213,7 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                     function minhaFuncao() {
                         document.getElementById("sessao-comentarios1").style.display = "none";
                         document.getElementById("sessao-comentarios2").style.display = "block";
-                        
+
                     }
 
                     function funcaoFechar() {
@@ -232,18 +247,6 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                     <div class="profile-card__img" id="logo-artista" style="box-shadow: 0px 5px 50px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;">
                         <img src="uploads/<?php echo $photo ?>" alt="Logo do Artista">
                     </div>
-                </div>
-                <div class="info-artista">
-                    <p class="seguidores"> 650 seguidores </p>
-                    <p class="seguindo"> 1023 views </p>
-                    <p class="curtidas"> 145 curtidas </p>
-                </div>
-                <div class="seguir-curtir">
-                    <a id="curtida" href="" class="curtida-seguir">
-                        <img id="curtida" src="img/guitar-pick.svg" width="35px" height="45px" class="curtida-seguir" alt="Botão de curtida">
-                    </a>
-                    <button id="seguir" style="background-color: <?php echo $cor_artista; ?>;
-  box-shadow: 0px 5px 50px 0px <?php echo $cor_artista; ?>, 0px 0px 0px 7px <?php echo $cor_artista; ?>;" class="curtida-seguir"> SEGUIR </button>
                 </div>
                 <div class="generos">
                     <p class="gen-artista"> INDIE </p>

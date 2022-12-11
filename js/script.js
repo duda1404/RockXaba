@@ -16,3 +16,17 @@ function curtirEvento(){
    }
 
 }
+
+function reativarConta(delUrl) {
+
+  if (confirm("Você deseja reativar sua conta?")) {
+
+    document.location = delUrl;
+  
+  } else {
+
+    document.location = 'login.php';
+  
+
+  }
+}
