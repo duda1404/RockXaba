@@ -347,113 +347,7 @@ nav {
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
 
-.carousel {
-  margin: 0 auto;
-  overflow: hidden;
-  text-align: center;
-}
 
-.slides {
-  display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-
-.slides::-webkit-scrollbar {
-  display: none;
-}
-
-.slides-item {
-  align-items: center;
-  border-radius: 10px;
-  display: flex;
-  flex-shrink: 0;
-  font-size: 100px;
-  height: 600px;
-  justify-content: center;
-  margin: 0 1rem;
-  position: relative;
-  scroll-snap-align: start;
-  transform: scale(1);
-  transform-origin: center center;
-  transition: transform .5s;
-  width: 100%;
-}
-
-.carousel__nav {
-  padding: 1.25rem .5rem;
-}
-
-.slider-nav {
-  align-items: center;
-  background-color: #ddd;
-  color: #000;
-  display: inline-flex;
-  height: 1.5rem;
-  justify-content: center;
-  padding: .5rem;
-  position: relative;
-  text-decoration: none;
-  width: 1.5rem;
-}
-
-.slider-nav:hover,
-.slider-nav:active {
-  background-color: #000;
-  color: #fff;
-}
-
-.slide-1 {
-  height: auto;
-  width: auto;
-}
-
-.slide-2 {
-  height: auto;
-  width: auto;
-}
-
-.slide-3 {
-  background-color: #cdf;
-}
-
-.slide-4 {
-  background-color: #dca;
-}
-
-.slide-5 {
-  background-color: #ffc;
-}
-
-
-.carousel__skip-link {
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  top: auto;
-  width: 1px;
-}
-
-.carousel__skip-link:focus {
-  align-items: center;
-  background-color: transparent;
-  color: #fff;
-  display: flex;
-  height: 600px;
-  justify-content: center;
-  opacity: .8;
-  width: 100%;
-  z-index: 10;
-}
-
-.carousel__skip-message {
-  background-color: #000;
-  color: #fff;
-  padding: 0.5rem;
-  width: 100%;
-}
 
 /* ********************************************************************************************************************************* */
 /* ********************************************************************************************************************************* */
@@ -1504,53 +1398,6 @@ a, a:hover {
   height: 0;
 }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
 
 
 
@@ -1820,75 +1667,100 @@ select::-ms-expand {
 }
 
 /* Slider da Artista Page*/
-
-
-input[type=radio] {
-  display: none;
+.sliderr {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.carta{
+.wrapperr {
+  overflow: hidden;
+  position: relative;
+  background: #222;
+  z-index: 1;
+}
+
+#items {
+  width: 10000px;
+  position: relative;
+  top: 0;
+  left: -400px;
+}
+
+#items.shifting {
+  transition: left .2s ease-out;
+}
+
+.slidee {
+  width: 400px;
+  height: 300px;
+  cursor: pointer;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 1s;
+  position: relative;
+  background: #FFCF47;
+}
+
+.sliderr.loaded .slidee:nth-child(2),
+.sliderr.loaded .slide:nth-child(7) {
+  background: #FFCF47;
+}
+.sliderr.loaded .slidee:nth-child(1),
+.sliderr.loaded .slidee:nth-child(6) {
+  background: #7ADCEF;
+}
+.sliderr.loaded .slidee:nth-child(3) {
+  background: #F97C68;
+}
+.sliderr.loaded .slidee:nth-child(4) {
+  background: #a78df5;
+}
+.sliderr.loaded .slidee:nth-child(5) {
+  background: #ff8686;
+}
+
+.control {
   position: absolute;
-  width: 75%;
-  height: 60%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  transition: transform 0.2s ease;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 20px;
+  margin-top: -20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.prev,
+.next {
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 
-.container-slide {
-  
-  width: 40%;
-  height: 40%;
-  transform-style: preserve-3d;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 5vmax;
+.prev {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+  left: -20px;
 }
 
-.cards {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 45vmax;
-  margin-left: 8vmax;
+.next {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+  right: -20px;
 }
 
-
-
-.container-slide img {
-  width: 500px;
-  height: 500px;
-  border-radius: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.prev:active,
+.next:active {
+  transform: scale(0.8);
 }
 
-#item-1:checked ~ .cards #song-4,  #item-4:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-1  {
-  transform: translatex(-40%) scale(0.9);
-  opacity: 0.2;
-  z-index: 0;
-}
-
-
-
-#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-4, #item-4:checked ~ .cards #song-1  {
-  transform: translatex(40%) scale(0.9);
-  opacity: 0.2;
-  z-index: 0;
-}
-
-#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3, #item-4:checked ~ .cards #song-4 {
-  transform: translatex(0) scale(1);
-  opacity: 1;
-  z-index: 1;
-}
-#item-1:checked ~ .cards #song-1 img, #item-2:checked ~ .cards #song-2 img, #item-3:checked ~ .cards #song-3 img, #item-4:checked ~ .cards #song-4 img {
-  box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
-}
 
 /* EVENTO_PAGE */
 

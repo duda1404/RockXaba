@@ -30,35 +30,23 @@ no banco. */
     ?>
         <div class="main-rexx">
             <div class="container-slide">
-                <input type="radio" name="slider" id="item-1" checked>
-                <?php
-
-                $a = 1;
-                $query = pg_query($connect, "SELECT photo_artista FROM foto_artista WHERE fk_artista_id_artista = $id and logo_foto = 'foto'");
-                $rows_fotos_artista = pg_fetch_array($query);
-                $fileCount = count($rows_fotos_artista);
-                for ($i = 0; $i < $fileCount; $i++) {
-
-                    $a = $a + 1; ?>
-
-                    <input type="radio" name="slider" id="item-<?php echo $a; ?>">
-
-                <?php } ?>
-                <div class="cards">
-
-                    <?php
+          
+<div id="sliderr" class="sliderr">
+<div class="wrapperr">
+<div id="items" class="items">
+  <span class="slidee">Slide 1</span>
+  <span class="slidee">Slide 2</span>
+  <span class="slidee">Slide 3</span>
+  <span class="slidee">Slide 4</span>
+  <span class="slidee">Slide 5</span>
+</div>
+</div>
+<a id="prev" class="control prev"></a>
+<a id="next" class="control next"></a>
+</div>
 
 
-                    $query = pg_query($connect, "SELECT photo_artista FROM foto_artista WHERE fk_artista_id_artista = $id and logo_foto = 'foto'");
-                    $rows_fotos_artista = pg_fetch_array($query);
-                    $fileCount = count($rows_fotos_artista);
-                    for ($i = 0; $i < $fileCount; $i++) {  ?>
-                        <label class="carta" for="item-<?php echo $i + 1; ?>" id="song-<?php echo $i + 1; ?>">
-                            <img src="uploads/<?php echo $rows_fotos_artista[$i]; ?>" alt="song">
-                        </label>
-                    <?php } ?>
-
-                </div>
+                
                 <div class="contato-artista">
                     <div class="titulo-contato"> CONTATOS DO ARTISTA </div>
                     <div class="telefone-email">
