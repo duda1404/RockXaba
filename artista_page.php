@@ -31,7 +31,7 @@ no banco. */
         <div class="main-rexx">
             <div class="container-slide">
           
-<div id="slider" class="sliderr">
+<div id="slider" class="slider">
 <div class="wrapperr">
 <div id="items" class="items">
   <span class="slide">Slide 1</span>
