@@ -1667,7 +1667,7 @@ select::-ms-expand {
 }
 
 /* Slider da Artista Page*/
-.sliderr {
+.slider {
   position: relative;
   top: 120;
   left: 250;
@@ -1695,7 +1695,7 @@ select::-ms-expand {
   transition: left .2s ease-out;
 }
 
-.slidee {
+.slide {
   width: 450px;
   height: 300px;
   cursor: pointer;
@@ -1708,21 +1708,21 @@ select::-ms-expand {
   background: #FFCF47;
 }
 
-.sliderr.loaded .slidee:nth-child(2),
-.sliderr.loaded .slide:nth-child(7) {
+.slider.loaded .slide:nth-child(2),
+.slider.loaded .slide:nth-child(7) {
   background: #FFCF47;
 }
-.sliderr.loaded .slidee:nth-child(1),
-.sliderr.loaded .slidee:nth-child(6) {
+.slider.loaded .slide:nth-child(1),
+.slider.loaded .slide:nth-child(6) {
   background: #7ADCEF;
 }
-.sliderr.loaded .slidee:nth-child(3) {
+.slider.loaded .slide:nth-child(3) {
   background: #F97C68;
 }
-.sliderr.loaded .slidee:nth-child(4) {
+.slider.loaded .slide:nth-child(4) {
   background: #a78df5;
 }
-.sliderr.loaded .slidee:nth-child(5) {
+.slider.loaded .slide:nth-child(5) {
   background: #ff8686;
 }
 

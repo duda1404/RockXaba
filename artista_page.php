@@ -31,14 +31,14 @@ no banco. */
         <div class="main-rexx">
             <div class="container-slide">
           
-<div id="sliderr" class="sliderr">
+<div id="slider" class="slider">
 <div class="wrapperr">
 <div id="items" class="items">
-  <span class="slidee">Slide 1</span>
-  <span class="slidee">Slide 2</span>
-  <span class="slidee">Slide 3</span>
-  <span class="slidee">Slide 4</span>
-  <span class="slidee">Slide 5</span>
+  <span class="slide">Slide 1</span>
+  <span class="slide">             <img src="img/2.jpg">              </span> 
+  <span class="slide">Slide 3</span>
+  <span class="slide">Slide 4</span>
+  <span class="slide">Slide 5</span>
 </div>
 </div>
 <a id="prev" class="control prev"></a>
@@ -258,7 +258,7 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
             </div>
 
         </div>
-
+            
         <script type="text/javascript" src="js/script.js"></script>
 
 
