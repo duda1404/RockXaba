@@ -1672,7 +1672,7 @@ select::-ms-expand {
   top: 120;
   left: 250;
   transform: translate(-50%, -50%);
-  width: 450px;
+  width: 400px;
   height: 300px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
