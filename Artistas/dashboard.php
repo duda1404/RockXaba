@@ -205,6 +205,7 @@ $contando = count($array);
                 <p> Você não cadastrou nenhum Evento ainda! </p>
             <?php } ?>
         </div>
+        </div>
 </body>
 <!-- JavaScript do multi-seletor de gêneros-->
 <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
