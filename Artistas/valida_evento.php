@@ -289,7 +289,7 @@ else{
 
                     /* consulta para a logo */
 
-                    $sql = "INSERT INTO foto_evento(photo_evento, fk_evento_id_evento, front_page, fk_artista_id_artista) VALUES ('$photo_new_name_logo', $FK_id_evento, 'front', $FK_id_artista)";
+                    $sql = "INSERT INTO foto_evento(photo_evento, fk_evento_id_evento, front_page, fk_artista_id_artista, fk_usuario_id_user) VALUES ('$photo_new_name_logo', $FK_id_evento, 'front', $FK_id_artista, $id)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
 

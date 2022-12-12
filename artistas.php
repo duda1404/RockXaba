@@ -18,17 +18,8 @@ include 'header.php';
 			<label for="search-box">
 				<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
 			</label>
-			<input type="search" id="search-box" onkeyup="barraBusca()" placeholder="Buscar artista, banda, gênero..." />
+			<input type="search" id="search-box" onkeyup="barraBusca()" placeholder="Buscar artista ou banda..." />
 		</form>
-
-		<div class="select">
-			<select name="ORDENAR" id="filtro" >
-				<option selected disabled value="1">ORDENAR: </option>
-				<option value="2" onclick="filtro()">ORDENAR: A-Z</option>
-				<option value="3" onclick="filtro()">ORDENAR: LIKES</option>
-			</select>
-		</div>
-
 	</div>
 
 	<div class="container-a2">
@@ -83,44 +74,7 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
 			}
 		}
 
-		function filtro() {
-
-			var select = document.getElementById('filtro');
-			var value = select.options[select.selectedIndex].value;
-
-			if (value == 2) {
-
-				var list, i, switching, b, shouldSwitch;
-				list = document.getElementById("myUL");
-				switching = true;
-				/* Make a loop that will continue until
-				no switching has been done: */
-				while (switching) {
-					// Start by saying: no switching is done:
-					switching = false;
-					b = list.getElementsByTagName("img");
-					// Loop through all list items:
-					for (i = 0; i < (b.length - 1); i++) {
-						// Start by saying there should be no switching:
-						shouldSwitch = false;
-						/* Check if the next item should
-						switch place with the current item: */
-						if (b[i].name.toLowerCase() > b[i + 1].name.toLowerCase()) {
-							/* If next item is alphabetically lower than current item,
-							mark as a switch and break the loop: */
-							shouldSwitch = true;
-							break;
-						}
-					}
-					if (shouldSwitch) {
-						/* If a switch has been marked, make the switch
-						and mark the switch as done: */
-						b[i].parentNode.insertBefore(b[i + 1], b[i]);
-						switching = true;
-					}
-				}
-			}
-		}
+		
 	</script>
 
 </body>

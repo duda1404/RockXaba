@@ -22,7 +22,6 @@ if (isset($_GET['acao'])) {
   </div>';
   }
 }
-
 ?>
 
 <body class="eventos">
@@ -39,46 +38,64 @@ if (isset($_GET['acao'])) {
           <label for="search-box">
             <span class="fa fa-search fa-flip-horizontal fa-2x"></span>
           </label>
-          <input type="search" id="search-box" placeholder="Buscar artista, banda, gênero..." />
+          <input type="search" id="search-box" onclick="barraBusca()" placeholder="Buscar evento..." />
         </form>
-        <div class="select">
-          <select name="ORDENAR">
-            <option selected disabled value="1">ORDENAR: </option>
-            <option value="2">ORDENAR: A-Z</option>
-            <option value="3">ORDENAR: LIKES</option>
-          </select>
-        </div>
       </div>
     </div>
-    <?php
-    /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
+    <div id="imprime-evento">
+      <?php
+      /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
-    $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, 
+      $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, 
     foto.photo_evento from evento even inner join usuario userr on even.fk_usuario_id_user = userr.id_user inner join artista art on art.fk_usuario_id_user = userr.id_user inner join
     foto_evento foto on foto.fk_evento_id_evento = even.id_evento where even.fk_situacao_id_sit = 1 and art.fk_situacao_id_sit = 1 and foto.front_page = 'front' ");
-    while ($rows = pg_fetch_array($image_query)) {
-      $id_evento = $rows['id_evento'];
-      $nome_evento = $rows['nome_evento'];
-      $photo = $rows['photo_evento'];
-      
+      while ($rows = pg_fetch_array($image_query)) {
+        $id_evento = $rows['id_evento'];
+        $nome_evento = $rows['nome_evento'];
+        $photo = $rows['photo_evento'];
 
-    ?>
 
-      <a class="link-evento" href="evento_page.php?myid=<?php echo $id_evento; ?>">
-        <div class="caixa-de-eventos">
-          <img id="imagem-evento" src="uploads/<?php echo $photo; ?>" alt="Evento">
-          <div class="texto-evento">
-            <?php echo strtoupper($nome_evento); ?>
+      ?>
+
+
+        <a class="link-evento" href="evento_page.php?myid=<?php echo $id_evento; ?>" id="link">
+          <div class="caixa-de-eventos" id="caixa-evento" title="<?php echo $nome_evento; ?>">
+            <img id="imagem-evento" src="uploads/<?php echo $photo; ?>" alt="Evento" title="<?php echo $nome_evento; ?>">
+            <div class="texto-evento">
+              <?php echo strtoupper($nome_evento); ?>
+            </div>
           </div>
-        </div>
-      </a>
-    <?php
-    }
-    ?>
+        </a>
+      <?php
+      }
+      ?>
+    </div>
 
   </div>
   </div>
 
 </body>
+
+<script>
+  function barraBusca() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('search-box');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("imprime-evento");
+    li = getElementsByTagName('a');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("div")[0];
+      txtValue = a.getAttribute('title');
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+</script>
 
 </html>

@@ -261,7 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     /* consulta para a logo */
 
-                    $sql = "INSERT INTO foto_artista(photo_artista, fk_artista_id_artista, logo_foto) VALUES ('$photo_new_name_logo', $FK_id_artista, 'logo')";
+                    $sql = "INSERT INTO foto_artista(photo_artista, fk_artista_id_artista, logo_foto, fk_usuario_id_user) VALUES ('$photo_new_name_logo', $FK_id_artista, 'logo', $id)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute();
 
@@ -281,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         $row_fotos_nome[$i] = $photo_new_name;
 
-                        $sql = "INSERT INTO foto_artista(photo_artista, fk_artista_id_artista, logo_foto) VALUES ('$photo_new_name', $FK_id_artista, 'foto')";
+                        $sql = "INSERT INTO foto_artista(photo_artista, fk_artista_id_artista, logo_foto, fk_usuario_id_user) VALUES ('$photo_new_name', $FK_id_artista, 'foto', $id)";
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute();
                     }
