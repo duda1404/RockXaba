@@ -56,6 +56,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             
             header('Location: dashboard.php');
             
+            
         } else if ($row_verifica['fk_situacao_id_sit'] == 4) {
 
             /* Se a situação do usuário é de recadastro, a página recadastro será chamada, e será responsável
@@ -121,11 +122,13 @@ $contando = count($array);
                             <p class="erro"><?php echo $generos_erro; ?></p>
                         </div>
                         <p> Escolha uma imagem de perfil (sua logo) </p>
+                        <label for="input-logo-artista" class="minha-label"> ENVIAR ARQUIVO </label>
                         <input type="file" class="input-imagem" id="input-logo-artista" name="logo-name" required>
                         <div class="erro">
                             <p class="erro"><?php echo $logo_erro; ?></p>
                         </div>
                         <p> Escolha até 5 fotos para sua página </p>
+                        <label for="files" class="minha-label"> ENVIAR ARQUIVOS </label>
                         <input id="files" name="fotos[]" type="file" accept=".jpg, .jpeg, .png" multiple required>
                         <div class="erro">
                             <p class="erro"><?php echo $row_fotos_erro; ?></p>
@@ -158,6 +161,8 @@ $contando = count($array);
                             <label for="radio-3"> Verde </label>
                             <input type="radio" class="radio" id="radio-4" name="group" value="yellow" />
                             <label for="radio-4"> Amarelo </label>
+                            <input type="radio" class="radio" id="radio-4" name="group" value="#f82b9f" />
+                            <label for="radio-4"> Rosa </label>
                         </label>
                         <div class="erro">
                             <p class="erro"><?php echo $cor_erro; ?></p>
@@ -171,7 +176,7 @@ $contando = count($array);
                     </div>
                 </form>
 
-                <a href="?sair">Sair</a>
+                <a href="?sair" class="sair">Sair</a>
     </div>
     <!-- JavaScript do multi-seletor de gêneros-->
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>

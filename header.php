@@ -61,7 +61,6 @@ if (isset($_SESSION['logado'])) {
         <li><a href="index.php">HOME</a></li>
         <li><a href="about.php">SOBRE</a></li>
         <li><a href="artistas.php">ARTISTAS</a></li>
-        <li><a href="lojas.php"> LOJAS </a></li>
       </ul>
 
       <ul class="nav-list-entrar">

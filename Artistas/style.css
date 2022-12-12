@@ -68,6 +68,48 @@
 
 }
 
+.input-form{
+
+    width: 400px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #6666d04d;
+    border: none;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+}
+
+.formulario-cadastro{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+.botao-entrar{
+
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Josefin sans', sans-serif;
+    background-color: black;
+    font-size: 20px;
+}
+
+.botao-entrar:hover{
+
+    border:2px solid #6666d0;
+}
+
+.invalid-feedback{
+
+    font-size: 20px;
+    color: red;
+}
+
 /*
 ####################################################################################################################
 ########################################### ESTILIZAÇÃO CADASTRO ###################################################
@@ -80,7 +122,7 @@
     height: 100%;
     margin: 0 auto;
     background-image: url( img/bg_main.png) ;
-    background-position: fixed;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     justify-content: flex-start;
 }
@@ -180,7 +222,7 @@ label{
     display: flex;
     flex-direction: row;
     background-image: url(img/bg_main.png);
-    background-position: fixed;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     margin: 0;
     padding: 2vmax;
@@ -312,4 +354,101 @@ label{
 #status{ 
     
     margin-left: 10px;
+}
+
+.input-cadastro-artista{
+
+    width: 400px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #6666d04d;
+    border: none;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.minha-label{
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #6666d04d;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: 'Josefin sans',sans-serif;
+}
+
+.botao-enviar{
+
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Josefin sans', sans-serif;
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 2vmax;
+
+
+}
+
+
+#cad-evento{
+
+    width: 200px;
+    cursor: pointer;
+
+}
+
+.botoes-evento{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
+}
+
+.sair{
+
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.botao-evento{
+
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Josefin sans', sans-serif;
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+
+
+}
+
+.botao-voltar{
+
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Josefin sans', sans-serif;
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+
+
 }
