@@ -1,0 +1,125 @@
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+   
+  
+  </head>
+
+
+<div id="comentarios-caixa-artista-evento">
+    <div class="sessao-comentarios" id="sessao-comentarios1">
+
+
+            <div class="caixa-comentario">
+                <div class="comentarios-top">
+                    <div class="foto-perfil">
+                        <img class="mr-3 rounded-circle" id="foto-perfil-comentario" src="">
+                    </div>
+                    <div class="foto-nome-data-horario">
+                        <h5> nome</h5>
+                        <span>  </span>
+                    </div>
+                </div>
+                <p id="texto-notificacao"> uuuuu </p>
+                <div class="curtir-comentario">
+                    <button class="ver-respostas-responder-curtir" id="ver-respostas" onclick="minhaFuncao()"> Ver respostas(54)</button>
+                    <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentariosessao1()"> Responder </button>
+                    <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
+                </div>
+            </div>
+
+            <div class="sessao-comentarios" id="sessao-comentarios2" style="display:none">
+
+                <div class="caixa-comentario" id="comentario-principal-aba-respostas">
+        
+                    <div class="comentarios-top">
+                        <div class="foto-perfil">
+                            <img class="foto-usuario" id="foto-perfil-comentario" src="" >
+                        </div>
+                        <div class="foto-nome-data-horario">
+                            <h5> nome_</h5>
+                            <span>  </span>
+                            <button class="fechar-aba-respostas" onclick="funcaoFechar()"><img id="icone-fechar-aba" src="img/close-outline.svg" alt="Fechar aba de comentários"></button>
+                        </div>
+                    </div>
+                    <p id="texto-notificacao"> lalala </p>
+                    <div class="curtir-comentario">
+                        <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentario()"> Responder </button>
+                        <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
+                    </div>
+                </div>
+        
+                <div id="respostas" class="sessao-comentarios">
+                        <div class="caixa-comentario">
+                            <div class=" comentarios-top">
+                                <div class="foto-perfil">
+                                    <img class="mr-3 rounded-circle" id="foto-perfil-comentario" src="uploads/<?php echo $photo_reply; ?>">
+                                </div>
+                                <div class="foto-nome-data-horario">
+                                    <h5> </h5>
+                                    <span>  </span>
+        
+                                </div>
+                            </div>
+                            <p id="texto-notificacao"> </p>
+                            <div class="curtir-comentario">
+                                <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentario()"> Responder </button>
+                                <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
+                            </div>
+                        </div>
+        
+        
+                    
+                </div>
+        
+            </div>
+            <form method="POST" action="">
+                <input type='hidden' name='' value="">
+                <input type='hidden' name='date_coment' value="">
+                <div class="caixa-enviar-comentario" id="caixa-enviar">
+                    <textarea id="text-area" class="input-comentario" name="mensagem" placeholder="digite aqui..."></textarea>
+                    <button id="enviar-texto" name="submit"> ENVIAR </button>
+                </div>
+      
+
+    </div>
+
+
+
+   
+
+</div>
+
+
+<script>
+    function minhaFuncao() {
+        document.getElementById("sessao-comentarios1").style.display = "none";
+        document.getElementById("sessao-comentarios2").style.display = "block";
+
+    }
+
+    function funcaoFechar() {
+        document.getElementById("sessao-comentarios2").style.display = "none";
+        document.getElementById("sessao-comentarios1").style.display = "block";
+    }
+
+    function responderComentario() {
+
+        document.getElementById('text-area').focus().scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    function responderComentariosessao1() {
+
+        document.getElementById("sessao-comentarios1").style.display = "none";
+        document.getElementById("sessao-comentarios2").style.display = "block";
+        document.getElementById('text-area').focus().scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+</script>
+</div>
