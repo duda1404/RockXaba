@@ -12,6 +12,8 @@ include 'funcoes.php';
 
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
+
+    
     $image_query = pg_query($connect, "select artista.id_artista, artista.nome_artista, 
     artista.dsc_artista, artista.link_play, artista.cor_artista, foto_artista.photo_artista, artista.contato, artista.nome_insta from artista inner join
     foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = artista.id_artista and foto_artista.logo_foto = 'logo'");
@@ -33,13 +35,21 @@ no banco. */
           
 <div id="slider" class="slider">
 <div class="wrapperr">
+
+
 <div id="items" class="items">
-  <span class="slide">Slide 1</span>
-  <span class="slide">Slide 2</span>
-  <span class="slide">Slide 3</span>
-  <span class="slide">Slide 4</span>
-  <span class="slide">Slide 5</span>
+<?php
+$photo_query = pg_query($connect, "select fot.photo_artista from artista art inner join foto_artista fot on 
+    art.id_artista = fot.fk_artista_id_artista where art.fk_situacao_id_sit = 1 AND logo_foto = 'foto' and $id = art.id_artista  
+    ");
+    while ($fotos = pg_fetch_array($photo_query)) { 
+        $foto = $fotos['photo_artista'];
+    
+        ?>  
+  <span class="slide">  <img src="uploads/<?php echo $foto; ?>" />    </span>
+  <?php } ?>
 </div>
+
 </div>
 <a id="prev" class="control prev"></a>
 <a id="next" class="control next"></a>

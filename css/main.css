@@ -1688,7 +1688,7 @@ select::-ms-expand {
   width: 10000px;
   position: relative;
   top: 0;
-  left: -400px;
+  left: -450px;
 }
 
 #items.shifting {
