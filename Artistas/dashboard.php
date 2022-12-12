@@ -84,9 +84,9 @@ $contando = count($array);
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <!-- CSS do multi-seletor de gêneros-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 <body class="dashboard">
     <div class="editar-perfil">
@@ -149,6 +149,8 @@ $contando = count($array);
                     <label for="radio-3"> Verde </label>
                     <input type="radio" class="radio" id="radio-4" name="group" value="yellow" />
                     <label for="radio-4"> Amarelo </label>
+                    <input type="radio" class="radio" id="radio-5" name="group" value="pink" />
+                    <label for="radio-4"> Pink </label>
                 </label>
                 <div class="erro">
                     <p class="erro"><?php echo $cor_erro; ?></p>
@@ -166,10 +168,46 @@ $contando = count($array);
         </a>
         <a href="?sair">Sair</a>
     </div>
-    </div>
-    <!-- JavaScript do multi-seletor de gêneros-->
-    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
-    <!-- Importa o arquivo script.js, que contém o JavaScript interno do site -->
-    <script src="js/script.js"></script>
+    <?php
+    $sql = "SELECT id_evento, nome_evento, dsc_evento, dat_evento, fk_situacao_id_sit FROM evento WHERE fk_usuario_id_user = $id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $array_evento = $stmt->fetch();
+    $sql = "SELECT COUNT(id_evento) FROM evento";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $array_count = $stmt->fetch();
+
+
+
+    ?>
+    <div class="meus-eventos">
+        <h2 id="meus-eventos"> Meus Eventos</h2>
+        <div class="caixa-eventos">
+            <?php if ($array_count['count'] == 1) {
+                $_SESSION['id_evento'] = $array_evento['id_evento']; ?>
+                <div class="evento">
+                    <h4 id="titulo-evento"><?php echo $array_evento['nome_evento']; ?></h4>
+                    <h4 id="status" <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> style="color: red" <?php } else { ?> style="color: green;" <?php } ?>> Status: <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> Desativado <?php
+                                                                                                                                                                                                                                            } else { ?> Ativado <?php } ?></h4>
+                    <div class="texto-botao">
+                        <p><?php echo $array_evento['dsc_evento']; ?></p>
+                        <?php if ($array_evento['fk_situacao_id_sit'] == 1) { ?>
+                            <button type="button" class="botao-ativa-desativa" onclick="desativaAtiva('desativa_evento.php')"> DESATIVAR </button>
+                        <?php } ?>
+                        <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?>
+                            <button type="button" class="botao-ativa-desativa" id="botao-ativar" onclick="desativaAtiva('ativa_evento.php')"> ATIVAR </button>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($array_count['count'] == 0 || @$array_count['count'] == NULL) {  ?>
+                <p> Você não cadastrou nenhum Evento ainda! </p>
+            <?php } ?>
+        </div>
 </body>
+<!-- JavaScript do multi-seletor de gêneros-->
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+<!-- Importa o arquivo script.js, que contém o JavaScript interno do site -->
+<script src="js/script.js"></script>
 </head>

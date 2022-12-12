@@ -54,6 +54,20 @@
 
 }
 
+#botao-ativar{
+
+    background-color: darkseagreen;
+    width: 100px;
+  
+}
+
+#botao-ativar:hover{
+
+    background-color: rgb(66, 143, 93);
+
+
+}
+
 /*
 ####################################################################################################################
 ########################################### ESTILIZAÇÃO CADASTRO ###################################################
@@ -221,4 +235,81 @@ label{
     margin: 0;
     
 
+}
+
+/* estilização dos meus eventos */
+
+.meus-eventos{
+
+    width: 100%;
+    height: 100%;
+    font-family: 'Josefin sans', sans-serif;
+    color:#6666d0;
+    
+}
+
+.caixa-eventos{
+
+    width: 40vmax;
+    height: 40vmax;
+    overflow-y: scroll;
+    background-color: rgba(226, 113, 248, 0.137);
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.evento{
+
+    background-color: white;
+    border-radius: 10px;
+    min-width: 500px;
+    min-height: 100px;
+    max-width: 600px;
+    max-height: 150px;
+    margin-bottom: 2vmax;
+    
+    
+}
+
+#titulo-evento{
+
+    margin-left: 10px;
+    margin-top: 10px;
+    
+}
+
+#meus-eventos{
+
+    font-size: 72px;
+    margin: 0 auto;
+}
+
+.texto-botao{
+
+    display: flex;
+    flex-direction: row;
+    text-overflow:clip;
+    justify-content: space-around;
+}
+
+.botao-ativa-desativa{
+
+  background-color: rgba(240, 48, 48, 0.507);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.botao-ativa-desativa:hover{
+
+    cursor: pointer;
+    background-color: rgba(255, 12, 12, 0.507);
+}
+
+#status{ 
+    
+    margin-left: 10px;
 }

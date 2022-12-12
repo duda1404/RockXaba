@@ -36,7 +36,11 @@
      }
  }
 
+/* FUNÇÃO QUE DESATIVA E ATIVA EVENTOS */
  
- 
+ function desativaAtiva(delUrl){
+
+    document.location = delUrl;
+ }
 
  
