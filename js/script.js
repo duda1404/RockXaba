@@ -153,3 +153,29 @@ function reativarConta(delUrl) {
   }
 }
 
+function reportaEvento(){
+
+    let person = prompt("Por qual motivo você deseja reportar este evento?");
+
+    if (!(person == null) || !(person == "")) {
+     
+      alert('O Evento foi reportado! Ele será revisado pelos moderadores em breve');
+      document.location = 'reporta_email.php?text='+person;
+    }
+    
+  
+}
+
+function reportaArtista(){
+
+  let person = prompt("Por qual motivo você deseja reportar este artista?");
+
+  if (!(person == null) || !(person == "")) {
+   
+    alert('O Artista foi reportado! Ele será revisado pelos moderadores em breve');
+    document.location = 'reporta_artista.php?text='+person;
+  }
+
+
+}
+

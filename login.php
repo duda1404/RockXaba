@@ -96,7 +96,8 @@ if (isset($_POST['btn-entrar'])) :
             	</SCRIPT>");
 			}
 
-			/* Se o usuário está ativo, a sessão 'logado' é iniciada */ elseif ($confirmado['fk_situacao_id_sit'] == 1) {
+			/* Se o usuário está ativo, a sessão 'logado' é iniciada */ 
+			elseif ($confirmado['fk_situacao_id_sit'] == 1) {
 
 				$dados = pg_fetch_array($resultado);
 				$_SESSION['logado'] = true;

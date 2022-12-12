@@ -9,6 +9,7 @@ include 'funcoes.php';
 <body class="rexx">
     <?php
     $id = $_GET["myid"];
+   
     
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
@@ -269,6 +270,13 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                 <?php
             }
                 ?>
+                 <?php $_SESSION['id_usuario'] = $dados['id_user'];
+                    $_SESSION['nome_usuario'] = $dados['nome_user'];
+                    $_SESSION['id_artista'] = $id;
+                    $_SESSION['nome_artista'] = $nome_artista;
+                    $_SESSION['email_usuario'] = $dados['email_user'];
+                    ?>
+                <button class="reportar" id="botao-artista-reporta" onclick="reportaArtista()"> Reportar Artista </button>
 
                 </div>
             </div>

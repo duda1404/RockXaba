@@ -15,6 +15,7 @@ header('Content-Type: text/html; charset=UTF-8');
 include_once('sair.php');
 require('config.php');
 
+
 if (isset($_SESSION['logado'])) {
 
   //Dados

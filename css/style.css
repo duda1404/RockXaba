@@ -490,3 +490,30 @@ textarea.form-control {
 
   cursor: pointer;
 }
+
+/* botão de reportar */
+
+.reportar{
+
+  margin-bottom: 2vmax;
+  width: 100px;
+  height: 100px;
+  margin-left: 80%;
+  border-radius: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: rgba(241, 53, 53, 0.726);
+  border: none;
+  cursor: pointer;
+}
+
+.reportar:hover{
+
+  background-color: rgba(253, 30, 30, 0.726);
+
+}
+
+#botao-artista-reporta{
+
+  margin-top: 2vmax;
+  height: 80px;
+}
