@@ -23,7 +23,7 @@
 			<div class="inner">
             <fieldset class = "fieldset ">
             <legend>Edite seu Perfil</legend>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" class="edita-perfil-form">
             <?php
 
 /*Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações do usuário*/
@@ -37,7 +37,7 @@
                     
                     <img class="photo_img" id="photo_img" src="uploads/<?php echo $row["photo_user"]; ?>">
                     <label for="photo" class="img"> Alterar foto de perfil </label>
-                        <input type="file" accept="image/*" id="photo" name="photo" >
+                        <input type="file" accept="image/*" id="photo" name="photo" style="display: none">
                        
                         <script> photo.onchange = evt => {
     const [file] = photo.files
@@ -51,7 +51,6 @@
 					<label class="form-group">
 						<input type="text" id="nome_user" name="nome_user" class="form-control"  value="<?php echo $row['nome_user']; ?>" required>
 						<span>Usuário</span>
-						
 					</label>
 
 					<label class="form-group">
@@ -76,9 +75,7 @@
             ?>
 
                     <label class="form-group">
-					<button class="button" type="submit" name="submit">Salvar
-						<i class="zmdi zmdi-arrow-right"></i>
-					</button>
+					<button class="button" type="submit" id="salvar" name="submit">Salvar</button>
                     </label>
 
 

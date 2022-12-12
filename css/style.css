@@ -67,15 +67,17 @@ a:hover {
 }
 
 .fieldset {
-  border: 2px solid #ff00ff;
+  border: none;
 }
+
 
 .inner {
 
   max-width: 758px;
   margin: auto;
-  background: #000000;
-  border: 2px solid #ff00ff;
+  background: #d920f12d;
+  border: none;
+  border-radius: 20px;
   padding: 77px 99px 87px;
 }
 
@@ -97,15 +99,21 @@ textarea {
 
 
 legend {
-  background-color: #ff00ff;
+  background-color: #d13dd162;
   color: #f7f7f7;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   border-radius: 4px;
-  box-shadow: 0px 8px 16px 0px rgba(255, 0, 187, 0.894);
+  box-shadow: 0px 8px 16px 0px #d13dd162;
   text-transform: uppercase;
-  font-size: 45px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 12px;
+  margin-bottom: 2vmax;
+  height: 4vmax;
+  width: 30vmax;
+  padding: 10px;
+
+  
 }
 
 p {
@@ -135,7 +143,7 @@ p {
   background: none;
   color: #fff;
   text-transform: uppercase;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   position: relative;
@@ -143,11 +151,6 @@ p {
   transition-property: color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-
-
-
-
-
   padding: 6px 12px;
 
 }
@@ -161,17 +164,22 @@ p {
 .form-group span {
 
   font-size: 15px;
-  background-color: #ff00ff;
+  background-color: #d13dd162;
   color: #f7f7f7;
   font-family: "Quicksand", sans-serif;
   border-radius: 4px;
-  box-shadow: 0px 3px 6px 2px rgba(255, 0, 187, 0.894);
-
+  height: fit-content;
+  width: fit-content;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
   position: absolute;
   top: 11px;
   transition: all .2s ease;
   transform-origin: 0 0;
   cursor: text;
+  text-align: center;
+  margin-bottom: 8vmax;
+
 }
 
 .form-group span.border {
@@ -194,7 +202,21 @@ p {
   height: 43px;
   font-size: 15px;
   background: none;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 2vmax;
+}
+
+#salvar{
+
+  width: 100px;
+  height: 50px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  background-color: #0d0d0d;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
 }
 
 .form-control:focus,
@@ -460,4 +482,11 @@ textarea.form-control {
   font-family: 'Josefin Sans', sans-serif;
   text-align: justify;
   
+}
+
+/* link do menu para o site de artistas */
+
+.link-site2{
+
+  cursor: pointer;
 }

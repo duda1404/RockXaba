@@ -409,10 +409,6 @@ if (isset($_POST['btnentrar'])) {
 						<input placeholder="Senha" name="senha" type="password">
 
 					</div>
-					<label class="checkbox">
-						<input type="checkbox">
-						<span> Lembrar de mim </span>
-					</label>
 				</div>
 				<button class="botao-logar-cadastrar" type="submit" name="btn-entrar">Login</button>
 			</form>

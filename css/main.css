@@ -16,6 +16,8 @@ header("Content-type: text/css");
   /*font-family:'Josefin Sans';*/
   color: #e92eed;
   background-image:url(../img/bgsobre.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* ***************************************************** */
@@ -1080,6 +1082,8 @@ a, a:hover {
   padding: 50px 20px;
   padding-top: 100px;
   display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
 
 
 }
@@ -1180,6 +1184,7 @@ a, a:hover {
   margin-right: 12vmax;
   min-height: 100px;
   max-height: 200px;
+  border-radius: 20px;
 }
 
 

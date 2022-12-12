@@ -117,23 +117,27 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 <div class="erro">
                     <p class="erro"><?php echo $dsc_erro; ?></p>
                 </div>
-                <p> Escolha uma imagem lateral para o Evento </p>
+                
+            </div>
+            <div class="form-p2">
+            <p> Escolha uma imagem lateral para o Evento </p>
+                <label for="input-logo-artista" class="minha-label">Enviar arquivo</label>
                 <input type="file" class="input-imagem" id="input-logo-artista" name="logo-name" required>
                 <div class="erro">
                     <p class="erro"><?php echo $logo_erro; ?></p>
                 </div>
                 <p> Escolha uma imagem de fundo do Evento </p>
-                <input type="file" class="input-imagem" id="input-logo-artista" name="fundo-name" required>
+                <label for="input-logo-evento" class="minha-label">Enviar arquivo</label>
+                <input type="file" class="input-imagem" id="input-logo-evento" name="fundo-name" required>
                 <div class="erro">
                     <p class="erro"><?php echo $fundo_erro; ?></p>
                 </div>
                 <p> Escolha até 5 fotos para a página do Evento </p>
+                <label for="files" class="minha-label">Enviar arquivos</label>
                 <input id="files" name="fotos[]" type="file" accept=".jpg, .jpeg, .png" multiple required>
                 <div class="erro">
                     <p class="erro"><?php echo $row_fotos_erro; ?></p>
                 </div>
-            </div>
-            <div class="form-p2">
                 <p> Assista o gif tutorial e cole aqui seu link do Google Maps </p>
                 <input type="text" class="input-cadastro-artista" id="link-spotify" name="link-google-maps" <?php if (!empty($link_erro)) { ?> style='border: 2px solid red;' value='<?php echo $_POST['link-google-maps'] ?>' <?php } ?>>
                 <div class="erro">
@@ -161,18 +165,22 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <label for="radio-3"> Verde </label>
                     <input type="radio" class="radio" id="radio-4" name="group" value="yellow" />
                     <label for="radio-4"> Amarelo </label>
+                    <input type="radio" class="radio" id="radio-5" name="group" value="#f82b9f" />
+                    <label for="radio-5"> Rosa </label>
                 </label>
                 <div class="erro">
                     <p class="erro"><?php echo $cor_erro; ?></p>
                 </div>
-                <button type="submit" id="enviar_btn" class="botao-evento"> Enviar </button>
-                <a href="dashboard.php">
-                    <button type="button" id="enviar_btn" class="botao-voltar"> Voltar </button>
-                </a>
+                <div class="botoes-evento">
+                    <button type="submit" id="enviar_btn" class="botao-evento"> Enviar </button>
+                    <a href="dashboard.php">
+                        <button type="button" id="enviar_btn" class="botao-voltar"> Voltar </button>
+                    </a>
+                    <a href="?sair" class="sair">Sair</a>
+                </div>
             </div>
         </form>
 
-        <a href="?sair">Sair</a>
     </div>
     <!-- JavaScript do multi-seletor de gêneros-->
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>

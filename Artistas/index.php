@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body class="main">
     <div class="texto-main">
-        <h3 class="texto-index"> Ainda não é Artista Parceiro do RockXaba?<h3>
+        <h3 class="texto-index"> Ainda não é Artista Parceiro do RockXaba?</h3>
                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="formulario-cadastro">
                     <?php
                     if (!empty($login_err)) {

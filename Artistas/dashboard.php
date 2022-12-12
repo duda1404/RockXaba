@@ -113,11 +113,13 @@ $contando = count($array);
                     <p class="erro"><?php echo $generos_erro; ?></p>
                 </div>
                 <p> Edite sua imagem de perfil (sua logo) </p>
+                <label for="input-logo-artista" class="minha-label">Enviar arquivo</label>
                 <input type="file" class="input-imagem" id="input-logo-artista" name="logo-name" required>
                 <div class="erro">
                     <p class="erro"><?php echo $logo_erro; ?></p>
                 </div>
                 <p> Edite as fotos da sua página (até 5 fotos) </p>
+                <label for="files" class="minha-label">Enviar arquivos</label>
                 <input id="files" name="fotos[]" type="file" accept=".jpg, .jpeg, .png" multiple required>
                 <div class="erro">
                     <p class="erro"><?php echo $row_fotos_erro; ?></p>
@@ -149,8 +151,8 @@ $contando = count($array);
                     <label for="radio-3"> Verde </label>
                     <input type="radio" class="radio" id="radio-4" name="group" value="yellow" />
                     <label for="radio-4"> Amarelo </label>
-                    <input type="radio" class="radio" id="radio-5" name="group" value="pink" />
-                    <label for="radio-4"> Pink </label>
+                    <input type="radio" class="radio" id="radio-5" name="group" value="#f82b9f" />
+                    <label for="radio-4"> Rosa </label>
                 </label>
                 <div class="erro">
                     <p class="erro"><?php echo $cor_erro; ?></p>
@@ -163,10 +165,6 @@ $contando = count($array);
                 <button type="submit" id="enviar_btn" class="botao-enviar cadastro"> Salvar </button>
             </div>
         </form>
-        <a href="cadastrar_evento.php">
-            <button type="button" id="cad-evento" class="botao-enviar cadastro"> Cadastrar Evento </button>
-        </a>
-        <a href="?sair">Sair</a>
     </div>
     <?php
     $sql = "SELECT id_evento, nome_evento, dsc_evento, dat_evento, fk_situacao_id_sit FROM evento WHERE fk_usuario_id_user = $id";
@@ -205,7 +203,13 @@ $contando = count($array);
                 <p> Você não cadastrou nenhum Evento ainda! </p>
             <?php } ?>
         </div>
+        <div class="botoes-evento">
+            <a href="cadastrar_evento.php">
+                <button type="button" id="cad-evento" class="botao-enviar cadastro"> Cadastrar Evento </button>
+            </a>
+            <a href="?sair" class="sair" >Sair</a>
         </div>
+    </div>
 </body>
 <!-- JavaScript do multi-seletor de gêneros-->
 <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>

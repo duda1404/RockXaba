@@ -9,7 +9,7 @@ include 'funcoes.php';
 <body class="rexx">
     <?php
     $id = $_GET["myid"];
-
+    
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
 

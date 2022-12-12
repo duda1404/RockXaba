@@ -33,6 +33,8 @@ while ($rows = pg_fetch_array($image_query)) {
     $artistas = $rows['artistas'];
     $preco_evento = $rows['preco_evento'];
     $foto_fundo = $rows['photo_evento'];
+    $row_artistas_rockxaba = NULL;
+    $rows_artistas = NULL;
 
     $array_artistas = explode(",", $artistas);
 
@@ -59,11 +61,6 @@ while ($rows = pg_fetch_array($image_query)) {
         }
     }
 
-    if(isset($_POST['id'])){
-
-        echo 'CURTIDO!';
-    }
-
 ?>
 
     <body class="evento_body">
@@ -74,11 +71,6 @@ while ($rows = pg_fetch_array($image_query)) {
         <div class="info-comentarios-evento" style="color: <?php echo $cor_evento; ?>; text-shadow: 0px 1px 10px <?php echo $cor_evento; ?>;">
             <div class="curtir-views-comentarios">
                 <div class="botao-views-curtidas">
-                    <button type="button" onclick="curtirEvento()" class="curtir-evento" id="curtir-evento" style=" background-color: <?php echo $cor_evento; ?>;
-  box-shadow: 0px 5px 50px 0px <?php echo $cor_evento; ?>, 0px 0px 0px 7px <?php echo $cor_evento; ?>;"> CURTIR </button>
-                    <div class="views-curtidas">
-                        <p id="curtidas-evento"> 145 curtidas </p>
-                    </div>
                     <div class="bandas-evento">
                         <p class="titulo-bandas-horario-evento"> PREÇO DA ENTRADA: </p>
                         <p class="nome-bandas-horario-evento"><?php echo $preco_evento; ?></p>
@@ -110,7 +102,7 @@ while ($rows = pg_fetch_array($image_query)) {
                                                             ?><span id="rockxaba-artista" style="background: -webkit-linear-gradient(-135deg,#c850c0, #0099f9);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    text-shadow: none;"><a href="artista_page.php?myid=<?php echo $row_id_artista[$i] ?>"><?php echo $row_artistas_rockxaba[$i] . ', ' ?></a></span> <?php
+                    text-shadow: none;"><a href="artista_page.php?myid=<?php echo $row_id_artista[$i]; ?>"><?php echo $row_artistas_rockxaba[$i] . ', ' ?></a></span> <?php
                                                                                                                                                                     }
                                                                                                                                                                 }
 

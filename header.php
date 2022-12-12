@@ -61,7 +61,6 @@ if (isset($_SESSION['logado'])) {
         <li><a href="index.php">HOME</a></li>
         <li><a href="about.php">SOBRE</a></li>
         <li><a href="artistas.php">ARTISTAS</a></li>
-        <li><a href="lojas.php"> LOJAS </a></li>
       </ul>
 
       <ul class="nav-list-entrar">
@@ -82,9 +81,13 @@ if (isset($_SESSION['logado'])) {
         <li class="dropbtn" id="nome-perfil"> <?php echo $dados['nome_user']; ?></li>
         <div class="dropdown-content">
           <a href="perfil.php">Perfil</a>
-          <a onclick="site2()">Quero ser Artista</a>
+          <?php $query = pg_query($connect, "SELECT id_artista FROM artista WHERE fk_usuario_id_user = $id"); 
+              if(pg_num_rows($query) > 0): ?>
+              <a class="link-site2" onclick="site2()"> Meu Artista </a>
+          <?php 
+            elseif(pg_num_rows($query) < 1): ?>  
+            <a class="link-site2" onclick="site2()">Quero ser Artista</a> <?php endif; ?>
           <a href="editar_perfil.php">Editar Perfil</a>
-
           <a href="?sair">Sair</a>
         </div>
 
