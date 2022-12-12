@@ -9,7 +9,7 @@ include 'funcoes.php';
 <body class="rexx">
     <?php
     $id = $_GET["myid"];
-
+    
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
 
@@ -120,7 +120,6 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
                     <div class="sessao-comentarios" id="sessao-comentarios2" style="display:none">
 
                         <div class="caixa-comentario" id="comentario-principal-aba-respostas">
-
                             <div class="comentarios-top">
                                 <div class="foto-perfil">
                                     <img class="foto-usuario" id="foto-perfil-comentario" src="uploads/<?php echo $photo_user; ?>">
@@ -209,9 +208,11 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
 
                 <script>
                     function minhaFuncao() {
+                      
                         document.getElementById("sessao-comentarios1").style.display = "none";
                         document.getElementById("sessao-comentarios2").style.display = "block";
-
+                        
+                     
                     }
 
                     function funcaoFechar() {
@@ -224,6 +225,8 @@ tree.path || '/' || comentario_artista.id_coment::text as path, usuario.nome_use
                         document.getElementById('text-area').focus().scrollIntoView({
                             behavior: 'smooth'
                         });
+
+
                     }
 
                     function responderComentariosessao1() {
