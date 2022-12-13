@@ -4,11 +4,11 @@
     require 'config.php';
    
     $texto = $_GET['text'];
-    $nome_user = $_SESSION['nome_usuario'];
-    $id_user = $_SESSION['id_usuario'];
+    $nome_user = $_SESSION['nome_userr'];
+    $id_user = $_SESSION['id_userr'];
     $nome_artista = $_SESSION['nome_artista'];
     $id_artista = $_SESSION['id_artista'];
-    $email_user = $_SESSION['email_usuario'];
+    $email_user = $_SESSION['email_userr'];
 
     $emailEnvia = $email_user;
 	$apelidoEnvia = $nome_user;
@@ -22,14 +22,8 @@
 
     include 'emails.php';
    
-    unset($_SESSION['id_artista']);
-    unset($_SESSION['id_usuario']);
-    unset($_SESSION['nome_usuario']);
-    unset($_SESSION['nome_artista']);
-    unset($_SESSION['email_usuario']);
+    header('Location: artista_page.php?myid='.$id_artista);
 
-    
-    //fechando a conexão depois de armazenar os dados
 
 	
    

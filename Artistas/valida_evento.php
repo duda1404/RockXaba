@@ -339,11 +339,8 @@ else{
         }
     }
 
-    // Fechar declaração
-    unset($stmt);
 
-    // Fechar conexão
-    unset($pdo);
+  
 }
 
 

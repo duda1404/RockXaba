@@ -22,11 +22,6 @@
 
     include 'emails.php';
    
-    unset($_SESSION['id_evento']);
-    unset($_SESSION['id_usuario']);
-    unset($_SESSION['nome_usuario']);
-    unset($_SESSION['nome_evento']);
-    unset($_SESSION['email_usuario']);
 
     header('Location: evento_page.php?myid='.$id_evento);
     //fechando a conexão depois de armazenar os dados

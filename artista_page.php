@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 include 'header.php';
 include 'funcoes.php';
@@ -152,16 +153,17 @@ no banco. */
                         <iframe style="border-radius:12px" src="<?php echo $link; ?>" style="border-radius:12px; top: 0; right: 0; width: 184%; height: 100%; position: absolute;" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                     </div>
                 <?php
-            }
-                ?>
-                <?php $_SESSION['id_usuario'] = $dados['id_user'];
-                $_SESSION['nome_usuario'] = $dados['nome_user'];
-                $_SESSION['id_artista'] = $id;
-                $_SESSION['nome_artista'] = $nome_artista;
-                $_SESSION['email_usuario'] = $dados['email_user'];
-                ?>
-                <button class="reportar" id="botao-artista-reporta" onclick="reportaArtista()"> Reportar Artista </button>
+                if (isset($_SESSION["logado"]) && $_SESSION["logado"] === true) {
 
+                    $_SESSION['id_userr'] = $dados['id_user'];
+                    $_SESSION['nome_userr'] = $dados['nome_user'];
+                    $_SESSION['id_artista'] = $id;
+                    $_SESSION['nome_artista'] = $nome_artista;
+                    $_SESSION['email_userr'] = $dados['email_user'];
+            
+                ?>
+                    <button class="reportar" id="botao-artista-reporta" onclick="reportaArtista()"> Reportar Artista </button>
+                <?php } } ?>
                 </div>
             </div>
 

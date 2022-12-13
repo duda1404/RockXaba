@@ -104,14 +104,19 @@ while ($rows = pg_fetch_array($image_query)) {
             </div>
             <div class="localizacao-mapa-evento">
                 <?php
-                $_SESSION['id_usuario'] = $id;
-                $_SESSION['nome_usuario'] = $dados['nome_user'];
-                $_SESSION['id_evento'] = $id_evento;
-                $_SESSION['nome_evento'] = $nome_evento;
-                $_SESSION['email_usuario'] = $dados['email_user'];
+                if (isset($_SESSION["logado"]) && $_SESSION["logado"] === true) {
+
+                    $_SESSION['id_usuario'] = $id;
+                    $_SESSION['nome_usuario'] = $dados['nome_user'];
+                    $_SESSION['id_evento'] = $id_evento;
+                    $_SESSION['nome_evento'] = $nome_evento;
+                    $_SESSION['email_usuario'] = $dados['email_user'];
+
+
 
                 ?>
-                <button class="reportar" onclick="reportaEvento()"> Reportar Evento </button>
+                    <button class="reportar" onclick="reportaEvento()"> Reportar Evento </button>
+                <?php } ?>
                 <div class="bandas-evento">
                     <p class="titulo-bandas-horario-evento"> BANDAS/ARTISTAS: </p>
                     <p class="nome-bandas-horario-evento"><?php
