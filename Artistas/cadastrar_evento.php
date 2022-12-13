@@ -132,7 +132,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 <div class="erro">
                     <p class="erro"><?php echo $fundo_erro; ?></p>
                 </div>
-                <p> Escolha até 5 fotos para a página do Evento </p>
+                <p> Escolha até 5 fotos para a página do Evento (mínimo duas)</p>
                 <label for="files" class="minha-label">Enviar arquivos</label>
                 <input id="files" name="fotos[]" type="file" accept=".jpg, .jpeg, .png" multiple required>
                 <div class="erro">
