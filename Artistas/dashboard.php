@@ -181,12 +181,13 @@ $contando = count($array);
     <div class="meus-eventos">
         <h2 id="meus-eventos"> Meus Eventos</h2>
         <div class="caixa-eventos">
-            <?php if ($array_count['count'] == 1) {
+            <?php 
                 $_SESSION['id_evento'] = $array_evento['id_evento']; 
                 for($i=0; $i < $array_count['count']; $i++) {?>
                 <div class="evento">
                     <h4 id="titulo-evento"><?php echo $array_evento['nome_evento']; ?></h4>
-                    <h4 id="status" <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> style="color: red" <?php } else { ?> style="color: green;" <?php } ?>> Status: <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> Desativado <?php
+                    <h4 id="status" <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> style="color: red" <?php } else { ?> style="color: green;" <?php } ?>>
+                     Status: <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> Desativado <?php } ?>
                                                                                                                                                                                                                                             } else { ?> Ativado <?php } ?></h4>
                     <div class="texto-botao">
                         <p><?php echo $array_evento['dsc_evento']; ?></p>
@@ -198,8 +199,6 @@ $contando = count($array);
                         <?php } ?>
                     </div>
                 </div>
-                <? } ?>
-            <?php } ?>
             <?php if ($array_count['count'] == 0 || @$array_count['count'] == NULL) {  ?>
                 <p> Você não cadastrou nenhum Evento ainda! </p>
             <?php } ?>

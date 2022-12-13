@@ -71,6 +71,23 @@ while ($rows = pg_fetch_array($image_query)) {
         <div class="info-comentarios-evento" style="color: <?php echo $cor_evento; ?>; text-shadow: 0px 1px 10px <?php echo $cor_evento; ?>;">
             <div class="curtir-views-comentarios">
                 <div class="botao-views-curtidas">
+                    <div id="slider" class="slider" style="margin-top: 2vmax; left: 35%;">
+                        <div class="wrapperr">
+                            <div id="items" class="items">
+                                <?php
+                                $photo_query = pg_query($connect, "select photo_evento from foto_evento where fk_evento_id_evento = $id_evento");
+                                while ($fotos = pg_fetch_array($photo_query)) {
+                                    $foto = $fotos['photo_evento'];
+
+                                ?>
+                                    <span class="slide"> <img src="uploads/<?php echo $foto; ?>" /> </span>
+                                <?php } ?>
+                            </div>
+
+                        </div>
+                        <a id="prev" class="control prev"></a>
+                        <a id="next" class="control next"></a>
+                    </div>
                     <div class="bandas-evento">
                         <p class="titulo-bandas-horario-evento"> PREÇO DA ENTRADA: </p>
                         <p class="nome-bandas-horario-evento"><?php echo $preco_evento; ?></p>
@@ -84,19 +101,16 @@ while ($rows = pg_fetch_array($image_query)) {
                         <p class="nome-bandas-horario-evento"> <?php echo strtoupper($dsc_evento); ?></p>
                     </div>
                 </div>
-                <div class="comentarios">
-
-                </div>
             </div>
             <div class="localizacao-mapa-evento">
-            <?php   
-                    $_SESSION['id_usuario'] = $id;
-                    $_SESSION['nome_usuario'] = $dados['nome_user'];
-                    $_SESSION['id_evento'] = $id_evento;
-                    $_SESSION['nome_evento'] = $nome_evento;
-                    $_SESSION['email_usuario'] = $dados['email_user'];
-                    
-                    ?>
+                <?php
+                $_SESSION['id_usuario'] = $id;
+                $_SESSION['nome_usuario'] = $dados['nome_user'];
+                $_SESSION['id_evento'] = $id_evento;
+                $_SESSION['nome_evento'] = $nome_evento;
+                $_SESSION['email_usuario'] = $dados['email_user'];
+
+                ?>
                 <button class="reportar" onclick="reportaEvento()"> Reportar Evento </button>
                 <div class="bandas-evento">
                     <p class="titulo-bandas-horario-evento"> BANDAS/ARTISTAS: </p>
@@ -157,5 +171,7 @@ while ($rows = pg_fetch_array($image_query)) {
 
     </body>
 <?php } ?>
+<script type="text/javascript" src="js/script.js"></script>
+
 
 </html>

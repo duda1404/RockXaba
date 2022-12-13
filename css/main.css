@@ -2150,6 +2150,7 @@ select::-ms-expand {
   overflow-y: auto;
   padding: 1vmax;
   
+  
 }
 
 .sessao-comentarios::-webkit-scrollbar {
@@ -2157,18 +2158,18 @@ select::-ms-expand {
 }
 
 .sessao-comentarios::-webkit-scrollbar-track {
-  background: #06d388;        /* color of the tracking area */
+  background: #edf5f2c5;        /* color of the tracking area */
 }
 
 .sessao-comentarios::-webkit-scrollbar-thumb {
-  background-color: #8de9c7;    /* color of the scroll thumb */
+  background-color: #aab1aef1;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #06d388;  /* creates padding around scroll thumb */
+  border: 3px solid #f4fffbea;  /* creates padding around scroll thumb */
 }
 
 .caixa-comentario{
 
-  background: #0d0d0d;
+  background: #c9c4c4c9;
   height: fit-content;
   width: 100%;
   border-radius: 40px;
@@ -2217,7 +2218,7 @@ select::-ms-expand {
   height: 50px;
   width: 100px;
   border-radius: 12px;
-  background-color:#06d388;
+  background-color: black;
   border: #000000;
 }
 

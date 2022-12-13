@@ -30,29 +30,20 @@ if (isset($_GET['acao'])) {
       <div class="content">
         <h3 id="evento-titulo"> EVENTOS </h3>
       </div>
-      <div class="artista-buscar-filtrar">
-        <div class="lupa">
-          <img src="img/lupa.png" class="lupa-de-busca">
-        </div>
-        <form class=" clearfix searchform">
-          <label for="search-box">
-            <span class="fa fa-search fa-flip-horizontal fa-2x"></span>
-          </label>
-          <input type="search" id="search-box" onclick="barraBusca()" placeholder="Buscar evento..." />
-        </form>
-      </div>
     </div>
     <div id="imprime-evento">
       <?php
+
       /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados dos artistas cadastrados.
 no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que preenche as informações*/
-      $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, 
+      $image_query = pg_query($connect, "select even.id_evento, even.nome_evento, even.dat_evento,
     foto.photo_evento from evento even inner join usuario userr on even.fk_usuario_id_user = userr.id_user inner join artista art on art.fk_usuario_id_user = userr.id_user inner join
     foto_evento foto on foto.fk_evento_id_evento = even.id_evento where even.fk_situacao_id_sit = 1 and art.fk_situacao_id_sit = 1 and foto.front_page = 'front' ");
       while ($rows = pg_fetch_array($image_query)) {
         $id_evento = $rows['id_evento'];
         $nome_evento = $rows['nome_evento'];
         $photo = $rows['photo_evento'];
+
 
 
       ?>
@@ -75,27 +66,5 @@ no banco. Enquanto houver resultado da consulta no MYSQL, executará o loop que 
   </div>
 
 </body>
-
-<script>
-  function barraBusca() {
-    // Declare variables
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('search-box');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("imprime-evento");
-    li = getElementsByTagName('a');
-
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("div")[0];
-      txtValue = a.getAttribute('title');
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        li[i].style.display = "";
-      } else {
-        li[i].style.display = "none";
-      }
-    }
-  }
-</script>
 
 </html>

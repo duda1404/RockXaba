@@ -225,7 +225,7 @@ else{
     ) {
         //Verificando se não existe nenhum nome de Artista igual no banco de dados
         // Prepare uma declaração selecionada
-        $sql = "SELECT nome_evento, dsc_evento, local_evento, artistas, dat_evento FROM evento WHERE nome_evento ILIKE :nome_evento";
+        $sql = "SELECT nome_evento, dsc_evento, local_evento, artistas, dat_evento FROM evento WHERE nome_evento ILIKE :nome_evento AND fk_situacao_id_sit != 2";
 
         if ($stmt = $pdo->prepare($sql)) {
 

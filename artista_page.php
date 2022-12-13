@@ -9,12 +9,12 @@ include 'funcoes.php';
 <body class="rexx">
     <?php
     $id = $_GET["myid"];
-   
-    
+
+
     /*Define um template vazio no HTML, do qual será preenchido de acordo com os dados do artista cadastrado.
 no banco. */
 
-    
+
     $image_query = pg_query($connect, "select artista.id_artista, artista.nome_artista, 
     artista.dsc_artista, artista.link_play, artista.cor_artista, foto_artista.photo_artista, artista.contato, artista.nome_insta from artista inner join
     foto_artista on artista.id_artista = foto_artista.FK_ARTISTA_id_artista	where $id = artista.id_artista and foto_artista.logo_foto = 'logo'");
@@ -33,28 +33,28 @@ no banco. */
     ?>
         <div class="main-rexx">
             <div class="container-slide">
-          
-<div id="slider" class="slider">
-<div class="wrapperr">
+
+                <div id="slider" class="slider">
+                    <div class="wrapperr">
 
 
-<div id="items" class="items">
-<?php
-$photo_query = pg_query($connect, "select fot.photo_artista from artista art inner join foto_artista fot on 
+                        <div id="items" class="items">
+                            <?php
+                            $photo_query = pg_query($connect, "select fot.photo_artista from artista art inner join foto_artista fot on 
     art.id_artista = fot.fk_artista_id_artista where art.fk_situacao_id_sit = 1 AND logo_foto = 'foto' and $id = art.id_artista  
     ");
-    while ($fotos = pg_fetch_array($photo_query)) { 
-        $foto = $fotos['photo_artista'];
-    
-        ?>  
-  <span class="slide">  <img src="uploads/<?php echo $foto; ?>" />    </span>
-  <?php } ?>
-</div>
+                            while ($fotos = pg_fetch_array($photo_query)) {
+                                $foto = $fotos['photo_artista'];
 
-</div>
-<a id="prev" class="control prev"></a>
-<a id="next" class="control next"></a>
-</div>
+                            ?>
+                                <span class="slide"> <img src="uploads/<?php echo $foto; ?>" /> </span>
+                            <?php } ?>
+                        </div>
+
+                    </div>
+                    <a id="prev" class="control prev"></a>
+                    <a id="next" class="control next"></a>
+                </div>
 
 
 
@@ -73,7 +73,7 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
                         </div>
                     <?php } ?>
                 </div>
-                <div id="comentarios-caixa-artista-evento" >
+                <div id="comentarios-caixa-artista-evento">
                     <div class="sessao-comentarios" id="sessao-comentarios1">
 
                         <?php $resultadon = pg_query($connect, "SELECT usuario.nome_user, usuario.photo_user, 
@@ -102,11 +102,7 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
                                     </div>
                                 </div>
                                 <p id="texto-notificacao"> <?php echo $coment; ?> </p>
-                                <div class="curtir-comentario">
-                                    <button class="ver-respostas-responder-curtir" id="ver-respostas" onclick="minhaFuncao()"> Ver respostas(54)</button>
-                                    <button class="ver-respostas-responder-curtir" id="responder" onclick="responderComentariosessao1()"> Responder </button>
-                                    <button class="ver-respostas-responder-curtir" id="curtir"><img id="imagem-curtida" src="img/guitar-pick.svg" alt="Botão de curtida"> 145</button>
-                                </div>
+
                             </div>
 
 
@@ -116,11 +112,6 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
 
                     </div>
 
-
-
-                   
-
-                      
                     <form method="POST" action="<?php enviarComentario($connect) ?>">
                         <input type='hidden' name='FK_USUARIO_id_user' value="<?php echo $dados['id_user']; ?>">
                         <input type='hidden' name='date_coment' value="<?php echo date('Y-m-d H:i:s') ?>">
@@ -148,7 +139,7 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
 
                     $query_generos = pg_query($connect, "SELECT gen.dsc_genero FROM genero gen INNER JOIN artista_genero artgen ON artgen.fk_genero_id_gen = gen.id_gen WHERE artgen.fk_artista_id_artista = $id AND gen.id_gen = artgen.fk_genero_id_gen");
 
-                    while($row_generos = pg_fetch_array($query_generos)) { ?>
+                    while ($row_generos = pg_fetch_array($query_generos)) { ?>
                         <p class="gen-artista"><?php echo $row_generos['dsc_genero']; ?></p>
                     <?php } ?>
                 </div>
@@ -163,19 +154,19 @@ $photo_query = pg_query($connect, "select fot.photo_artista from artista art inn
                 <?php
             }
                 ?>
-                 <?php $_SESSION['id_usuario'] = $dados['id_user'];
-                    $_SESSION['nome_usuario'] = $dados['nome_user'];
-                    $_SESSION['id_artista'] = $id;
-                    $_SESSION['nome_artista'] = $nome_artista;
-                    $_SESSION['email_usuario'] = $dados['email_user'];
-                    ?>
+                <?php $_SESSION['id_usuario'] = $dados['id_user'];
+                $_SESSION['nome_usuario'] = $dados['nome_user'];
+                $_SESSION['id_artista'] = $id;
+                $_SESSION['nome_artista'] = $nome_artista;
+                $_SESSION['email_usuario'] = $dados['email_user'];
+                ?>
                 <button class="reportar" id="botao-artista-reporta" onclick="reportaArtista()"> Reportar Artista </button>
 
                 </div>
             </div>
 
         </div>
-            
+
         <script type="text/javascript" src="js/script.js"></script>
 
 
