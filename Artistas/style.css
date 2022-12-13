@@ -407,6 +407,8 @@ input[type="file"] {
 
     width: 200px;
     cursor: pointer;
+    margin-right: 2vmax;
+    margin-left: 2vmax;
 
 }
 

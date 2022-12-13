@@ -163,53 +163,14 @@ $contando = count($array);
                     <p class="erro"><?php echo $contato_erro; ?></p>
                 </div>
                 <button type="submit" id="enviar_btn" class="botao-enviar cadastro"> Salvar </button>
+
+                <a href="cadastrar_evento.php">
+                    <button type="button" id="cad-evento" class="botao-enviar cadastro"> Cadastrar Evento </button>
+                </a>
+                <a href="?sair" class="sair">Sair</a>
+
             </div>
         </form>
-    </div>
-    <?php
-    $sql = "SELECT id_evento, nome_evento, dsc_evento, dat_evento, fk_situacao_id_sit FROM evento WHERE fk_usuario_id_user = $id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $array_evento = $stmt->fetch();
-    $sql = "SELECT COUNT(id_evento) FROM evento";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $array_count = $stmt->fetch();
-
-
-    ?>
-    <div class="meus-eventos">
-        <h2 id="meus-eventos"> Meus Eventos</h2>
-        <div class="caixa-eventos">
-            <?php 
-                $_SESSION['id_evento'] = $array_evento['id_evento']; 
-                for($i=0; $i < $array_count['count']; $i++) {?>
-                <div class="evento">
-                    <h4 id="titulo-evento"><?php echo $array_evento['nome_evento']; ?></h4>
-                    <h4 id="status" <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> style="color: red" <?php } else { ?> style="color: green;" <?php } ?>>
-                     Status: <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?> Desativado <?php } ?>
-                                                                                                                                                                                                                                            } else { ?> Ativado <?php } ?></h4>
-                    <div class="texto-botao">
-                        <p><?php echo $array_evento['dsc_evento']; ?></p>
-                        <?php if ($array_evento['fk_situacao_id_sit'] == 1) { ?>
-                            <button type="button" class="botao-ativa-desativa" onclick="desativaAtiva('desativa_evento.php')"> DESATIVAR </button>
-                        <?php } ?>
-                        <?php if ($array_evento['fk_situacao_id_sit'] == 2) { ?>
-                            <button type="button" class="botao-ativa-desativa" id="botao-ativar" onclick="desativaAtiva('ativa_evento.php')"> ATIVAR </button>
-                        <?php } ?>
-                    </div>
-                </div>
-            <?php if ($array_count['count'] == 0 || @$array_count['count'] == NULL) {  ?>
-                <p> Você não cadastrou nenhum Evento ainda! </p>
-            <?php } ?>
-        </div>
-        
-        <div class="botoes-evento">
-            <a href="cadastrar_evento.php">
-                <button type="button" id="cad-evento" class="botao-enviar cadastro"> Cadastrar Evento </button>
-            </a>
-            <a href="?sair" class="sair" >Sair</a>
-        </div>
     </div>
 </body>
 <!-- JavaScript do multi-seletor de gêneros-->

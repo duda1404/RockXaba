@@ -1563,7 +1563,7 @@ select::-ms-expand {
 
 .rexx{
 
-  background-image: url(../img/bgcontactus.png);
+  background-image: url(../img/bg_cadastro.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: auto;
@@ -1795,7 +1795,7 @@ select::-ms-expand {
 
   color: #0d0d0d;
   width: 72vmax;
-  height: 8vmax;
+  height: fit-content;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 4.5vmax; 
   margin: auto;
@@ -2136,6 +2136,8 @@ select::-ms-expand {
   height: fit-content;
   margin-top: 5vmax;
   margin-bottom: 5vmax;
+  background-color: #000000e7;
+  border-radius: 20px;
  
   
 
@@ -2218,8 +2220,9 @@ select::-ms-expand {
   height: 50px;
   width: 100px;
   border-radius: 12px;
-  background-color: black;
+  background-color: rgba(243, 216, 216, 0.74);
   border: #000000;
+  cursor: pointer;
 }
 
 #enviar-texto:focus{

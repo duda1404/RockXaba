@@ -9,7 +9,7 @@
 include_once('sair.php');
 
 // Incluir arquivo de configuração
-require_once "config.php";
+require "config.php";
 
 session_start();
 
@@ -55,6 +55,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
             
             header('Location: dashboard.php');
+            
             
             
         } else if ($row_verifica['fk_situacao_id_sit'] == 4) {
